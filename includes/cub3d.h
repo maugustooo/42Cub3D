@@ -38,4 +38,7 @@ typedef struct s_game
 	t_img	img;
 }				t_game;
 
+//--------------------------------UTILS--------------//
+t_game	*init(void);
+
 #endif

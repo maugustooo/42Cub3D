@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 09:57:01 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/10/24 11:39:54 by gude-jes         ###   ########.fr       */
+/*   Created: 2024/10/24 11:32:53 by gude-jes          #+#    #+#             */
+/*   Updated: 2024/10/24 11:39:47 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+void	check_extension(char *file)
 {
-	t_game *game;
+	if (ft_strncmp(file + ft_strlen(file) - 4, ".cub", 4) != 0)
+		sepuku();
+}
 
-	if(argc == 2)
-	{
-		check_extension(argv[1]);
-		game = init();
-		parse(game);
-	}
-	return(EXIT_SUCCESS);
+void	parse(t_game *game)
+{
+	
 }

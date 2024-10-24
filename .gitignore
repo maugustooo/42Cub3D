@@ -1,0 +1,9 @@
+.vscode/
+lib/libft/*.o
+lib/libft/ft_printf/*.o
+lib/libft/ft_printf_fd/*.o
+lib/libft/get_next_line/*.o
+lib/libft/*.a
+lib/minilibx-linux
+obj/*
+cub3D

@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   ft_isempty.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 11:32:53 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/10/25 12:07:42 by gude-jes         ###   ########.fr       */
+/*   Created: 2024/10/25 10:49:16 by gude-jes          #+#    #+#             */
+/*   Updated: 2024/10/25 10:52:10 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-void	check_extension(char *file)
+int	ft_isempty(char c)
 {
-	if (ft_strncmp(file + ft_strlen(file) - 4, ".cub", 4) != 0)
-		sepuku(NULL);
+	if ((c >= 9 && c <=13) || c == 32)
+		return (1);
+	return (0);
 }
-
-void	parse(char **argv, t_game *game)
-{
-	read_textures(argv[1], game);
-	read_map(argv[1], game);
-	check_textures(game);
-	check_map_content(game);
-}
+ 

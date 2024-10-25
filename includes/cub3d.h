@@ -32,7 +32,10 @@ typedef struct s_img
 
 typedef struct s_game
 {
+	char	**textures;
 	char	**map;
+	int		tlines;
+	int		mapstart;
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img	img;

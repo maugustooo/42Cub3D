@@ -1,27 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 11:32:53 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/10/25 12:07:42 by gude-jes         ###   ########.fr       */
+/*   Created: 2024/10/25 09:29:59 by gude-jes          #+#    #+#             */
+/*   Updated: 2024/10/25 12:32:21 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	check_extension(char *file)
+void	check_textures(t_game *game)
 {
-	if (ft_strncmp(file + ft_strlen(file) - 4, ".cub", 4) != 0)
-		sepuku(NULL);
+	int i;
+
+	i = -1;
+	while(game->textures[++i])
+	{
+		
+	}
 }
 
-void	parse(char **argv, t_game *game)
+void	check_map_content(t_game *game)
 {
-	read_textures(argv[1], game);
-	read_map(argv[1], game);
-	check_textures(game);
-	check_map_content(game);
+	int	i;
+	int j;
+
+	i = -1;
+	while(game->map[++i])
+	{
+		j = -1;
+		while(game->map[i][++j])
+		{
+			while(ft_isempty(game->map[i][j]))
+				j++;
+			if(!(ft_strchr("1ONSEW", game->map[i])))
+				sepuku(game);
+		}
+	}
 }

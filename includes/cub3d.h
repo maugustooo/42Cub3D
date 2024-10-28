@@ -13,8 +13,8 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <unistd.h>
-# include <X11/keysym.h>
-# include <X11/X.h>
+//# include <X11/keysym.h>
+//# include <X11/X.h>
 
 typedef enum e_error
 {
@@ -30,9 +30,18 @@ typedef struct s_img
 	int		endian;
 }	t_img;
 
+typedef struct s_textr
+{
+	char	*north;
+	char	*east;
+	char	*south;
+	char	*west;
+	char	*floor;
+	char	*ceiling;
+}	t_textr;
+
 typedef struct s_game
 {
-	char	**textures;
 	char	**map;
 	int		tlines;
 	int		mapstart;
@@ -41,7 +50,16 @@ typedef struct s_game
 	t_img	img;
 }				t_game;
 
-//--------------------------------UTILS--------------//
-t_game	*init(void);
+
+t_game	*init_game(void);
+t_textr *init_textr(void);
+void	parse(char **argv, t_game *game, t_textr *textr);
+void	check_extension(char *file);
+void	read_map(char *file, t_game *game);
+void	check_textures(t_game *game, t_textr *textr);
+void	check_map_content(t_game *game);
+void    check_file(char *file);
+void	sepuku(t_game *game);
+void	read_textures(char *file, t_game *game, t_textr *textures);
 
 #endif

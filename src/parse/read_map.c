@@ -6,13 +6,13 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:17:14 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/10/25 12:19:17 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/10/28 10:27:50 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	count_lines(char *file)
+int	count_lines(char *file, t_game *game)
 {
 	int		i;
 	int		fd;
@@ -21,7 +21,7 @@ int	count_lines(char *file)
 	i = 0;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		sepuku();
+		sepuku(game);
 	tmp = get_next_line(fd);
 	while (tmp != NULL)
 	{
@@ -50,15 +50,15 @@ void	read_map(char *file, t_game *game)
 {
 	int	fd;
 
-	game->tlines = count_lines(file) - game->mapstart;
+	game->tlines = count_lines(file, game) - game->mapstart;
 	if (game->tlines <= 0)
-		sepuku();
+		sepuku(game);
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		sepuku();
+		sepuku(game);
 	game->map = ft_calloc(game->tlines + 1, sizeof(char *));
 	if (!game->map)
-		sepuku();
+		sepuku(game);
 	fill_map(fd, game);
 	close(fd);
 }

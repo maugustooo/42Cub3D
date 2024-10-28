@@ -6,7 +6,7 @@
 #    By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 09:44:12 by gude-jes          #+#    #+#              #
-#    Updated: 2024/10/24 09:53:16 by gude-jes         ###   ########.fr        #
+#    Updated: 2024/10/28 11:03:39 by gude-jes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,18 +17,20 @@ MLXFLAGS 	= -L ./lib/minilibx-linux -lm -lmlx -Ilmlx -lXext -lX11
 NAME		= cub3D
 NAME_BONUS	= cub3D_bonus
 
-INC			= -I./includes
+INC			= -I./includes -I$(LIBFT_PATH) -I$(MLX_PATH)
 RM			= rm -rf
 
 GENERAL		= main
-PARSE		= 
-UTILS		= 
+PARSE		= parse map_validation read_map read_textures
+UTILS		= file_utils init sepuku
 
 #==============================================================================#
 #                                    PATHS                                     #
 #==============================================================================#
 
-VPATH		= src 
+VPATH		= src\
+				src/parse\
+				src/utils\
 
 LIBS_PATH	= lib
 

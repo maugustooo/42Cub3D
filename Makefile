@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+         #
+#    By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 09:44:12 by gude-jes          #+#    #+#              #
-#    Updated: 2024/10/28 11:03:39 by gude-jes         ###   ########.fr        #
+#    Updated: 2024/11/04 18:19:52 by maugusto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ RM			= rm -rf
 GENERAL		= main
 PARSE		= parse map_validation read_map read_textures
 UTILS		= file_utils init sepuku
+CONTROLS	= controls
 
 #==============================================================================#
 #                                    PATHS                                     #
@@ -31,6 +32,7 @@ UTILS		= file_utils init sepuku
 VPATH		= src\
 				src/parse\
 				src/utils\
+				src/controls\
 
 LIBS_PATH	= lib
 
@@ -42,6 +44,7 @@ MLX			= $(MLX_PATH)/libmlx_Linux.a
 SRC			= $(addsuffix .c, $(GENERAL))\
 				$(addsuffix .c, $(PARSE))\
 				$(addsuffix .c, $(UTILS))\
+				$(addsuffix .c, $(CONTROLS))\
 
 BONUS_SRC	= $(addsuffix .c, $(BONUS_GENERAL))\
 

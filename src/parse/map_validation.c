@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:29:59 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/10/28 12:17:59 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:19:09 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	check_colors(t_game *game, t_textr *textr)
-{
+// void	check_colors(t_game *game, t_textr *textr)
+// {
 	
-}
+// }
 
 void	check_textures(t_game *game, t_textr *textr)
 {

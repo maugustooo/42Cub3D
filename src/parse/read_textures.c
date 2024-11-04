@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:51:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/10/28 10:02:31 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/04 18:38:22 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	read_textures2(int fd, t_game *game,  t_textr *textures)
 	char	*tmp;
 
 	i = 0;
+	//TODO:O GNL DA SEGFAULT LOOOOL
 	tmp = get_next_line(fd);
 	while (tmp != NULL)
 	{

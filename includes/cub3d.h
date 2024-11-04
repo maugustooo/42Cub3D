@@ -1,3 +1,4 @@
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -46,12 +47,13 @@ typedef struct s_game
 	int		tlines;
 	int		mapstart;
 	void	*mlx_ptr;
-	void	*win_ptr;
+	void	*window;
+	int		widthmap;
+	int		heightmap;
 	t_img	img;
 }				t_game;
 
 
-t_game	*init_game(void);
 t_textr *init_textr(void);
 void	parse(char **argv, t_game *game, t_textr *textr);
 void	check_extension(char *file);
@@ -59,7 +61,9 @@ void	read_map(char *file, t_game *game);
 void	check_textures(t_game *game, t_textr *textr);
 void	check_map_content(t_game *game);
 void    check_file(char *file);
-void	sepuku(t_game *game);
+int		sepuku(t_game *game);
 void	read_textures(char *file, t_game *game, t_textr *textures);
+
+int controls(int keycode, t_game *game);
 
 #endif

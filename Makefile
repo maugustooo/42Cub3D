@@ -6,7 +6,7 @@
 #    By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 09:44:12 by gude-jes          #+#    #+#              #
-#    Updated: 2024/11/04 18:19:52 by maugusto         ###   ########.fr        #
+#    Updated: 2024/11/05 15:52:56 by maugusto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ GENERAL		= main
 PARSE		= parse map_validation read_map read_textures
 UTILS		= file_utils init sepuku
 CONTROLS	= controls
+RENDER 		= render
 
 #==============================================================================#
 #                                    PATHS                                     #
@@ -33,6 +34,7 @@ VPATH		= src\
 				src/parse\
 				src/utils\
 				src/controls\
+				src/render\
 
 LIBS_PATH	= lib
 
@@ -45,6 +47,7 @@ SRC			= $(addsuffix .c, $(GENERAL))\
 				$(addsuffix .c, $(PARSE))\
 				$(addsuffix .c, $(UTILS))\
 				$(addsuffix .c, $(CONTROLS))\
+				$(addsuffix .c, $(RENDER))\
 
 BONUS_SRC	= $(addsuffix .c, $(BONUS_GENERAL))\
 

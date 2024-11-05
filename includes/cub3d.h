@@ -14,8 +14,16 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <unistd.h>
-//# include <X11/keysym.h>
-//# include <X11/X.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
+
+#define SPEED 0.1
+
+typedef enum e_files
+{
+	FILE_WALL,
+	FILE_FLOOR
+}	t_files;
 
 typedef enum e_error
 {
@@ -29,6 +37,8 @@ typedef struct s_img
 	int		bpp;
 	int		line_len;
 	int		endian;
+	int		width;
+	int		height;
 }	t_img;
 
 typedef struct s_textr
@@ -45,6 +55,8 @@ typedef struct s_game
 {
 	char	**map;
 	
+	int		x;
+	int		y;
 	int		tlines;
 	int		mapstart;
 	int		mapend;
@@ -55,7 +67,9 @@ typedef struct s_game
 	void	*window;
 
 	bool	mapflag;
-	t_img	img;
+	int		rgb_sky[3];
+	int		rgb_floor[3];
+	t_img	img[2];
 }				t_game;
 
 
@@ -70,5 +84,7 @@ int		sepuku(t_game *game);
 void	read_textures(char *file, t_game *game, t_textr *textures);
 
 int controls(int keycode, t_game *game);
+void init_img(t_game *game);
+void render(t_game *game);
 
 #endif

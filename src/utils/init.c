@@ -6,29 +6,41 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:38:09 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/04 18:36:22 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/05 16:00:23 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// t_textr *init_textr(void)
-// {
-// 	t_textr	*textr;
+char	*files(int i)
+{
+	char	*strings[2];
 
-// 	textr = malloc((1) * sizeof(t_textr));
-// 	if (!textr)
-// 		sepuku(NULL);
-// 	ft_memset(textr, 0, sizeof(t_textr));
-// 	return (textr);
-// }
+	strings[0] = "img/img0.xpm";
+	strings[1] = "img/img1.xpm";
+	return (strings[i]);
+}
+void init_img(t_game *game)
+{
+	int i;
 
-// void init_game(t_game *game)
-// {
-// 	// game = malloc((1) * sizeof(t_game));
-// 	// if (!game)
-// 	// 	sepuku(game);
-// 	ft_printf("asdhsan");
+	i = 0;
+	while (i < 2)
+	{
+		printf("%s\n", files(i));
+		game->img[i].mlx_img = mlx_xpm_file_to_image(game->mlx_ptr, files(i), &game->img[i].width, &game->img[i].height);
+		i++;
+	}
+	i = 0;
+	game->img[1].mlx_img = mlx_new_image(game->mlx_ptr,
+			game->widthmap, game->heightmap);
+	while (i < 2)
+	{
+		game->img[i].addr = mlx_get_data_addr(game->img[i].mlx_img,
+				&game->img[i].bpp, &game->img[i].line_len, &game->img[i].endian);
+		if (!game->img[i].addr)
+			sepuku(game);
+		i++;
+	}
 	
-// 	ft_printf("asdhsan");
-// }
+}

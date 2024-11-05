@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:29:59 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/04 18:19:09 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/05 12:37:23 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ void	check_map_content(t_game *game)
 	i = -1;
 	while(game->map[++i])
 	{
-		j = -1;
-		while(game->map[i][++j])
+		j = 0;
+		while(game->map[i][j++])
 		{
 			while(ft_isempty(game->map[i][j]))
 				j++;
-			if(!(ft_strchr("1ONSEW", game->map[i][j])))
+			if(!(ft_strchr("10NSEW", game->map[i][j])))
 				sepuku(game);
 		}
 	}

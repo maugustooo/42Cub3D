@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:21:22 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/04 18:30:37 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/05 12:38:09 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	freedom(t_game *game)
 
 int	sepuku(t_game *game)
 {
-	if (game)
+	if (game->map)
 		freedom(game);
 	ft_printf("Error\n");	
 	exit(EXIT_SUCCESS);

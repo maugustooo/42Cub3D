@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 08:59:37 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/05/03 10:10:57 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/05 09:35:12 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ char	*read_from_file(int fd, char *stash)
 	if (!buffer)
 		return (NULL);
 	*buffer = 0;
-	while (read_size != 0 && !ft_strchr(buffer, '\n'))
+	while (read_size != 0 && !gnl_ft_strchr(buffer, '\n'))
 	{
 		read_size = read(fd, buffer, BUFFER_SIZE);
 		if (read_size < 0)
 			return (free_data(stash, buffer));
 		buffer[read_size] = '\0';
-		stash = ft_strjoin(stash, buffer);
+		stash = gnl_ft_strjoin(stash, buffer);
 	}
 	if (read_size == -1 || *stash == '\0')
 		return (free_data(stash, buffer));

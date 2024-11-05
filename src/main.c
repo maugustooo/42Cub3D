@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 09:57:01 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/04 18:36:58 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/05 10:22:39 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,10 @@ void	mlx_functions(t_game *game)
 }
 int	main(int argc, char **argv)
 {
-	//TODO:NAO SE INICIALIZA A STRUCT COM POINTER, TEM AQUI ALGUMAS SYNTAX MAL, TEMOS QUE PASSAR O ADDRESS DA STRUCT PARA TRABALHAR COM ELA, TEMOS QUE VER DEPOIS
 	t_game	game;
 	t_textr	textr;
 	int		fd;
-	
-	//TODO:MANO, EU VI QUE NAO PODEMOS USAR O "ADDSUFIX", TEMOS QUE METER OS FILES 1 A 1?? DEPOIS TEMOS QUE VER ISSO
+
 	if(argc == 2)
 	{
 		check_extension(argv[1]);

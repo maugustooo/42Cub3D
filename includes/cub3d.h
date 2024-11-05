@@ -44,12 +44,17 @@ typedef struct s_textr
 typedef struct s_game
 {
 	char	**map;
+	
 	int		tlines;
 	int		mapstart;
-	void	*mlx_ptr;
-	void	*window;
+	int		mapend;
 	int		widthmap;
 	int		heightmap;
+
+	void	*mlx_ptr;
+	void	*window;
+
+	bool	mapflag;
 	t_img	img;
 }				t_game;
 

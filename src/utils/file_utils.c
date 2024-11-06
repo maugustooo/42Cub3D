@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 10:05:24 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/06 10:51:00 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/06 12:39:42 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,27 @@ bool    is_xpm(char *file)
     return (false);
 }
 
-void    check_file(char *file)
+void	check_duplicate_text(t_game *game, t_textr *textr)
+{
+	if(textr->north == textr->south || textr->north == textr->east
+		|| textr->north == textr->west)
+		sepuku(game, ERROR_TEXTURE);
+	if(textr->south == textr->east || textr->south == textr->west)
+		sepuku(game, ERROR_TEXTURE);
+	if(textr->east == textr->west)
+		sepuku(game, ERROR_TEXTURE);
+}
+
+void    check_file(char *file, t_game *game)
 {
     int fd;
 
     if(is_dir(file))
-        sepuku(NULL, ERROR_TEXTURE);
+        sepuku(game, ERROR_TEXTURE);
     fd = open(file, O_RDONLY);
     if (fd < 0)
-        sepuku(NULL, ERROR_FILE);
+        sepuku(game, ERROR_FILE);
     if (!is_xpm(file))
-        sepuku(NULL, ERROR_TEXTURE);
+        sepuku(game, ERROR_TEXTURE);
     close(fd);
 }

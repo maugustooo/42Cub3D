@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:29:59 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/06 10:48:32 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/06 12:39:33 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ void	check_textures(t_game *game, t_textr *textr)
 {
 	if(!textr->north || !textr->south || !textr->east || !textr->west)
 		sepuku(game, ERROR_TEXTURE);
-	check_file(textr->north);
-	check_file(textr->south);
-	check_file(textr->east);
-	check_file(textr->west);
+	check_file(textr->north, game);
+	check_file(textr->south, game);
+	check_file(textr->east, game);
+	check_file(textr->west, game);
+	check_duplicate_text(game, textr);
 }
 
 void	check_map_content(t_game *game)

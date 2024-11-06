@@ -80,22 +80,25 @@ typedef struct s_game
 }				t_game;
 
 
-t_textr *init_textr(void);
+t_textr	*init_textr(void);
 void	parse(char **argv, t_game *game, t_textr *textr);
 void	check_extension(char *file);
 void	read_map(char *file, t_game *game);
 void	check_textures(t_game *game, t_textr *textr);
 void	check_map_content(t_game *game);
-void    check_file(char *file);
+void	check_file(char *file, t_game *game);
+void	check_duplicate_text(t_game *game, t_textr *textr);
 void	read_textures(char *file, t_game *game, t_textr *textures);
+char	*return_no_extra_spaces(char *tmp);
+void	check_text_content(t_game *game, t_textr *textures, int i);
 void	check_rgb(char *color, t_game *game, int type);
 void	check_colors(t_game *game, t_textr *textr);
 void	check_order(char *file, t_game *game);
 int		sepuku(t_game *game, enum e_error i);
 int		ft_exit(t_game *game);
 
-int controls(int keycode, t_game *game);
-void init_img(t_game *game);
-void render(t_game *game);
+int		controls(int keycode, t_game *game);
+void	init_img(t_game *game);
+void	render(t_game *game);
 
 #endif

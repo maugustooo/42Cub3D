@@ -6,45 +6,36 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:51:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/06 11:23:26 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/06 12:43:04 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	check_text_content(t_game *game, t_textr *textures, int i)
+void	check_dup(int fd, t_game *game)
 {
-	if(textures->north && textures->south && textures->west && textures->east
-		&& textures->floor && textures->ceiling && game->mapflag == false)
-	{
-		game->mapstart = i + 1;
-		game->mapflag = true;
-	}
-}
+	char	*tmp;
+	int		arr[6];
 
-char	*return_no_extra_spaces(char *tmp)
-{
-	int		i;
-	int		j;
-	char	*new;
-
-	i = 0;
-	j = 0;
-	if ((tmp[0] == 'F' && tmp[1] == ' ') || (tmp[0] == 'C' && tmp[1] == ' '))
-		return (tmp);
-	new = malloc(sizeof(char) * (ft_strlen(tmp) + 1));
-	if (!new)
-		return (NULL);
-	while (tmp[i])
+	tmp = get_next_line(fd);
+	while(tmp != NULL)
 	{
-		while(!ft_is_wspace(tmp[i]) && tmp[i])
-			new[j++] = tmp[i++];
-		while(ft_is_wspace(tmp[i]) && tmp[i])
-			i++;
+		tmp = return_no_extra_spaces(tmp);
+		if (tmp[0] == 'N' && tmp[1] == 'O')
+			arr[0]++;
+		else if (tmp[0] == 'S' && tmp[1] == 'O')
+			arr[1]++;
+		else if (tmp[0] == 'W' && tmp[1] == 'E')
+			arr[2]++;
+		else if (tmp[0] == 'E' && tmp[1] == 'A')
+			arr[3]++;
+		else if (tmp[0] == 'F' && tmp[1] == ' ')
+			arr[4]++;
+		else if (tmp[0] == 'C' && tmp[1] == ' ')
+			arr[5]++;
+		free(tmp);
+		tmp = get_next_line(fd);
 	}
-	new[j] = '\0';
-	free(tmp);
-	return (new);
 }
 
 void	read_textures2(int fd, t_game *game,  t_textr *textures)
@@ -84,6 +75,7 @@ void	read_textures(char *file, t_game *game, t_textr *textures)
 	if (fd < 0)
 		sepuku(game, ERROR_FILE);
 	game->mapflag = false;
+	check_dup(fd, game);
 	read_textures2(fd, game, textures);
 	close(fd);
 }

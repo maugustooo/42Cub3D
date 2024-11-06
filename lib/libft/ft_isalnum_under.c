@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum_under.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 12:39:43 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/10/07 14:48:03 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/06 09:15:10 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /**
- * @defgroup bonus Bonus
+ * @defgroup added Added
  * @{
  * @file ft_isalnum_under.c
  * @brief Check if character is alphanumeric or underscore.

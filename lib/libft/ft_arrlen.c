@@ -6,12 +6,12 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 11:38:00 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/09/26 11:48:06 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/06 09:15:28 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /**
- * @defgroup mandatory Mandatory
+ * @defgroup added Added
  * @{
  * @file ft_arrlen.c
  * @brief Gets he length of an array

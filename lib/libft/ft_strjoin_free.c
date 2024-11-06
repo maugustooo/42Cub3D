@@ -6,12 +6,12 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 14:20:30 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/10/16 11:41:14 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/06 09:14:21 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /**
- * @defgroup bonus Bonus
+ * @defgroup added Added
  * @{
  * @file ft_strjoin_free.c
  * @brief Creates a new string, joins the 2 strings passed as parameter and

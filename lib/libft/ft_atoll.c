@@ -6,12 +6,12 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:33:24 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/09/26 09:53:16 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/06 09:14:44 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /**
- * @defgroup mandatory Mandatory
+ * @defgroup added Added
  * @{
  * @file ft_atoll.c
  * @brief Ascii to Long Long

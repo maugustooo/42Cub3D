@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 08:49:51 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/10/25 10:52:07 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/06 09:13:42 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ int			ft_toupper(int c);
 int			ft_find_c(char c, char const *set);
 int			ft_strclen(char *str, char c);
 int			ft_isspace(char c);
-int			ft_isempty(char c);
 int			ft_count_char(char *str, char sep, int n);
 int			ft_isdigitloop(char *str);
+int			ft_is_wspace(char c);
 
 char		*ft_strchr(const char *str, int c);
 char		*ft_strdup(const char *s);

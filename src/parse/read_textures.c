@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:51:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/05 12:30:21 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/06 09:25:55 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,28 +26,19 @@ char	*return_no_extra_spaces(char *tmp)
 {
 	int		i;
 	int		j;
-	int		space_found;
 	char	*new;
 
 	i = 0;
 	j = 0;
-	space_found = 0;
 	new = malloc(sizeof(char) * (ft_strlen(tmp) + 1));
 	if (!new)
 		return (NULL);
 	while (tmp[i])
 	{
-		if (tmp[i] != ' ')
-		{
-			new[j++] = tmp[i];
-			space_found = 0;
-		}
-		else if (!space_found)
-		{
-			new[j++] = tmp[i];
-			space_found = 1;
-		}
-		i++;
+		while(!ft_is_wspace(tmp[i]) && tmp[i])
+			new[j++] = tmp[i++];
+		while(ft_is_wspace(tmp[i]) && tmp[i])
+			i++;
 	}
 	new[j] = '\0';
 	free(tmp);
@@ -61,21 +52,21 @@ void	read_textures2(int fd, t_game *game,  t_textr *textures)
 
 	i = 0;
 	tmp = get_next_line(fd);
-	while (tmp != NULL)
+	while (tmp != NULL && game->mapflag == false)
 	{
 		tmp = return_no_extra_spaces(tmp);	
 		if (tmp[0] == 'N' && tmp[1] == 'O')
-			textures->north = ft_strndup(&tmp[2] + 1, ft_strclen(&tmp[2] + 1, '\n'));
+			textures->north = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
 		else if (tmp[0] == 'S' && tmp[1] == 'O')
-			textures->south = ft_strndup(&tmp[2] + 1, ft_strclen(&tmp[2] + 1, '\n'));
+			textures->south = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
 		else if (tmp[0] == 'W' && tmp[1] == 'E')
-			textures->west = ft_strndup(&tmp[2] + 1, ft_strclen(&tmp[2] + 1, '\n'));
+			textures->west = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
 		else if (tmp[0] == 'E' && tmp[1] == 'A')
-			textures->east = ft_strndup(&tmp[2] + 1, ft_strclen(&tmp[2] + 1, '\n'));
+			textures->east = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
 		else if (tmp[0] == 'F' && tmp[1] == ' ')
-			textures->floor = ft_strndup(&tmp[1] + 1, ft_strclen(&tmp[1] + 1, '\n'));
+			textures->floor = ft_strndup(&tmp[1], ft_strclen(&tmp[1], '\n'));
 		else if (tmp[0] == 'C' && tmp[1] == ' ')
-			textures->ceiling = ft_strndup(&tmp[1] + 1, ft_strclen(&tmp[1] + 1, '\n'));
+			textures->ceiling = ft_strndup(&tmp[1], ft_strclen(&tmp[1], '\n'));
 		free(tmp);
 		tmp = get_next_line(fd);
 		i++;

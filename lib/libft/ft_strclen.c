@@ -3,12 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strclen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 15:04:36 by maugusto          #+#    #+#             */
-/*   Updated: 2024/10/07 14:47:02 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/06 09:13:14 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/**
+ * @defgroup added Added
+ * @{
+ * @file ft_strclen.c
+ * @brief Get the length of a string until a character
+*/
 
 #include "libft.h"
 
@@ -30,3 +37,5 @@ int	ft_strclen(char *str, char c)
 		i++;
 	return (i);
 }
+
+/**@} */

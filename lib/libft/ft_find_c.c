@@ -3,12 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_find_c.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 14:10:20 by maugusto          #+#    #+#             */
-/*   Updated: 2024/10/07 14:45:08 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/06 09:07:35 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/**
+ * @defgroup added Added
+ * @file ft_find_c.c
+ * @brief Checks if character c is in set
+*/
 
 #include "libft.h"
 
@@ -34,3 +40,5 @@ int	ft_find_c(char c, char const *set)
 	}
 	return (0);
 }
+
+/**@}*/

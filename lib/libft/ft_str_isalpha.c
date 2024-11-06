@@ -6,12 +6,12 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:16:23 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/10/17 10:37:19 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/06 09:15:21 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /**
- * @defgroup mandatory Mandatory
+ * @defgroup added Added
  * @{
  * @file ft_str_isalpha.c
  * @brief Check if str is alphanumeric

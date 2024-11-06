@@ -3,24 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_str1dup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 11:17:13 by maugusto          #+#    #+#             */
-/*   Updated: 2024/10/07 14:47:19 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/06 09:18:24 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 12:17:44 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/07/22 11:40:46 by gude-jes         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+/**
+ * @defgroup added Added
+ * @{
+ * @file ft_str1dup.c
+ * @brief Duplicate a string
+*/
 
 #include "libft.h"
 
@@ -48,3 +43,5 @@ char	*ft_str1dup(char *s, int len)
 	str[i] = '\0';
 	return (str);
 }
+
+/**@} */

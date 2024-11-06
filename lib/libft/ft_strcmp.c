@@ -6,12 +6,12 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 10:48:46 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/08/20 16:41:54 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/06 09:15:37 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /**
- * @defgroup mandatory Mandatory
+ * @defgroup added Added
  * @{
  * @file ft_strcmp.c
  * @brief Function to compare strings

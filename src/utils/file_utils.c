@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 10:05:24 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/05 09:28:24 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/06 10:51:00 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	check_extension(char *file)
 {
 	if (ft_strncmp(file + ft_strlen(file) - 4, ".cub", 4) != 0)
-		sepuku(NULL);
+		sepuku(NULL, ERROR_FILE);
 }
 
 bool    is_dir(char *file)
@@ -44,11 +44,11 @@ void    check_file(char *file)
     int fd;
 
     if(is_dir(file))
-        sepuku(NULL);
+        sepuku(NULL, ERROR_TEXTURE);
     fd = open(file, O_RDONLY);
     if (fd < 0)
-        sepuku(NULL);
+        sepuku(NULL, ERROR_FILE);
     if (!is_xpm(file))
-        sepuku(NULL);
+        sepuku(NULL, ERROR_TEXTURE);
     close(fd);
 }

@@ -6,21 +6,24 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:29:59 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/06 09:21:04 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/06 10:48:32 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// void	check_colors(t_game *game, t_textr *textr)
-// {
-	
-// }
+void	check_colors(t_game *game, t_textr *textr)
+{
+	if(!textr->ceiling || !textr->floor)
+		sepuku(game, ERROR_COLOR);
+	check_rgb(textr->ceiling, game, 1);
+	check_rgb(textr->floor, game, 0);	
+}
 
 void	check_textures(t_game *game, t_textr *textr)
 {
 	if(!textr->north || !textr->south || !textr->east || !textr->west)
-		sepuku(game);
+		sepuku(game, ERROR_TEXTURE);
 	check_file(textr->north);
 	check_file(textr->south);
 	check_file(textr->east);
@@ -41,7 +44,7 @@ void	check_map_content(t_game *game)
 			while(ft_is_wspace(game->map[i][j]))
 				j++;
 			if(!(ft_strchr("10NSEW", game->map[i][j])))
-				sepuku(game);
+				sepuku(game, ERROR_MAP);
 		}
 	}
 }

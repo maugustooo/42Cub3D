@@ -19,16 +19,23 @@
 
 #define SPEED 0.1
 
+typedef enum e_error
+{
+	ERROR_ARGS,
+	ERROR_FILE,
+	ERROR_MAP,
+	ERROR_MALLOC,
+	ERROR_COLOR,
+	ERROR_TEXTURE,
+	ERROR_MLX,
+	ERROR_ORDER,
+}	t_error;
+
 typedef enum e_files
 {
 	FILE_WALL,
 	FILE_FLOOR
 }	t_files;
-
-typedef enum e_error
-{
-	ERROR_ARGS,
-} t_error;
 
 typedef struct s_img
 {
@@ -80,8 +87,12 @@ void	read_map(char *file, t_game *game);
 void	check_textures(t_game *game, t_textr *textr);
 void	check_map_content(t_game *game);
 void    check_file(char *file);
-int		sepuku(t_game *game);
 void	read_textures(char *file, t_game *game, t_textr *textures);
+void	check_rgb(char *color, t_game *game, int type);
+void	check_colors(t_game *game, t_textr *textr);
+void	check_order(char *file, t_game *game);
+int		sepuku(t_game *game, enum e_error i);
+int		ft_exit(t_game *game);
 
 int controls(int keycode, t_game *game);
 void init_img(t_game *game);

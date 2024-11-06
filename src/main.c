@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 09:57:01 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/05 14:00:35 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/06 12:01:16 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ int	main(int argc, char **argv)
 		ft_memset(&game, 0, sizeof(t_game));
 		fd = open(argv[1], O_RDONLY);
 		if (fd < 0)
-			sepuku(&game);
-		//TODO:PRECISO QUE METAS O TAMANHO DO MAPA NO PARSE(GAME->WIDTHMAP E GAME->HEIGHTMAP)
+			sepuku(&game, ERROR_ARGS);
 		parse(argv, &game, &textr);
 		game.heightmap = 500;
 		game.widthmap = 500;
@@ -46,3 +45,5 @@ int	main(int argc, char **argv)
 	}
 	return(EXIT_SUCCESS);
 }
+
+//#TODO RETIRAR DO GITIGNORE A PASTA DE TEXTURAS

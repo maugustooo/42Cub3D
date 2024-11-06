@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+         #
+#    By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 09:44:12 by gude-jes          #+#    #+#              #
-#    Updated: 2024/11/05 15:52:56 by maugusto         ###   ########.fr        #
+#    Updated: 2024/11/06 11:32:38 by gude-jes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,8 @@ INC			= -I./includes -I$(LIBFT_PATH) -I$(MLX_PATH)
 RM			= rm -rf
 
 GENERAL		= main
-PARSE		= parse map_validation read_map read_textures
-UTILS		= file_utils init sepuku
+PARSE		= parse map_validation read_map read_textures file_content
+UTILS		= file_utils init sepuku colors
 CONTROLS	= controls
 RENDER 		= render
 

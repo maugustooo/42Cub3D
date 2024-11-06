@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:38:09 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/05 16:00:23 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/06 10:51:44 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void init_img(t_game *game)
 		game->img[i].addr = mlx_get_data_addr(game->img[i].mlx_img,
 				&game->img[i].bpp, &game->img[i].line_len, &game->img[i].endian);
 		if (!game->img[i].addr)
-			sepuku(game);
+			sepuku(game, ERROR_MLX);
 		i++;
 	}
 	

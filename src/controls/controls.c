@@ -3,7 +3,7 @@
 int controls(int keycode, t_game *game)
 {
 	if(keycode == XK_Escape)
-		sepuku(game);
+		ft_exit(game);
 	// if(keycode == XK_w)
 	// 	move_up(game);
 	// if(keycode == XK_s)

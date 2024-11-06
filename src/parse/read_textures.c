@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:51:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/06 09:25:55 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/06 11:23:26 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ char	*return_no_extra_spaces(char *tmp)
 
 	i = 0;
 	j = 0;
+	if ((tmp[0] == 'F' && tmp[1] == ' ') || (tmp[0] == 'C' && tmp[1] == ' '))
+		return (tmp);
 	new = malloc(sizeof(char) * (ft_strlen(tmp) + 1));
 	if (!new)
 		return (NULL);
@@ -64,9 +66,9 @@ void	read_textures2(int fd, t_game *game,  t_textr *textures)
 		else if (tmp[0] == 'E' && tmp[1] == 'A')
 			textures->east = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
 		else if (tmp[0] == 'F' && tmp[1] == ' ')
-			textures->floor = ft_strndup(&tmp[1], ft_strclen(&tmp[1], '\n'));
+			textures->floor = ft_strndup(&tmp[1] + 1, ft_strclen(&tmp[1] + 1, '\n'));
 		else if (tmp[0] == 'C' && tmp[1] == ' ')
-			textures->ceiling = ft_strndup(&tmp[1], ft_strclen(&tmp[1], '\n'));
+			textures->ceiling = ft_strndup(&tmp[1] + 1, ft_strclen(&tmp[1] + 1, '\n'));
 		free(tmp);
 		tmp = get_next_line(fd);
 		i++;
@@ -80,7 +82,7 @@ void	read_textures(char *file, t_game *game, t_textr *textures)
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		sepuku(game);
+		sepuku(game, ERROR_FILE);
 	game->mapflag = false;
 	read_textures2(fd, game, textures);
 	close(fd);

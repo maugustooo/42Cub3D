@@ -41,9 +41,10 @@ void render_background(t_game *game)
     }
 }
 
-void render(t_game *game)
+int render(t_game *game)
 {
 	render_background(game);
 	raycasting(game);
 	mlx_put_image_to_window(game->mlx_ptr, game->window, game->img[2].mlx_img, 0, 0);
+	return (0);
 }

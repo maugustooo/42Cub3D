@@ -1,12 +1,72 @@
 #include "cub3d.h"
 
+void	find_wall(t_game *game)
+{
+	int	wall;
+
+	wall = 0;
+	while (wall == 0)
+	{
+		if (game->side_dist_x < game->side_dist_y)
+		{
+			game->side_dist_x += game->delta_dist_x;
+			game->map_x += game->step_x;
+			game->wall_side = 0;
+		}
+		else
+		{
+			game->side_dist_y += game->delta_dist_y;
+			game->map_y += game->step_y;
+			game->wall_side = 1;
+		}
+		if (game->map[game->map_y][game->map_x] == '1')
+			wall = 1;
+	}
+}
+
+void	get_step(t_game *game)
+{
+	if (game->ray_dir_x < 0)
+	{
+		game->step_x = -1;
+		game->side_dist_x = (game->player.x - game->map_x) * game->delta_dist_x;
+	}
+	else
+	{
+		game->step_x = 1;
+		game->side_dist_x = (game->map_x + 1.0 - game->player.x) * game->delta_dist_x;
+	}
+	if (game->ray_dir_y < 0)
+	{
+		game->step_y = -1;
+		game->side_dist_y = (game->player.y - game->map_y) * game->delta_dist_y;
+	}
+	else
+	{
+		game->step_y = 1;
+		game->side_dist_y = (game->map_y + 1.0 - game->player.y) * game->delta_dist_y;
+	}
+}
+
+void	get_distance(t_game *game)
+{	
+	if (game->ray_dir_x == 0)
+		game->delta_dist_x = INT_MAX;
+	else
+		game->delta_dist_x = fabs(1 / game->ray_dir_x);
+	if (game->ray_dir_y == 0)
+		game->delta_dist_y = INT_MAX;
+	else
+		game->delta_dist_y = fabs(1 / game->ray_dir_y);
+}
+
 void init_raycasting(t_game *game, int x)
 {
-	game->map_x = (int)game->pos_x;
-	game->map_y = (int)game->pos_y;
+	game->map_x = (int)game->player.x;
+	game->map_y = (int)game->player.y;
 	game->cam_x = 2 * x / (double)game->widthmap - 1;
-	game->ray_dir_x = game->player_angle + game->plane_x * game->cam_x;
-	game->ray_dir_y = game->player_angle + game->plane_y * game->cam_x;
+	game->ray_dir_x = game->player.angle + game->plane_x * game->cam_x;
+	game->ray_dir_y = game->player.angle + game->plane_y * game->cam_x;
 }
 
 void	raycasting(t_game *game)
@@ -17,9 +77,9 @@ void	raycasting(t_game *game)
 	while (x < game->widthmap)
 	{
 		init_raycasting(game, x);
-		get_delta_dist(game);
+		get_distance(game);
 		get_step(game);
-		digital_differential_analyser(game);
+		find_wall(game);
 		if (game->wall_side == 0)
 			game->perpwalldist = (game->side_dist_x - game->delta_dist_x);
 		else

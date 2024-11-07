@@ -16,9 +16,14 @@
 # include <unistd.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
+# include <limits.h>
+# define SPEED 0.1
+# define FOV 90
+# define NORTH 0
+# define SOUTH 1
+# define EAST 2
+# define WEST 3
 
-#define SPEED 0.1
-#define FOV 90
 typedef enum e_error
 {
 	ERROR_ARGS,
@@ -63,6 +68,7 @@ typedef struct s_coord
 {
 	int	x;
 	int	y;
+	int	angle;
 }				t_point;
 
 typedef struct s_game
@@ -87,18 +93,28 @@ typedef struct s_game
 	int		rgb_floor[3];
 	t_img	img[3];
 
-	int		player_angle;
+	t_point	player;
+	int    plane_x;
+	int     plane_y;
 	double  ray_dir_x;
     double  ray_dir_y;
     double  delta_dist_x;
     double  delta_dist_y;
     double  side_dist_x;
     double  side_dist_y;
+	int     map_x;
+	int     map_y;
     int     step_x;
     int     step_y;
     int     wall_side;
     double  perpwalldist;
     double  cam_x;
+
+	int		wall_x;
+	int		tex_x;
+	int		tex_y;
+	int		tex_pos;
+	int		step;
 }				t_game;
 
 
@@ -123,9 +139,10 @@ int		ft_exit(t_game *game);
 int		controls(int keycode, t_game *game);
 void	init_img(t_game *game);
 
-void	render(t_game *game);
+int		render(t_game *game);
 void	raycasting(t_game *game);
+void	draw_column(t_game *game, int x);
 
-void put_pixel(t_game *game, int x, int y, int color);
+void	put_pixel(t_game *game, int x, int y, int color);
 int		get_color(t_game *game, int x, int y, int i);
 #endif

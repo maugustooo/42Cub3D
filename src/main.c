@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 09:57:01 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/07 11:23:26 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/07 18:18:00 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	mlx_functions(t_game *game)
 	game->window = mlx_new_window(game->mlx_ptr, game->widthmap,
 			game->heightmap, "Cub3D");
 	init_img(game);
-	render(game);
+	mlx_loop_hook(game->mlx_ptr, &render, game);
 	mlx_key_hook(game->window, controls, game);
 	mlx_hook(game->window, 17, 0, sepuku, game);
 	mlx_loop(game->mlx_ptr);

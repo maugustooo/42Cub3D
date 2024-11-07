@@ -30,13 +30,13 @@ typedef enum e_error
 	ERROR_MLX,
 	ERROR_ORDER,
 	ERROR_DUP,
-}	t_error;
+}				t_error;
 
 typedef enum e_files
 {
 	FILE_WALL,
 	FILE_FLOOR
-}	t_files;
+}				t_files;
 
 typedef struct s_img
 {
@@ -47,7 +47,7 @@ typedef struct s_img
 	int		endian;
 	int		width;
 	int		height;
-}	t_img;
+}				t_img;
 
 typedef struct s_textr
 {
@@ -57,7 +57,13 @@ typedef struct s_textr
 	char	*west;
 	char	*floor;
 	char	*ceiling;
-}	t_textr;
+}				t_textr;
+
+typedef struct s_coord
+{
+	int	x;
+	int	y;
+}				t_point;
 
 typedef struct s_game
 {
@@ -78,6 +84,9 @@ typedef struct s_game
 	bool	mapflag;
 	int		rgb_sky[3];
 	int		rgb_floor[3];
+	
+	t_point	player;
+
 	t_img	img[2];
 }				t_game;
 
@@ -96,6 +105,7 @@ void	check_text_content(t_game *game, t_textr *textures, int i);
 void	check_rgb(char *color, t_game *game, int type);
 void	check_colors(t_game *game, t_textr *textr);
 void	check_order(char *file, t_game *game);
+void	map_content_validation(t_game *game);
 int		sepuku(t_game *game, enum e_error i);
 int		ft_exit(t_game *game);
 

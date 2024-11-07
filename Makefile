@@ -6,7 +6,7 @@
 #    By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 09:44:12 by gude-jes          #+#    #+#              #
-#    Updated: 2024/11/06 12:36:33 by gude-jes         ###   ########.fr        #
+#    Updated: 2024/11/07 10:28:53 by gude-jes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ INC			= -I./includes -I$(LIBFT_PATH) -I$(MLX_PATH)
 RM			= rm -rf
 
 GENERAL		= main
-PARSE		= parse map_validation read_map read_textures file_content
+PARSE		= parse map_validation read_map read_textures file_content map_content
 UTILS		= file_utils init sepuku colors read_textures_utils
 CONTROLS	= controls
 RENDER 		= render

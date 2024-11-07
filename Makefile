@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+         #
+#    By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 09:44:12 by gude-jes          #+#    #+#              #
-#    Updated: 2024/11/06 12:36:33 by gude-jes         ###   ########.fr        #
+#    Updated: 2024/11/07 13:29:16 by maugusto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ GENERAL		= main
 PARSE		= parse map_validation read_map read_textures file_content
 UTILS		= file_utils init sepuku colors read_textures_utils
 CONTROLS	= controls
-RENDER 		= render
+RENDER 		= render raycasting
 
 #==============================================================================#
 #                                    PATHS                                     #

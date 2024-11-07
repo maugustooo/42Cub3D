@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:38:09 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/06 10:51:44 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/07 11:19:49 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,13 @@ void init_img(t_game *game)
 	i = 0;
 	while (i < 2)
 	{
-		printf("%s\n", files(i));
 		game->img[i].mlx_img = mlx_xpm_file_to_image(game->mlx_ptr, files(i), &game->img[i].width, &game->img[i].height);
 		i++;
 	}
 	i = 0;
-	game->img[1].mlx_img = mlx_new_image(game->mlx_ptr,
+	game->img[2].mlx_img = mlx_new_image(game->mlx_ptr,
 			game->widthmap, game->heightmap);
-	while (i < 2)
+	while (i < 3)
 	{
 		game->img[i].addr = mlx_get_data_addr(game->img[i].mlx_img,
 				&game->img[i].bpp, &game->img[i].line_len, &game->img[i].endian);

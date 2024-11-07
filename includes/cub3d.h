@@ -18,7 +18,7 @@
 # include <X11/X.h>
 
 #define SPEED 0.1
-
+#define FOV 90
 typedef enum e_error
 {
 	ERROR_ARGS,
@@ -76,9 +76,23 @@ typedef struct s_game
 	void	*window;
 
 	bool	mapflag;
+
 	int		rgb_sky[3];
 	int		rgb_floor[3];
-	t_img	img[2];
+	t_img	img[3];
+
+	int		player_angle;
+	double  ray_dir_x;
+    double  ray_dir_y;
+    double  delta_dist_x;
+    double  delta_dist_y;
+    double  side_dist_x;
+    double  side_dist_y;
+    int     step_x;
+    int     step_y;
+    int     wall_side;
+    double  perpwalldist;
+    double  cam_x;
 }				t_game;
 
 
@@ -101,6 +115,10 @@ int		ft_exit(t_game *game);
 
 int		controls(int keycode, t_game *game);
 void	init_img(t_game *game);
-void	render(t_game *game);
 
+void	render(t_game *game);
+void	raycasting(t_game *game);
+
+void put_pixel(t_game *game, int x, int y, int color);
+int		get_color(t_game *game, int x, int y, int i);
 #endif

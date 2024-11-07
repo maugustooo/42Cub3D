@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:21:22 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/06 11:31:53 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/07 08:20:34 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*error_msg(enum e_error i)
 {
-	char	*strings[8];
+	char	*strings[9];
 
 	strings[0] = "Error\nArguments are invalid\n";
 	strings[1] = "Error\nFile is invalid\n";
@@ -24,6 +24,7 @@ char	*error_msg(enum e_error i)
 	strings[5] = "Error\nTexture is invalid\n";
 	strings[6] = "Error\nMLX failed\n";
 	strings[7] = "Error\nOrder is invalid\n";
+	strings[8] = "Error\nDuplication found\n";
 	return (strings[i]);
 }
 

@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:22:35 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/06 11:57:00 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/07 10:13:30 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,21 @@ int	is_texture(char *line)
 	return (0);
 }
 
-void	check_order(char *file, t_game *game)
+void check_order2(int fd, t_game *game)
 {
-	int		fd;
 	int		map_start;
 	char	*tmp;
-
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		sepuku(game, ERROR_FILE);
+	char	*ptr;
+	
 	tmp = get_next_line(fd);
 	while(tmp != NULL)
 	{
-		while(ft_is_wspace(*tmp) && *tmp != '\n')
-			tmp++;
-		if(ft_isdigit(*tmp))
+		ptr = tmp;
+		while(ft_is_wspace(*ptr) && *tmp != '\n')
+			ptr++;
+		if(ft_isdigit(*ptr))
 			map_start = 1;
-		else if (is_texture(tmp) && map_start == 1)
+		if (is_texture(ptr) && map_start == 1)
 		{
 			free(tmp);
 			close(fd);
@@ -54,5 +52,15 @@ void	check_order(char *file, t_game *game)
 		free(tmp);
 		tmp = get_next_line(fd);
 	}
+}
+
+void	check_order(char *file, t_game *game)
+{
+	int		fd;
+
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		sepuku(game, ERROR_FILE);
+	check_order2(fd, game);
 	close(fd);
 }

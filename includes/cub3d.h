@@ -29,6 +29,7 @@ typedef enum e_error
 	ERROR_TEXTURE,
 	ERROR_MLX,
 	ERROR_ORDER,
+	ERROR_DUP,
 }	t_error;
 
 typedef enum e_files
@@ -67,8 +68,9 @@ typedef struct s_game
 	int		tlines;
 	int		mapstart;
 	int		mapend;
-	int		widthmap;
+	int		width;
 	int		heightmap;
+	int		widthmap;
 
 	void	*mlx_ptr;
 	void	*window;

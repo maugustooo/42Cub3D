@@ -6,16 +6,28 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:51:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/06 12:43:04 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/07 09:57:20 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	check_dup(int fd, t_game *game)
+void	check_dup2(int *arr, t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while(i < 6)
+	{
+		if (arr[i] > 1)
+			sepuku(game, ERROR_DUP);
+		i++;
+	}
+}
+
+void	check_dup(int fd, t_game *game, int *arr)
 {
 	char	*tmp;
-	int		arr[6];
 
 	tmp = get_next_line(fd);
 	while(tmp != NULL)
@@ -36,6 +48,7 @@ void	check_dup(int fd, t_game *game)
 		free(tmp);
 		tmp = get_next_line(fd);
 	}
+	check_dup2(arr, game);
 }
 
 void	read_textures2(int fd, t_game *game,  t_textr *textures)
@@ -70,12 +83,21 @@ void	read_textures2(int fd, t_game *game,  t_textr *textures)
 void	read_textures(char *file, t_game *game, t_textr *textures)
 {
 	int		fd;
+	int		arr[6];
+	int		i;
 
+	i = 0;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		sepuku(game, ERROR_FILE);
 	game->mapflag = false;
-	check_dup(fd, game);
+	while(i < 6)
+		arr[i++] = 0;
+	check_dup(fd, game, arr);
+	close(fd);
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		sepuku(game, ERROR_FILE);
 	read_textures2(fd, game, textures);
 	close(fd);
 }

@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 09:57:01 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/07 18:18:00 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/08 12:39:45 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ void	mlx_functions(t_game *game)
 	if (!game->mlx_ptr)
 		sepuku(game, ERROR_MLX);
 	game->window = mlx_new_window(game->mlx_ptr, game->widthmap,
-			game->heightmap, "Cub3D");
+	game->heightmap, "Cub3D");
+	if (!game->window)
+		sepuku(game, ERROR_MLX);
 	init_img(game);
 	mlx_loop_hook(game->mlx_ptr, &render, game);
 	mlx_key_hook(game->window, controls, game);
@@ -40,8 +42,6 @@ int	main(int argc, char **argv)
 		if (fd < 0)
 			sepuku(&game, ERROR_ARGS);
 		parse(argv, &game, &textr);
-		game.heightmap = 1000;
-		game.widthmap = 2000;
 		mlx_functions(&game);
 		ft_printf("Went Through\n");
 	}

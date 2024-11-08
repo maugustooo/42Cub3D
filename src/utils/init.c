@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:38:09 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/07 11:19:49 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/08 11:06:58 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ void init_img(t_game *game)
 			sepuku(game, ERROR_MLX);
 		i++;
 	}
-	
+	game->player.dir_x = 0;
+	game->player.dir_y = -1;
 }

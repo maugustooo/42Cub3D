@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:17:14 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/06 10:57:16 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/08 10:02:59 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	count_endmap(t_game *game, int fd)
 		free(temp);
 		i++;
 	}
-	i = 0;
 	while (1)
 	{
 		temp = get_next_line(fd);
@@ -36,7 +35,7 @@ void	count_endmap(t_game *game, int fd)
 	}
 	if (temp)
 		free(temp);
-	game->mapend = i -1;
+	game->mapend = i - game->mapstart;
 }
 
 int	count_lines(char *file, t_game *game)

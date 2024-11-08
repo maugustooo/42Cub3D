@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 08:49:51 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/06 09:13:42 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/08 09:14:00 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_str1dup(char *s, int len);
 char		*ft_strstr(char *str, char *to_find);
 char		*ft_strjoin_free(char *s1, char *s2, int to_free);
+char		*ft_strchr_nn(const char *s, int c);
 
 void		ft_lstadd_front(t_list **lst, t_list *new);
 void		ft_lstadd_back(t_list **lst, t_list *new);

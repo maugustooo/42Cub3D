@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:29:59 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/07 18:34:02 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/08 09:15:45 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,8 @@ void	define_coords(t_game *game)
 		{
 			while(ft_is_wspace(game->map[i][j]))
 				j++;
-			if(ft_strchr("NSEW", game->map[i][j]))
+			if(ft_strchr_nn("NSEW", game->map[i][j]))
 			{
-				if(game->x != -1 || game->y != -1)
-					sepuku(game, ERROR_MAP);
 				game->player.x = j;
 				game->player.y = i;
 				player_count++;

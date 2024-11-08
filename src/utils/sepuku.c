@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sepuku.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:21:22 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/07 08:20:34 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/08 13:48:47 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ int	sepuku(t_game *game, enum e_error i)
 {
 	if (game && game->map)
 		freedom(game);
+	if (game && game->mlx_ptr)
+	{
+		mlx_destroy_window(game->mlx_ptr, game->window);
+		mlx_destroy_display(game->mlx_ptr);
+		free(game->mlx_ptr);
+	}
 	ft_printf(error_msg(i));
 	exit(EXIT_SUCCESS);
 }

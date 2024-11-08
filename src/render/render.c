@@ -1,6 +1,5 @@
 #include "cub3d.h"
 
-
 int	create_rgb(int t, int r, int g, int b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
@@ -24,12 +23,12 @@ void render_background(t_game *game)
 
     set_colors(game);
 	x = 0;
-	while (x < game->widthmap)
+	while (x < game->screen_width)
 	{
 		y = 0;
-		while (y < game->heightmap)
+		while (y < game->screen_height)
 		{
-			if (y < game->heightmap / 2)
+			if (y <= (game->screen_height / 2) - 1)
 				put_pixel(game, x, y, create_rgb(0, game->rgb_sky[0],
 					game->rgb_sky[1], game->rgb_sky[2]));
             else
@@ -45,6 +44,6 @@ int render(t_game *game)
 {
 	render_background(game);
 	raycasting(game);
-	mlx_put_image_to_window(game->mlx_ptr, game->window, game->img[2].mlx_img, 0, 0);
+	mlx_put_image_to_window(game->mlx_ptr, game->window, game->img[4].mlx_img, 0, 0);
 	return (0);
 }

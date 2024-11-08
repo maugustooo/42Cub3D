@@ -83,7 +83,8 @@ typedef struct s_game
 	int		mapend;	
 	int		heightmap;
 	int		widthmap;
-
+	int		screen_width;
+	int		screen_height;
 	void	*mlx_ptr;
 	void	*window;
 
@@ -91,14 +92,14 @@ typedef struct s_game
 
 	int		rgb_sky[3];
 	int		rgb_floor[3];
-	t_img	img[3];
+	t_img	img[5];
 
 	t_point	player;
 
 	int		wall_end;
 	int		wall_start;
-	int    plane_x;
-	int     plane_y;
+	double	plane_x;
+	double	plane_y;
 	double  ray_dir_x;
     double  ray_dir_y;
     double  delta_dist_x;
@@ -113,11 +114,11 @@ typedef struct s_game
     double  perpwalldist;
     double  cam_x;
 
-	int		wall_x;
+	double		wall_x;
 	int		tex_x;
 	int		tex_y;
-	int		tex_pos;
-	int		step;
+	double		tex_pos;
+	double		step;
 }				t_game;
 
 
@@ -148,4 +149,5 @@ void	draw_column(t_game *game, int x);
 
 void	put_pixel(t_game *game, int x, int y, int color);
 int		get_color(t_game *game, int x, int y, int i);
+int get_color2(t_game *game, int tex_x, int tex_y, int texture);
 #endif

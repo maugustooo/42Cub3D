@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:22:35 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/07 10:13:30 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/08 10:59:29 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void check_order2(int fd, t_game *game)
 	char	*ptr;
 	
 	tmp = get_next_line(fd);
+	map_start = 0;
 	while(tmp != NULL)
 	{
 		ptr = tmp;

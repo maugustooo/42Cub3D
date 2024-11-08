@@ -64,9 +64,9 @@ void init_raycasting(t_game *game, int x)
 {
 	game->map_x = (int)game->player.x;
 	game->map_y = (int)game->player.y;
-	game->cam_x = 2 * x / (double)game->widthmap - 1;
-	game->ray_dir_x = game->player.angle + game->plane_x * game->cam_x;
-	game->ray_dir_y = game->player.angle + game->plane_y * game->cam_x;
+	game->cam_x = (2 * x) / (double)game->widthmap - 1;
+	game->ray_dir_x = game->player.dir_x + game->plane_x * game->cam_x;
+	game->ray_dir_y = game->player.dir_y + game->plane_y * game->cam_x;
 }
 
 void	raycasting(t_game *game)

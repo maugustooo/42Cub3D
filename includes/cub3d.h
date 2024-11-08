@@ -1,4 +1,3 @@
-
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -69,6 +68,8 @@ typedef struct s_coord
 	int	x;
 	int	y;
 	int	angle;
+	int	dir_x;
+	int	dir_y;
 }				t_point;
 
 typedef struct s_game
@@ -79,8 +80,7 @@ typedef struct s_game
 	int		y;
 	int		tlines;
 	int		mapstart;
-	int		mapend;
-	int		width;
+	int		mapend;	
 	int		heightmap;
 	int		widthmap;
 
@@ -94,6 +94,9 @@ typedef struct s_game
 	t_img	img[3];
 
 	t_point	player;
+
+	int		wall_end;
+	int		wall_start;
 	int    plane_x;
 	int     plane_y;
 	double  ray_dir_x;

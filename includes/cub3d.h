@@ -16,7 +16,8 @@
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include <limits.h>
-# define SPEED 0.1
+# define SPEED 0.2
+# define ROTSPEED 0.18
 # define FOV 90
 # define NORTH 0
 # define SOUTH 1
@@ -59,11 +60,11 @@ typedef struct s_textr
 
 typedef struct s_coord
 {
-	int	x;
-	int	y;
-	int	angle;
-	int	dir_x;
-	int	dir_y;
+	double	x;
+	double	y;
+	int		angle;
+	double	dir_x;
+	double	dir_y;
 }				t_point;
 
 typedef struct s_game

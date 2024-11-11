@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:29:59 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/11 10:43:06 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/11 11:06:07 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void	define_coords(t_game *game)
 				j++;
 			if(ft_strchr_nn("NSEW", game->map[i][j]))
 			{
-				game->player.x = j;
-				game->player.y = i;
+				game->player.x = j + 0.5;
+				game->player.y = i + 0.5;
 				player_direction(game->map[i][j], game);
 				player_count++;
 			}

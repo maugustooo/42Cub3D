@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:21:22 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/08 13:48:47 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:12:39 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,31 @@ void	freedom(t_game *game)
 	int	i;
 
 	i = -1;
-	while (game->map[++i])
-		free(game->map[i]);
-	free(game->map);
-}
-
-
-int	sepuku(t_game *game, enum e_error i)
-{
 	if (game && game->map)
-		freedom(game);
+	{
+		while (game->map[++i])
+			free(game->map[i]);
+		free(game->map);
+	}
+	i = 0;
+	while (i < 5)
+	{
+		if (game && game->img[i].mlx_img)
+			mlx_destroy_image(game->mlx_ptr, game->img[i].mlx_img);
+		i++;
+	}
 	if (game && game->mlx_ptr)
 	{
 		mlx_destroy_window(game->mlx_ptr, game->window);
 		mlx_destroy_display(game->mlx_ptr);
 		free(game->mlx_ptr);
 	}
+}
+
+
+int	sepuku(t_game *game, enum e_error i)
+{
+		freedom(game);
 	ft_printf(error_msg(i));
 	exit(EXIT_SUCCESS);
 }

@@ -3,32 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:29:59 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/11 09:36:41 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/11 10:43:06 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	check_colors(t_game *game, t_textr *textr)
+void	check_colors(t_game *game)
 {
-	if(!textr->ceiling || !textr->floor)
+	if(!game->textr.ceiling || !game->textr.floor)
 		sepuku(game, ERROR_COLOR);
-	check_rgb(textr->ceiling, game, 1);
-	check_rgb(textr->floor, game, 0);	
+	check_rgb(game->textr.ceiling, game, 1);
+	check_rgb(game->textr.floor, game, 0);	
 }
 
-void	check_textures(t_game *game, t_textr *textr)
+void	check_textures(t_game *game)
 {
-	if(!textr->north || !textr->south || !textr->east || !textr->west)
+	if(!game->textr.north || !game->textr.south || !game->textr.east || !game->textr.west)
 		sepuku(game, ERROR_TEXTURE);
-	check_file(textr->north, game);
-	check_file(textr->south, game);
-	check_file(textr->east, game);
-	check_file(textr->west, game);
-	check_duplicate_text(game, textr);
+	check_file(game->textr.north, game);
+	check_file(game->textr.south, game);
+	check_file(game->textr.east, game);
+	check_file(game->textr.west, game);
+	check_duplicate_text(game);
 }
 
 void	player_direction(char pos, t_game *game)

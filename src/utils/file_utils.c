@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 10:05:24 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/06 12:39:42 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/11 10:43:22 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ bool    is_xpm(char *file)
     return (false);
 }
 
-void	check_duplicate_text(t_game *game, t_textr *textr)
+void	check_duplicate_text(t_game *game)
 {
-	if(textr->north == textr->south || textr->north == textr->east
-		|| textr->north == textr->west)
+	if(game->textr.north == game->textr.south || game->textr.north == game->textr.east
+		|| game->textr.north == game->textr.west)
 		sepuku(game, ERROR_TEXTURE);
-	if(textr->south == textr->east || textr->south == textr->west)
+	if(game->textr.south == game->textr.east || game->textr.south == game->textr.west)
 		sepuku(game, ERROR_TEXTURE);
-	if(textr->east == textr->west)
+	if(game->textr.east == game->textr.west)
 		sepuku(game, ERROR_TEXTURE);
 }
 

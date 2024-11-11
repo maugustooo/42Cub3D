@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:51:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/07 09:57:20 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/11 10:41:31 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	check_dup(int fd, t_game *game, int *arr)
 	check_dup2(arr, game);
 }
 
-void	read_textures2(int fd, t_game *game,  t_textr *textures)
+void	read_textures2(int fd, t_game *game)
 {
 	int		i;
 	char	*tmp;
@@ -62,25 +62,25 @@ void	read_textures2(int fd, t_game *game,  t_textr *textures)
 	{
 		tmp = return_no_extra_spaces(tmp);	
 		if (tmp[0] == 'N' && tmp[1] == 'O')
-			textures->north = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
+			game->textr.north = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
 		else if (tmp[0] == 'S' && tmp[1] == 'O')
-			textures->south = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
+			game->textr.south = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
 		else if (tmp[0] == 'W' && tmp[1] == 'E')
-			textures->west = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
+			game->textr.west = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
 		else if (tmp[0] == 'E' && tmp[1] == 'A')
-			textures->east = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
+			game->textr.east = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
 		else if (tmp[0] == 'F' && tmp[1] == ' ')
-			textures->floor = ft_strndup(&tmp[1] + 1, ft_strclen(&tmp[1] + 1, '\n'));
+			game->textr.floor = ft_strndup(&tmp[1] + 1, ft_strclen(&tmp[1] + 1, '\n'));
 		else if (tmp[0] == 'C' && tmp[1] == ' ')
-			textures->ceiling = ft_strndup(&tmp[1] + 1, ft_strclen(&tmp[1] + 1, '\n'));
+			game->textr.ceiling = ft_strndup(&tmp[1] + 1, ft_strclen(&tmp[1] + 1, '\n'));
 		free(tmp);
 		tmp = get_next_line(fd);
 		i++;
-		check_text_content(game, textures, i);
+		check_text_content(game, i);
 	}
 }
 
-void	read_textures(char *file, t_game *game, t_textr *textures)
+void	read_textures(char *file, t_game *game)
 {
 	int		fd;
 	int		arr[6];
@@ -98,6 +98,6 @@ void	read_textures(char *file, t_game *game, t_textr *textures)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		sepuku(game, ERROR_FILE);
-	read_textures2(fd, game, textures);
+	read_textures2(fd, game);
 	close(fd);
 }

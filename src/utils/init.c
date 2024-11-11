@@ -6,20 +6,20 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:38:09 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/08 18:35:22 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/11 10:47:17 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-char	*files(int i)
+char	*files(int i, t_game *game)
 {
 	char	*strings[4];
 
-	strings[0] = "textures/eagle.xpm";
-	strings[1] = "textures/eagle.xpm";
-	strings[2] = "textures/eagle.xpm";
-	strings[3] = "textures/eagle.xpm";
+	strings[0] = game->textr.north;
+	strings[1] = game->textr.south;
+	strings[2] = game->textr.west;
+	strings[3] = game->textr.east;
 	return (strings[i]);
 }
 void init_img(t_game *game)
@@ -29,7 +29,7 @@ void init_img(t_game *game)
 	i = 0;
 	while (i < 4)
 	{
-		game->img[i].mlx_img = mlx_xpm_file_to_image(game->mlx_ptr, files(i), &game->img[i].width, &game->img[i].height);
+		game->img[i].mlx_img = mlx_xpm_file_to_image(game->mlx_ptr, files(i, game), &game->img[i].width, &game->img[i].height);
 		i++;
 	}
 	game->img[4].mlx_img = mlx_new_image(game->mlx_ptr,

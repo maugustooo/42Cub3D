@@ -86,6 +86,7 @@ typedef struct s_game
 
 	int		rgb_sky[3];
 	int		rgb_floor[3];
+	t_textr	textr;
 	t_img	img[5];
 
 	t_point	player;
@@ -105,7 +106,7 @@ typedef struct s_game
     int     step_x;
     int     step_y;
     int     wall_side;
-    double  perpwalldist;
+    double  walldist;
     double  cam_x;
 
 	double		wall_x;
@@ -117,18 +118,18 @@ typedef struct s_game
 
 
 t_textr	*init_textr(void);
-void	parse(char **argv, t_game *game, t_textr *textr);
+void	parse(char **argv, t_game *game);
 void	check_extension(char *file);
 void	read_map(char *file, t_game *game);
-void	check_textures(t_game *game, t_textr *textr);
+void	check_textures(t_game *game);
 void	check_map_content(t_game *game);
 void	check_file(char *file, t_game *game);
-void	check_duplicate_text(t_game *game, t_textr *textr);
-void	read_textures(char *file, t_game *game, t_textr *textures);
+void	check_duplicate_text(t_game *game);
+void	read_textures(char *file, t_game *game);
 char	*return_no_extra_spaces(char *tmp);
-void	check_text_content(t_game *game, t_textr *textures, int i);
+void	check_text_content(t_game *game, int i);
 void	check_rgb(char *color, t_game *game, int type);
-void	check_colors(t_game *game, t_textr *textr);
+void	check_colors(t_game *game);
 void	check_order(char *file, t_game *game);
 void	map_content_validation(t_game *game);
 int		sepuku(t_game *game, enum e_error i);

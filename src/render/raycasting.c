@@ -81,9 +81,9 @@ void	raycasting(t_game *game)
 		get_step(game);
 		find_wall(game);
 		if (game->wall_side == 0)
-			game->perpwalldist = (game->side_dist_x - game->delta_dist_x);
+			game->walldist = (game->side_dist_x - game->delta_dist_x);
 		else
-			game->perpwalldist = (game->side_dist_y - game->delta_dist_y);
+			game->walldist = (game->side_dist_y - game->delta_dist_y);
 		draw_column(game, x);
 		x++;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 09:57:01 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/11 09:02:43 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/11 10:48:06 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ int	main(int argc, char **argv)
 		fd = open(argv[1], O_RDONLY);
 		if (fd < 0)
 			sepuku(&game, ERROR_ARGS);
-		parse(argv, &game, &textr);
+		parse(argv, &game);
 		mlx_functions(&game);
 	}
 	return(EXIT_SUCCESS);
 }
 
-//TODO: NAO RETIRAR ESTE TODO ATE AO FIM, RETIRAR AS TEXTURAS DO GITIGNORE
+//TODO: NAO RETIRAR ESTE TODO ATE AO FIM, NAO RETIRAR AS TEXTURAS DO GITIGNORE

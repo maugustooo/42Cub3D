@@ -36,12 +36,6 @@ typedef enum e_error
 	ERROR_DUP,
 }				t_error;
 
-typedef enum e_files
-{
-	FILE_WALL,
-	FILE_FLOOR
-}				t_files;
-
 typedef struct s_img
 {
 	void	*mlx_img;

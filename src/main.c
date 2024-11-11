@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 09:57:01 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/08 17:37:10 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/11 09:02:43 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ int	main(int argc, char **argv)
 		fd = open(argv[1], O_RDONLY);
 		if (fd < 0)
 			sepuku(&game, ERROR_ARGS);
-		//TODO:PRECISO QUE METAS NA STRUCT SE O JOGADOR E N,S,E,W, E A POSICAO DELE E O PATH DAS TEXTURAS QUE TEM NO.CUB
 		parse(argv, &game, &textr);
 		mlx_functions(&game);
-		ft_printf("Went Through\n");
 	}
 	return(EXIT_SUCCESS);
 }
+
+//TODO: NAO RETIRAR ESTE TODO ATE AO FIM, RETIRAR AS TEXTURAS DO GITIGNORE

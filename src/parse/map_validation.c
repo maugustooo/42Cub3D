@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:29:59 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/08 09:15:45 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/11 09:36:41 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,18 @@ void	check_textures(t_game *game, t_textr *textr)
 	check_duplicate_text(game, textr);
 }
 
+void	player_direction(char pos, t_game *game)
+{
+	if (pos == 'N')
+		game->player.angle = NORTH;
+	else if (pos == 'S')
+		game->player.angle = SOUTH;
+	else if (pos == 'E')
+		game->player.angle = EAST;
+	else if (pos == 'W')
+		game->player.angle = WEST;
+}
+
 void	define_coords(t_game *game)
 {
 	int	i;
@@ -50,6 +62,7 @@ void	define_coords(t_game *game)
 			{
 				game->player.x = j;
 				game->player.y = i;
+				player_direction(game->map[i][j], game);
 				player_count++;
 			}
 		}

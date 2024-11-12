@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:32:53 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/11 10:42:27 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/11 10:59:57 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ void	parse(char **argv, t_game *game)
 	check_colors(game);
 	check_map_content(game);
 	game->heightmap = game->mapend;
-	//map_content_validation(game);
+	map_content_validation(game);
 }

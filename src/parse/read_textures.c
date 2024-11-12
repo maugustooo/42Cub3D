@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:51:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/11 12:36:44 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/12 11:09:47 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	check_dup(int fd, t_game *game, int *arr)
 		free(tmp);
 		tmp = get_next_line(fd);
 	}
+	free(tmp);
 	check_dup2(arr, game);
 }
 
@@ -78,6 +79,12 @@ void	read_textures2(int fd, t_game *game)
 		i++;
 		check_text_content(game, i);
 	}
+	while(tmp != NULL)
+	{
+		free(tmp);
+		tmp = get_next_line(fd);
+	}
+	free(tmp);
 }
 
 void	read_textures(char *file, t_game *game)

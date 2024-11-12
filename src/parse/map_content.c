@@ -6,11 +6,21 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 08:50:00 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/11 11:58:32 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/12 11:26:09 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	free_map(bool **map)
+{
+	int	i;
+
+	i = -1;
+	while(map[++i])
+		free(map[i]);
+	free(map);
+}
 
 bool	flood_fill(bool **map, t_game *game, int x, int y)
 {
@@ -73,4 +83,5 @@ void	map_content_validation(t_game *game)
 	map_closed = flood_fill(map, game, game->player.x, game->player.y);
 	if(!map_closed)
 		sepuku(game, ERROR_MAP);
+	free_map(map);
 }

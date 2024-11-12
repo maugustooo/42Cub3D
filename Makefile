@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+         #
+#    By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 09:44:12 by gude-jes          #+#    #+#              #
-#    Updated: 2024/11/07 18:21:41 by maugusto         ###   ########.fr        #
+#    Updated: 2024/11/12 11:33:03 by gude-jes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,8 @@ PARSE		= parse map_validation read_map read_textures file_content map_content
 UTILS		= file_utils init sepuku colors read_textures_utils render_utils
 CONTROLS	= controls
 RENDER 		= render raycasting draw
+
+ARG			= maps/good/test_whitespace.cub
 
 #==============================================================================#
 #                                    PATHS                                     #
@@ -102,6 +104,9 @@ fclean: clean clean_bonus
 	@$(RM) $(NAME_BONUS) $(OBJ_DIR)
 
 re: fclean all
+
+valgrind:
+	valgrind --leak-check=full -s --show-leak-kinds=all ./$(NAME) $(ARG)
 
 download:
 	@wget https://cdn.intra.42.fr/document/document/25858/minilibx-linux.tgz

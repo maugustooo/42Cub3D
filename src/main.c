@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 09:57:01 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/11 15:20:21 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/12 11:38:41 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ int	main(int argc, char **argv)
 		fd = open(argv[1], O_RDONLY);
 		if (fd < 0)
 			sepuku(&game, ERROR_ARGS);
-		//TODO: PARSE ESTA COM LEAKS E ERROS DE invalid file descriptor -1 in syscall close()
+		close(fd);
+		//TODO: VERIFICAR COM OS MAPAS TODOS, OS BONS E MAUS
 		parse(argv, &game);
 		mlx_functions(&game);
 	}

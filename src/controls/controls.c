@@ -13,38 +13,33 @@ void rotate(t_game *game, double angle)
 	game->plane_y = old_plane_x * sin(angle) + game->plane_y * cos(angle);
 }
 
-void move(t_game *game, int keycode, double next_x, double next_y)
+int controls(t_game *game)
 {
-	if(keycode == XK_w || keycode == XK_d)
-	{
-		if(game->map[(int)(game->player.y + next_y)][(int)game->player.x] != '1')
-			game->player.y += next_y;
-		if(game->map[(int)game->player.y][(int)(game->player.x + next_x)] != '1')
-			game->player.x += next_x;
-	}
-	if(keycode == XK_s || keycode == XK_a)
-	{
-		if(game->map[(int)(game->player.y - next_y)][(int)game->player.x] != '1')
-			game->player.y -= next_y;
-		if(game->map[(int)game->player.y][(int)(game->player.x - next_x)] != '1')
-			game->player.x -= next_x;
-	}
-}
+	int moved;
 
-int controls(int keycode, t_game *game)
-{
-	if(keycode == XK_Escape)
-		ft_exit(game);
-	if(keycode == XK_w || keycode == XK_s)
-		move(game, keycode, game->player.dir_x * SPEED, game->player.dir_y * SPEED);
-	if(keycode == XK_a || keycode == XK_d)
-		move(game, keycode, game->plane_x *  SPEED, game->plane_y * SPEED);
-	if(keycode == XK_Left || keycode == XK_Right)
-	{
-		if(keycode == XK_Left)
-			rotate(game, -ROTSPEED);
-		if(keycode == XK_Right)
-			rotate(game, ROTSPEED);
-	}
+	moved = 0;
+	if(game->player.move_y == 1 || game->player.move_y == -1 || game->player.move_y == 0)
+		printf("move_y: %d\n", game->player.move_y);
+	if(game->player.move_x == 1 || game->player.move_x == -1 || game->player.move_x == 0)
+		printf("move_x: %d\n", game->player.move_x);
+	if(game->player.move_y == 1)
+		moved = move_up(game, game->player.dir_x * SPEED, game->player.dir_y * SPEED);
+	if(game->player.move_y == -1)
+		move_down(game, game->player.dir_x * SPEED, game->player.dir_y * SPEED);
+	if(game->player.move_x == 1)
+		move_right(game, game->plane_x * SPEED, game->plane_y * SPEED);
+	if(game->player.move_x == -1)
+		move_left(game, game->plane_x * SPEED, game->plane_y * SPEED);
+	// if(keycode == XK_w || keycode == XK_s)
+	// 	move(game, keycode, game->player.dir_x * SPEED, game->player.dir_y * SPEED);
+	// if(keycode == XK_a || keycode == XK_d)
+	// 	move(game, keycode, game->plane_x *  SPEED, game->plane_y * SPEED);
+	// if(keycode == XK_Left || keycode == XK_Right)
+	// {
+	// 	if(keycode == XK_Left)
+	// 		rotate(game, -ROTSPEED);
+	// 	if(keycode == XK_Right)
+	// 		rotate(game, ROTSPEED);
+	// }
 	return (0);
 }

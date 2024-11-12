@@ -58,14 +58,16 @@ typedef struct s_textr
 	char	*ceiling;
 }				t_textr;
 
-typedef struct s_coord
+typedef struct s_player
 {
 	double	x;
 	double	y;
 	int		angle;
 	double	dir_x;
 	double	dir_y;
-}				t_point;
+	int		move_y;
+	int		move_x;
+}				t_player;
 
 typedef struct s_game
 {
@@ -90,7 +92,7 @@ typedef struct s_game
 	t_textr	textr;
 	t_img	img[5];
 
-	t_point	player;
+	t_player	player;
 
 	int		wall_end;
 	int		wall_start;
@@ -136,7 +138,7 @@ void	map_content_validation(t_game *game);
 int		sepuku(t_game *game, enum e_error i);
 int		ft_exit(t_game *game);
 
-int		controls(int keycode, t_game *game);
+int		controls(t_game *game);
 void	init_img(t_game *game);
 
 int		render(t_game *game);
@@ -145,5 +147,12 @@ void	draw_column(t_game *game, int x);
 
 void	put_pixel(t_game *game, int x, int y, int color);
 int		get_color(t_game *game, int x, int y, int i);
-int get_color2(t_game *game, int tex_x, int tex_y, int texture);
+
+int handle_key_release(int keycode, t_game *game);
+int handle_key_press(int keycode, t_game *game);
+
+int	move_left(t_game *game, double next_x, double next_y);
+int	move_right(t_game *game, double next_x, double next_y);
+int	move_down(t_game *game, double next_x, double next_y);
+int	move_up(t_game *game, double next_x, double next_y);
 #endif

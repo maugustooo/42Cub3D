@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_textures_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:35:54 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/11 10:40:59 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/12 08:28:22 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ char	*return_no_extra_spaces(char *tmp)
 
 	i = 0;
 	j = 0;
-	if ((tmp[0] == 'F' && tmp[1] == ' ') || (tmp[0] == 'C' && tmp[1] == ' '))
-		return (tmp);
 	new = malloc(sizeof(char) * (ft_strlen(tmp) + 1));
 	if (!new)
 		return (NULL);

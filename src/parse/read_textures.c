@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:51:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/11 10:41:31 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/12 11:09:47 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	check_dup(int fd, t_game *game, int *arr)
 		free(tmp);
 		tmp = get_next_line(fd);
 	}
+	free(tmp);
 	check_dup2(arr, game);
 }
 
@@ -69,15 +70,21 @@ void	read_textures2(int fd, t_game *game)
 			game->textr.west = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
 		else if (tmp[0] == 'E' && tmp[1] == 'A')
 			game->textr.east = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
-		else if (tmp[0] == 'F' && tmp[1] == ' ')
+		else if (tmp[0] == 'F' && tmp[1] != ' ')
 			game->textr.floor = ft_strndup(&tmp[1] + 1, ft_strclen(&tmp[1] + 1, '\n'));
-		else if (tmp[0] == 'C' && tmp[1] == ' ')
+		else if (tmp[0] == 'C' && tmp[1] != ' ')
 			game->textr.ceiling = ft_strndup(&tmp[1] + 1, ft_strclen(&tmp[1] + 1, '\n'));
 		free(tmp);
 		tmp = get_next_line(fd);
 		i++;
 		check_text_content(game, i);
 	}
+	while(tmp != NULL)
+	{
+		free(tmp);
+		tmp = get_next_line(fd);
+	}
+	free(tmp);
 }
 
 void	read_textures(char *file, t_game *game)

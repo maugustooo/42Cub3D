@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:17:14 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/08 10:02:59 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/12 11:30:20 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ void	count_endmap(t_game *game, int fd)
 	}
 	if (temp)
 		free(temp);
+	while(temp != NULL)
+	{
+		temp = get_next_line(fd);
+		free(temp);
+	}
 	game->mapend = i - game->mapstart;
 }
 
@@ -55,6 +60,7 @@ int	count_lines(char *file, t_game *game)
 		tmp = get_next_line(fd);
 		i++;
 	}
+	free(tmp);
 	close(fd);
 	return (i);
 }
@@ -80,6 +86,11 @@ void	fill_map(int fd, t_game *game)
 		i++;
 	}
 	game->map[i] = NULL;
+	while(temp != NULL)
+	{
+		temp = get_next_line(fd);
+		free(temp);
+	}
 }
 
 void	read_map(char *file, t_game *game)
@@ -93,10 +104,10 @@ void	read_map(char *file, t_game *game)
 	if (fd < 0)
 		sepuku(game, ERROR_FILE);
 	count_endmap(game, fd);
+	close(fd);
 	game->map = ft_calloc((game->tlines - game->mapstart) + 1, sizeof(char *));
 	if (!game->map)
 		sepuku(game, ERROR_MALLOC);
-	close(fd);
 	fd = open(file, O_RDONLY);
 	fill_map(fd, game);
 	close(fd);

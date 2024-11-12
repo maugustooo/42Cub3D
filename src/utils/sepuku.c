@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sepuku.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:21:22 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/11 15:12:39 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/12 09:42:58 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,16 @@ char	*error_msg(enum e_error i)
 	return (strings[i]);
 }
 
+void	free_textures(t_game *game)
+{
+	free(game->textr.north);
+	free(game->textr.west);
+	free(game->textr.south);
+	free(game->textr.east);
+	free(game->textr.floor);
+	free(game->textr.ceiling);
+}
+
 void	freedom(t_game *game)
 {
 	int	i;
@@ -39,6 +49,7 @@ void	freedom(t_game *game)
 			free(game->map[i]);
 		free(game->map);
 	}
+	free_textures(game);
 	i = 0;
 	while (i < 5)
 	{
@@ -57,7 +68,7 @@ void	freedom(t_game *game)
 
 int	sepuku(t_game *game, enum e_error i)
 {
-		freedom(game);
+	freedom(game);
 	ft_printf(error_msg(i));
 	exit(EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:22:35 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/08 10:59:29 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/12 11:05:17 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ void check_order2(int fd, t_game *game)
 		if (is_texture(ptr) && map_start == 1)
 		{
 			free(tmp);
-			close(fd);
 			sepuku(game, ERROR_ORDER);
 		}
 		free(tmp);
 		tmp = get_next_line(fd);
 	}
+	free(tmp);
 }
 
 void	check_order(char *file, t_game *game)

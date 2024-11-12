@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 10:05:24 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/11 10:43:22 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/12 11:38:14 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ bool    is_dir(char *file)
     if(fd < 0)
         ret = false;
     else
+	{
         ret = true;
-    close(fd);
+		close(fd);
+	}
     return (ret);
 }
 
@@ -59,7 +61,8 @@ void    check_file(char *file, t_game *game)
     fd = open(file, O_RDONLY);
     if (fd < 0)
         sepuku(game, ERROR_FILE);
+	else
+    	close(fd);
     if (!is_xpm(file))
         sepuku(game, ERROR_TEXTURE);
-    close(fd);
 }

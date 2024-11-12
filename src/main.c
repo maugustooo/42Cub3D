@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 09:57:01 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/12 11:38:41 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/12 12:34:53 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 		if (fd < 0)
 			sepuku(&game, ERROR_ARGS);
 		close(fd);
-		//TODO: VERIFICAR COM OS MAPAS TODOS, OS BONS E MAUS
+		//TODO: VERIFICAR COM OS MAPAS TODOS, OS BONS E MAUS com valgrind, temos make valgrind tens e que mudar o $ARG, VERIFICAR AS CORES QUE ALGUMA MERDA TA MAL
 		parse(argv, &game);
 		mlx_functions(&game);
 	}

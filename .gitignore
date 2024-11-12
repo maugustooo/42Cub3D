@@ -7,6 +7,3 @@ lib/libft/*.a
 lib/minilibx-linux
 obj/*
 cub3D
-*.xpm
-*.cub
-textures/

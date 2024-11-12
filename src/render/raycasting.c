@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-void	find_wall(t_game *game)
+void	wall_stuff(t_game *game)
 {
 	int	wall;
 
@@ -22,6 +22,10 @@ void	find_wall(t_game *game)
 		if (game->map[game->map_y][game->map_x] == '1')
 			wall = 1;
 	}
+	if (game->wall_side == 0)
+			game->walldist = (game->side_dist_x - game->delta_dist_x);
+	else
+		game->walldist = (game->side_dist_y - game->delta_dist_y);
 }
 
 void	get_step(t_game *game)
@@ -79,11 +83,7 @@ void	raycasting(t_game *game)
 		init_raycasting(game, x);
 		get_distance(game);
 		get_step(game);
-		find_wall(game);
-		if (game->wall_side == 0)
-			game->walldist = (game->side_dist_x - game->delta_dist_x);
-		else
-			game->walldist = (game->side_dist_y - game->delta_dist_y);
+		wall_stuff(game);
 		draw_column(game, x);
 		x++;
 	}

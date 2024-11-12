@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 09:57:01 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/11 10:48:06 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:20:21 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	mlx_functions(t_game *game)
 		sepuku(game, ERROR_MLX);
 	init_img(game);
 	mlx_loop_hook(game->mlx_ptr, &render, game);
-	mlx_key_hook(game->window, controls, game);
+	mlx_hook(game->window, KeyPress, KeyPressMask, controls, game);
+	mlx_hook(game->window, KeyRelease, KeyRelease, controls, game);
 	mlx_hook(game->window, 17, 0, sepuku, game);
 	mlx_loop(game->mlx_ptr);
 }
@@ -43,6 +44,7 @@ int	main(int argc, char **argv)
 		fd = open(argv[1], O_RDONLY);
 		if (fd < 0)
 			sepuku(&game, ERROR_ARGS);
+		//TODO: PARSE ESTA COM LEAKS E ERROS DE invalid file descriptor -1 in syscall close()
 		parse(argv, &game);
 		mlx_functions(&game);
 	}

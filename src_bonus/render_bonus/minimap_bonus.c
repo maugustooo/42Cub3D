@@ -71,9 +71,9 @@ void	render_minimap(t_game *game)
 		while (y < game->heightmap)
 		{
 			if (game->map[y][x] == '1')
-				draw_minimap_square(game, x * 10, y * 10, 0xFFFFFF);
-			else if (game->map[y][x] != '1')
 				draw_minimap_square(game, x * 10, y * 10, 0x000000);
+			else if (game->map[y][x] != '1')
+				draw_minimap_square(game, x * 10, y * 10, 0xFFFFFF);
 			y++;
 		}
 		x++;

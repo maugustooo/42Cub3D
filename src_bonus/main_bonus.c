@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 09:57:01 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/13 03:23:09 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/13 21:46:35 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ void	mlx_functions(t_game *game)
 		sepuku(game, ERROR_MLX);
 	init_img(game);
 	mlx_loop_hook(game->mlx_ptr, &render, game);
-	mlx_hook(game->window, KeyPress, KeyPressMask, handle_key_press, game);
-	mlx_hook(game->window, KeyRelease, KeyRelease, handle_key_release, game);
+	mlx_hook(game->window, KeyPress, KeyPressMask, &handle_key_press, game);
+	mlx_hook(game->window, KeyRelease, KeyRelease, &handle_key_release, game);
+	mlx_mouse_hide(game->mlx_ptr, game->window);
+	mlx_hook(game->window, MotionNotify, PointerMotionMask, handle_mouse, game);
 	mlx_hook(game->window, 17, 0, sepuku, game);
 	mlx_loop(game->mlx_ptr);
 }

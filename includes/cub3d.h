@@ -18,6 +18,7 @@
 # include <limits.h>
 # define SPEED 0.1
 # define ROTSPEED 0.05
+# define MSPEED 0.03
 # define FOV 90
 # define NORTH 0
 # define SOUTH 1
@@ -152,9 +153,11 @@ void	draw_column(t_game *game, int x);
 void	put_pixel(t_game *game, int x, int y, int color);
 int		get_color(t_game *game, int x, int y, int i);
 
+int	handle_mouse(int x, int y, t_game *game);
 int handle_key_release(int keycode, t_game *game);
 int handle_key_press(int keycode, t_game *game);
 
+void	rotate(t_game *game, double angle);
 int	move_left(t_game *game, double next_x, double next_y);
 int	move_right(t_game *game, double next_x, double next_y);
 int	move_down(t_game *game, double next_x, double next_y);
@@ -163,4 +166,5 @@ int	move_up(t_game *game, double next_x, double next_y);
 void	render_minimap(t_game *game);
 void	render_player_on_minimap(t_game *game);
 void	draw_minimap_square(t_game *game, int x, int y, int color);
+int	handle_mouse(int x, int y, t_game *game);
 #endif

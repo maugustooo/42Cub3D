@@ -6,7 +6,7 @@
 #    By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 09:44:12 by gude-jes          #+#    #+#              #
-#    Updated: 2024/11/12 22:30:55 by maugusto         ###   ########.fr        #
+#    Updated: 2024/11/13 03:13:46 by maugusto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,17 +26,28 @@ UTILS		= file_utils init sepuku colors read_textures_utils render_utils
 CONTROLS	= controls keys move
 RENDER 		= render raycasting draw
 
-ARG			= maps/good/test_whitespace.cub
+GENERAL_BONUS		= main_bonus
+PARSE_BONUS		= parse_bonus map_validation_bonus read_map_bonus read_textures_bonus file_content_bonus map_content_bonus
+UTILS_BONUS		= file_utils_bonus init_bonus sepuku_bonus colors_bonus read_textures_utils_bonus render_utils_bonus
+CONTROLS_BONUS	= controls_bonus keys move_bonus
+RENDER_BONUS 		= render_bonus raycasting_bonus draw_bonus minimap_bonus
+
+ARG	= maps/good/test_whitespace.cub
 
 #==============================================================================#
 #                                    PATHS                                     #
 #==============================================================================#
 
-VPATH		= src\
-				src/parse\
-				src/utils\
-				src/controls\
-				src/render\
+VPATH = src \
+        src/parse \
+        src/utils \
+        src/controls \
+        src/render \
+        src_bonus \
+        src_bonus/parse_bonus \
+        src_bonus/utils_bonus \
+        src_bonus/controls_bonus \
+        src_bonus/render_bonus
 
 LIBS_PATH	= lib
 
@@ -51,7 +62,11 @@ SRC			= $(addsuffix .c, $(GENERAL))\
 				$(addsuffix .c, $(CONTROLS))\
 				$(addsuffix .c, $(RENDER))\
 
-BONUS_SRC	= $(addsuffix .c, $(BONUS_GENERAL))\
+BONUS_SRC	= $(addsuffix .c, $(GENERAL_BONUS))\
+				$(addsuffix .c, $(PARSE_BONUS))\
+				$(addsuffix .c, $(UTILS_BONUS))\
+				$(addsuffix .c, $(CONTROLS_BONUS))\
+				$(addsuffix .c, $(RENDER_BONUS))\
 
 
 OBJ_DIR		= obj
@@ -63,8 +78,7 @@ BONUS_OBJS	= $(BONUS_SRC:%.c=$(OBJ_DIR)/%.o)
 #==============================================================================#
 #                                    RULES                                     #
 #==============================================================================#
-
-all: deps $(NAME)
+all: deps $(NAME_BONUS)
 
 deps:
 	@$(MAKE) -C $(LIBFT_PATH)
@@ -106,7 +120,7 @@ fclean: clean clean_bonus
 re: fclean all
 
 valgrind:
-	valgrind --leak-check=full -s --show-leak-kinds=all ./$(NAME) $(ARG)
+	valgrind --leak-check=full -s --show-leak-kinds=all ./$(NAME)
 
 download:
 	@wget https://cdn.intra.42.fr/document/document/25858/minilibx-linux.tgz

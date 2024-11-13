@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:13:57 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/13 01:16:51 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/13 03:19:14 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ int	render(t_game *game)
 	controls(game);
 	render_background(game);
 	raycasting(game);
+	render_minimap(game);
 	mlx_put_image_to_window(game->mlx_ptr, game->window, game->img[4].mlx_img,
 		0, 0);
+	mlx_put_image_to_window(game->mlx_ptr, game->window, game->minimap.mlx_img,
+		10, 10);
 	return (0);
 }

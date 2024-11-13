@@ -16,8 +16,8 @@
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include <limits.h>
-# define SPEED 0.2
-# define ROTSPEED 0.18
+# define SPEED 0.1
+# define ROTSPEED 0.05
 # define FOV 90
 # define NORTH 0
 # define SOUTH 1
@@ -65,8 +65,12 @@ typedef struct s_player
 	int		angle;
 	double	dir_x;
 	double	dir_y;
-	int		move_y;
-	int		move_x;
+	int		move_up;
+	int		move_down;
+	int		move_left;
+	int		move_right;
+	int		rotate_left;
+	int		rotate_right;
 }				t_player;
 
 typedef struct s_game
@@ -84,14 +88,14 @@ typedef struct s_game
 	int		screen_height;
 	void	*mlx_ptr;
 	void	*window;
-
+	char 	**rgb;
 	bool	mapflag;
 
 	int		rgb_sky[3];
 	int		rgb_floor[3];
 	t_textr	textr;
 	t_img	img[5];
-
+	t_img	minimap;
 	t_player	player;
 
 	int		wall_end;
@@ -155,4 +159,8 @@ int	move_left(t_game *game, double next_x, double next_y);
 int	move_right(t_game *game, double next_x, double next_y);
 int	move_down(t_game *game, double next_x, double next_y);
 int	move_up(t_game *game, double next_x, double next_y);
+
+void	render_minimap(t_game *game);
+void	render_player_on_minimap(t_game *game);
+void	draw_minimap_square(t_game *game, int x, int y, int color);
 #endif

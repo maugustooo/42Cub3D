@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:38:09 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/13 01:24:08 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/13 05:20:49 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,18 @@ char	*files(int i, t_game *game)
 	strings[3] = game->textr.west;
 	return (strings[i]);
 }
+
+void init_minimap(t_game *game)
+{
+	game->minimap.mlx_img = mlx_new_image(game->mlx_ptr, game->widthmap * 10, game->heightmap * 10);
+	if (!game->minimap.mlx_img)
+		sepuku(game, ERROR_MLX);
+	game->minimap.addr = mlx_get_data_addr(game->minimap.mlx_img,
+			&game->minimap.bpp, &game->minimap.line_len, &game->minimap.endian);
+	if (!game->minimap.addr)
+		sepuku(game, ERROR_MLX);
+}
+
 void init_img(t_game *game)
 {
 	int i;
@@ -75,5 +87,6 @@ void init_img(t_game *game)
 			sepuku(game, ERROR_MLX);
 		i++;
 	}
+	init_minimap(game);
 	init_status(game);
 }

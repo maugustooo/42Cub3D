@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   parse_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:32:53 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/13 02:46:11 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/13 05:26:23 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	parse(char **argv, t_game *game)
 	check_colors(game);
 	check_map_content(game);
 	//TODO:PRECISO DO WIDTHMAP
+	game->widthmap = 21;
 	game->heightmap = game->mapend;
 	map_content_validation(game);
 }

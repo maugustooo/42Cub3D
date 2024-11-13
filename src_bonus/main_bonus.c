@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 09:57:01 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/13 01:10:16 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/13 03:23:09 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,3 +54,4 @@ int	main(int argc, char **argv)
 }
 
 //TODO: NAO RETIRAR ESTE TODO ATE AO FIM, NAO RETIRAR AS TEXTURAS DO GITIGNORE
+//TODO: METER O NAME NORMAL NO ALL DEPOIS

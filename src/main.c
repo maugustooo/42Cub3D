@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 09:57:01 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/14 08:48:39 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/14 10:49:31 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	mlx_functions(t_game *game)
 	game->screen_width = 1920;
 	game->screen_height = 945;
 	game->window = mlx_new_window(game->mlx_ptr, game->screen_width,
-		game->screen_height, "Cub3D");
+			game->screen_height, "Cub3D");
 	if (!game->window)
 		sepuku(game, ERROR_MLX);
 	init_img(game);

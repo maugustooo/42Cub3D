@@ -6,7 +6,7 @@
 #    By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 09:44:12 by gude-jes          #+#    #+#              #
-#    Updated: 2024/11/14 08:55:51 by gude-jes         ###   ########.fr        #
+#    Updated: 2024/11/14 10:48:39 by gude-jes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,13 +26,13 @@ UTILS		= file_utils init sepuku colors read_textures_utils render_utils
 CONTROLS	= controls keys move
 RENDER 		= render raycasting draw
 
-GENERAL_BONUS		= main_bonus
+GENERAL_BONUS	= main_bonus
 PARSE_BONUS		= parse_bonus map_validation_bonus read_map_bonus read_textures_bonus file_content_bonus map_content_bonus
 UTILS_BONUS		= file_utils_bonus init_bonus sepuku_bonus colors_bonus read_textures_utils_bonus render_utils_bonus
 CONTROLS_BONUS	= controls_bonus keys_bonus move_bonus
-RENDER_BONUS 		= render_bonus raycasting_bonus draw_bonus minimap_bonus
+RENDER_BONUS 	= render_bonus raycasting_bonus draw_bonus minimap_bonus
 
-ARG	= maps/good/game.cub
+ARG			= maps/good/game.cub
 
 #==============================================================================#
 #                                    PATHS                                     #

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:29:59 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/13 01:12:11 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/14 10:54:08 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	check_colors(t_game *game)
 
 void	check_textures(t_game *game)
 {
-	if (!game->textr.north || !game->textr.south || !game->textr.east || !game->textr.west)
+	if (!game->textr.north || !game->textr.south
+		|| !game->textr.east || !game->textr.west)
 		sepuku(game, ERROR_TEXTURE);
 	check_file(game->textr.north, game);
 	check_file(game->textr.south, game);
@@ -74,7 +75,7 @@ void	define_coords(t_game *game)
 void	check_map_content(t_game *game)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = -1;
 	while (game->map[++i])

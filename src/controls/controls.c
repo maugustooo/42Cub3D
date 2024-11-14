@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:18:40 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/13 03:14:22 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/14 10:59:00 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	controls(t_game *game)
 	moved = 0;
 	if (game->player.move_up == 1)
 		move_up(game, game->player.dir_x * SPEED, game->player.dir_y
-				* SPEED);
+			* SPEED);
 	if (game->player.move_down == 1)
 		move_down(game, game->player.dir_x * SPEED, game->player.dir_y * SPEED);
 	if (game->player.move_right == 1)

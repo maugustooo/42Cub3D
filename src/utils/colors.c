@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:55:00 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/13 00:29:32 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/14 10:51:14 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_rgb(char **rgb)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 3)
@@ -25,19 +25,20 @@ void	free_rgb(char **rgb)
 	}
 	free(rgb);
 }
+
 void	check_rgb(char *color, t_game *game, int type)
 {
-	char **rgb;
-	int 	i;
+	char	**rgb;
+	int		i;
 
 	i = -1;
 	rgb = ft_split(color, ',');
-	if(!rgb || !rgb[0] || !rgb[1] || !rgb[2])
+	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2])
 	{
 		free_rgb(rgb);
 		sepuku(game, ERROR_COLOR);
 	}
-	if((ft_atoi(rgb[0]) < 0 || ft_atoi(rgb[0]) > 255)
+	if ((ft_atoi(rgb[0]) < 0 || ft_atoi(rgb[0]) > 255)
 		|| (ft_atoi(rgb[1]) < 0 || ft_atoi(rgb[1]) > 255)
 		|| (ft_atoi(rgb[2]) < 0 || ft_atoi(rgb[2]) > 255))
 	{
@@ -46,7 +47,7 @@ void	check_rgb(char *color, t_game *game, int type)
 	}
 	while (++i < 3)
 	{
-		if(type == 0)
+		if (type == 0)
 			game->rgb_floor[i] = ft_atoi(rgb[i]);
 		else
 			game->rgb_sky[i] = ft_atoi(rgb[i]);

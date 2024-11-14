@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render_utils.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/14 10:49:42 by gude-jes          #+#    #+#             */
+/*   Updated: 2024/11/14 10:50:20 by gude-jes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 int	get_color(t_game *game, int x, int y, int i)
@@ -6,7 +18,7 @@ int	get_color(t_game *game, int x, int y, int i)
 		+ (y * game->img[i].line_len + x * (game->img[i].bpp / 8))));
 }
 
-void put_pixel(t_game *game, int x, int y, int color)
+void	put_pixel(t_game *game, int x, int y, int color)
 {
 	char	*pixel;
 

@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 int	get_color(t_game *game, int x, int y, int i)
 {

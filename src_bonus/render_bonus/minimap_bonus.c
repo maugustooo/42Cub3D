@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 void	put_pixel_minimap(t_game *game, int x, int y, int color)
 {

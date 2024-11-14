@@ -6,17 +6,32 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:17:14 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/14 08:49:31 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/14 11:02:39 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+void	count_endmap2(char *temp, int fd, int i)
+{
+	while (1)
+	{
+		temp = get_next_line(fd);
+		if (!ft_find_c('1', temp))
+			break ;
+		if (temp)
+			free(temp);
+		i++;
+	}
+	if (temp)
+		free(temp);
+}
+
 void	count_endmap(t_game *game, int fd)
 {
-	int i;
-	char *temp;
-	
+	int		i;
+	char	*temp;
+
 	i = 0;
 	while (game->mapstart > i)
 	{
@@ -24,18 +39,8 @@ void	count_endmap(t_game *game, int fd)
 		free(temp);
 		i++;
 	}
-	while (1)
-	{
-		temp = get_next_line(fd);
-		if(!ft_find_c('1', temp))
-			break ;
-		if(temp)
-			free(temp);
-		i++;
-	}
-	if (temp)
-		free(temp);
-	while(temp != NULL)
+	count_endmap2(temp, fd, i);
+	while (temp != NULL)
 	{
 		temp = get_next_line(fd);
 		free(temp);
@@ -48,8 +53,10 @@ int	count_lines(char *file, t_game *game)
 	int		i;
 	int		fd;
 	char	*tmp;
+	int 	max_width;
 
 	i = 0;
+	max_width = 0;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		sepuku(game, ERROR_FILE);
@@ -58,10 +65,13 @@ int	count_lines(char *file, t_game *game)
 	{
 		free(tmp);
 		tmp = get_next_line(fd);
+		if((int)ft_strlen(tmp) > max_width)
+			max_width = (int)ft_strlen(tmp);
 		i++;
 	}
 	free(tmp);
 	close(fd);
+	game->widthmap = max_width;
 	return (i);
 }
 
@@ -79,7 +89,7 @@ void	fill_map(int fd, t_game *game)
 		i++;
 	}
 	i = 0;
-	while(i < game->mapend)
+	while (i < game->mapend)
 	{
 		temp = get_next_line(fd);
 		game->map[i] = ft_strdup(temp);
@@ -87,7 +97,7 @@ void	fill_map(int fd, t_game *game)
 		i++;
 	}
 	game->map[i] = NULL;
-	while(temp != NULL)
+	while (temp != NULL)
 	{
 		temp = get_next_line(fd);
 		free(temp);

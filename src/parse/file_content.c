@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:22:35 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/14 10:56:47 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/14 12:29:31 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,22 @@
 
 int	is_texture(char *line)
 {
-	if (line[0] == 'N' && line[1] == 'O' && line[2] == ' ')
+	int	i;
+
+	i = 0;
+	while (ft_is_wspace(line[i]))
+		i++;
+	if (line[i] == 'N' && line[i + 1] == 'O' && line[i + 2] == ' ')
 		return (1);
-	if (line[0] == 'S' && line[1] == 'O' && line[2] == ' ')
+	if (line[i] == 'S' && line[i + 1] == 'O' && line[i + 2] == ' ')
 		return (1);
-	if (line[0] == 'W' && line[1] == 'E' && line[2] == ' ')
+	if (line[i] == 'W' && line[i + 1] == 'E' && line[i + 2] == ' ')
 		return (1);
-	if (line[0] == 'E' && line[1] == 'A' && line[2] == ' ')
+	if (line[i] == 'E' && line[i + 1] == 'A' && line[i + 2] == ' ')
 		return (1);
-	if (line[0] == 'F' && line[1] == ' ')
+	if (line[i] == 'F' && line[i + 1] == ' ')
 		return (1);
-	if (line[0] == 'C' && line[1] == ' ')
+	if (line[i] == 'C' && line[i + 1] == ' ')
 		return (1);
 	return (0);
 }
@@ -58,17 +63,23 @@ void	check_order2(int fd, t_game *game)
 
 void	check_random2(int fd, char *tmp)
 {
+	int	i;
+
+	i = 0;
 	while (tmp && (is_texture(tmp) || *tmp == '\n'))
 	{
 		free(tmp);
 		tmp = get_next_line(fd);
 	}
-	free(tmp);
-	tmp = get_next_line(fd);
-	while (tmp && ft_isdigit(*tmp))
+	while (ft_is_wspace(tmp[i]))
+		i++;
+	while (tmp && ft_isdigit(tmp[i]))
 	{
 		free(tmp);
 		tmp = get_next_line(fd);
+		i = 0;
+		while (tmp != NULL && ft_is_wspace(tmp[i]) && tmp[i] != '\n')
+			i++;
 	}
 	free(tmp);
 }

@@ -6,20 +6,34 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 08:50:00 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/14 10:57:51 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/14 12:29:58 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	free_map(bool **map)
+void	check_holes(t_game *game, bool **map)
 {
-	int	i;
+	int	x;
+	int	y;
 
-	i = -1;
-	while (map[++i])
-		free(map[i]);
-	free(map);
+	y = -1;
+	while (++y < game->heightmap)
+	{
+		x = -1;
+		while (++x < (int)ft_strlen(game->map[y]))
+		{
+			if (game->map[y][x] == '0')
+			{
+				if (game->map[y][x + 1] == ' ' || game->map[y][x - 1] == ' '
+					|| game->map[y + 1][x] == ' ' || game->map[y - 1][x] == ' ')
+				{
+					free_map(map);
+					sepuku(game, ERROR_MAP);
+				}
+			}
+		}
+	}
 }
 
 bool	flood_fill(bool **map, t_game *game, int x, int y)
@@ -40,21 +54,11 @@ bool	flood_fill(bool **map, t_game *game, int x, int y)
 	return (map_closed);
 }
 
-bool	check_map_extremities(t_game *game)
+bool	check_map_extremities2(t_game *game)
 {
-	int	x;
 	int	y;
 
-	x = -1;
 	y = -1;
-	while (++x < ft_strclen(game->map[0], '\n'))
-	{
-		if (game->map[0][x] != '1' && game->map[0][x] != ' ')
-			return (false);
-		if (game->map[game->heightmap -1][x] != '1'
-			&& game->map[game->heightmap -1][x] != ' ')
-			return (false);
-	}
 	while (++y < game->heightmap)
 	{
 		if (game->map[y][0] != '1' && game->map[y][0] != ' ')
@@ -64,6 +68,26 @@ bool	check_map_extremities(t_game *game)
 			return (false);
 	}
 	return (true);
+}
+
+bool	check_map_extremities(t_game *game)
+{
+	int	x;
+
+	x = -1;
+	while (++x < ft_strclen(game->map[0], '\n'))
+	{
+		if (game->map[0][x] != '1' && game->map[0][x] != ' ')
+			return (false);
+	}
+	x = -1;
+	while (++x < ft_strclen(game->map[game->heightmap -1], '\n'))
+	{
+		if (game->map[game->heightmap -1][x] != '1'
+			&& game->map[game->heightmap -1][x] != ' ')
+			return (false);
+	}
+	return (check_map_extremities2(game));
 }
 
 void	map_content_validation(t_game *game)
@@ -84,6 +108,7 @@ void	map_content_validation(t_game *game)
 		free_map(map);
 		sepuku(game, ERROR_MAP);
 	}
+	check_holes(game, map);
 	map_closed = flood_fill(map, game, game->player.x, game->player.y);
 	if (!map_closed)
 	{

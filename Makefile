@@ -6,7 +6,7 @@
 #    By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 09:44:12 by gude-jes          #+#    #+#              #
-#    Updated: 2024/11/14 10:48:39 by gude-jes         ###   ########.fr        #
+#    Updated: 2024/11/14 12:19:45 by gude-jes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ RM			= rm -rf
 
 GENERAL		= main
 PARSE		= parse map_validation read_map read_textures file_content map_content
-UTILS		= file_utils init sepuku colors read_textures_utils render_utils
+UTILS		= file_utils init sepuku colors read_textures_utils render_utils map_utils
 CONTROLS	= controls keys move
 RENDER 		= render raycasting draw
 

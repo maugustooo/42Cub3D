@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:51:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/14 10:55:48 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/14 12:30:10 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,11 @@ void	check_dup(int fd, t_game *game, int *arr)
 	check_dup2(arr, game);
 }
 
-void	read_textures3(t_game *game, char *tmp, int i, int fd)
+void	read_textures3(t_game *game, char **temp, int *i, int fd)
 {
+	char	*tmp;
+
+	tmp = *temp;
 	tmp = return_no_extra_spaces(tmp);
 	if (tmp[0] == 'N' && tmp[1] == 'O')
 		game->textr.north = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
@@ -68,8 +71,9 @@ void	read_textures3(t_game *game, char *tmp, int i, int fd)
 	else if (tmp[0] == 'C' && tmp[1] != ' ')
 		game->textr.ceiling = ft_strndup(&tmp[1], ft_strclen(&tmp[1], '\n'));
 	free(tmp);
-	tmp = get_next_line(fd);
-	i++;
+	*temp = get_next_line(fd);
+	tmp = *temp;
+	(*i)++;
 	check_text_content(game, i);
 }
 
@@ -81,7 +85,7 @@ void	read_textures2(int fd, t_game *game)
 	i = 0;
 	tmp = get_next_line(fd);
 	while (tmp != NULL && game->mapflag == false)
-		read_textures3(game, tmp, i, fd);
+		read_textures3(game, &tmp, &i, fd);
 	while (tmp != NULL)
 	{
 		free(tmp);

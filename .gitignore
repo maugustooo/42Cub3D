@@ -7,3 +7,6 @@ lib/libft/*.a
 lib/minilibx-linux
 obj/*
 cub3D
+cub3D_bonus
+maps/bad/forbidden.cub
+textures/test/forbidden.xpm

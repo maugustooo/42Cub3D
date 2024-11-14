@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 09:57:01 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/13 01:10:16 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/14 08:48:39 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,8 @@ int	main(int argc, char **argv)
 		if (fd < 0)
 			sepuku(&game, ERROR_ARGS);
 		close(fd);
-		//TODO: VERIFICAR COM OS MAPAS TODOS, OS BONS E MAUS com valgrind, temos make valgrind tens e que mudar o $ARG, VERIFICAR AS CORES QUE ALGUMA MERDA TA MAL
 		parse(argv, &game);
 		mlx_functions(&game);
 	}
 	return (EXIT_SUCCESS);
 }
-
-//TODO: NAO RETIRAR ESTE TODO ATE AO FIM, NAO RETIRAR AS TEXTURAS DO GITIGNORE

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+         #
+#    By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 09:44:12 by gude-jes          #+#    #+#              #
-#    Updated: 2024/11/13 21:36:02 by maugusto         ###   ########.fr        #
+#    Updated: 2024/11/14 08:55:51 by gude-jes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ UTILS_BONUS		= file_utils_bonus init_bonus sepuku_bonus colors_bonus read_textur
 CONTROLS_BONUS	= controls_bonus keys_bonus move_bonus
 RENDER_BONUS 		= render_bonus raycasting_bonus draw_bonus minimap_bonus
 
-ARG	= maps/good/test_whitespace.cub
+ARG	= maps/good/game.cub
 
 #==============================================================================#
 #                                    PATHS                                     #
@@ -78,7 +78,7 @@ BONUS_OBJS	= $(BONUS_SRC:%.c=$(OBJ_DIR)/%.o)
 #==============================================================================#
 #                                    RULES                                     #
 #==============================================================================#
-all: deps $(NAME_BONUS)
+all: deps $(NAME)
 
 deps:
 	@$(MAKE) -C $(LIBFT_PATH)
@@ -120,7 +120,7 @@ fclean: clean clean_bonus
 re: fclean all
 
 valgrind:
-	valgrind --leak-check=full -s --show-leak-kinds=all ./$(NAME)
+	valgrind --leak-check=full -s --show-leak-kinds=all ./$(NAME) $(ARG)
 
 download:
 	@wget https://cdn.intra.42.fr/document/document/25858/minilibx-linux.tgz

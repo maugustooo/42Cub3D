@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:17:14 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/12 11:30:20 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/14 08:49:31 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	fill_map(int fd, t_game *game)
 	char	*temp;
 
 	i = 0;
+	temp = NULL;
 	while (i < game->mapstart)
 	{
 		temp = get_next_line(fd);

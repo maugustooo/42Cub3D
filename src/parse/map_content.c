@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 08:50:00 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/12 11:26:09 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/14 10:28:56 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,15 @@ void	map_content_validation(t_game *game)
 		map[i] = ft_calloc(ft_strclen(game->map[i], '\n'), sizeof(char));
 	map_closed = check_map_extremities(game);
 	if(!map_closed)
+	{
+		free_map(map);
 		sepuku(game, ERROR_MAP);	
+	}
 	map_closed = flood_fill(map, game, game->player.x, game->player.y);
 	if(!map_closed)
+	{
+		free_map(map);
 		sepuku(game, ERROR_MAP);
+	}
 	free_map(map);
 }

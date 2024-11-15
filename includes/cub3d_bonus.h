@@ -6,12 +6,12 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/15 08:49:04 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/15 09:01:17 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
 # include "libft.h"
 # include "mlx.h"
@@ -147,13 +147,14 @@ void	check_file(char *file, t_game *game);
 void	check_duplicate_text(t_game *game);
 void	read_textures(char *file, t_game *game);
 char	*return_no_extra_spaces(char *tmp);
-void	check_text_content(t_game *game, int i);
+void	check_text_content(t_game *game, int *i);
 void	check_rgb(char *color, t_game *game, int type);
 void	check_colors(t_game *game);
 void	check_order(char *file, t_game *game);
 void	map_content_validation(t_game *game);
 void	get_map_width(t_game *game);
 int		sepuku(t_game *game, enum e_error i);
+void	free_map(bool **map);
 int		ft_exit(t_game *game);
 
 int		controls(t_game *game);

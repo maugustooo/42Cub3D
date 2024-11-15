@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:32:53 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/14 11:02:49 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/15 08:33:23 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	parse(char **argv, t_game *game)
 	check_textures(game);
 	read_map(argv[1], game);
 	check_map_content(game);
+	get_map_width(game);
 	game->heightmap = game->mapend;
 	map_content_validation(game);
 }

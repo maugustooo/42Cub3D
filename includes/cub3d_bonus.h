@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/14 08:31:55 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/15 08:49:04 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ void	check_rgb(char *color, t_game *game, int type);
 void	check_colors(t_game *game);
 void	check_order(char *file, t_game *game);
 void	map_content_validation(t_game *game);
+void	get_map_width(t_game *game);
 int		sepuku(t_game *game, enum e_error i);
 int		ft_exit(t_game *game);
 

@@ -1,26 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_bonus.c                                      :+:      :+:    :+:   */
+/*   map_utils_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 11:32:53 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/15 08:52:42 by gude-jes         ###   ########.fr       */
+/*   Created: 2024/11/15 08:50:13 by gude-jes          #+#    #+#             */
+/*   Updated: 2024/11/15 08:50:29 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-void	parse(char **argv, t_game *game)
+void	free_map(bool **map)
 {
-	check_order(argv[1], game);
-	read_textures(argv[1], game);
-	check_colors(game);
-	check_textures(game);
-	read_map(argv[1], game);
-	check_map_content(game);
-	get_map_width(game);
-	game->heightmap = game->mapend;
-	map_content_validation(game);
+	int	i;
+
+	i = -1;
+	while (map[++i])
+		free(map[i]);
+	free(map);
+}
+
+void	get_map_width(t_game *game)
+{
+	int	i;
+	int	j;
+	int	count;
+
+	i = -1;
+	count = 0;
+	while (game->map[++i])
+	{
+		j = -1;
+		while (game->map[i][++j])
+			count++;
+		if (count > game->widthmap)
+			game->widthmap = count;
+		count = 0;
+	}
 }

@@ -6,19 +6,19 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:35:54 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/14 11:04:14 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/15 08:54:43 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-void	check_text_content(t_game *game, int i)
+void	check_text_content(t_game *game, int *i)
 {
 	if (game->textr.north && game->textr.south && game->textr.west
 		&& game->textr.east
 		&& game->textr.floor && game->textr.ceiling && game->mapflag == false)
 	{
-		game->mapstart = i + 1;
+		game->mapstart = (*i) + 1;
 		game->mapflag = true;
 	}
 }

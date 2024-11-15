@@ -6,7 +6,7 @@ int	get_color(t_game *game, int x, int y, int i)
 		+ (y * game->img[i].line_len + x * (game->img[i].bpp / 8))));
 }
 
-void put_pixel(t_game *game, int x, int y, int color)
+void	put_pixel(t_game *game, int x, int y, int color)
 {
 	char	*pixel;
 

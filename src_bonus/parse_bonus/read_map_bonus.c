@@ -6,17 +6,32 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:17:14 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/14 11:04:14 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/15 08:52:57 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
+void	count_endmap2(char *temp, int fd, int *i)
+{
+	while (1)
+	{
+		temp = get_next_line(fd);
+		if (!ft_find_c('1', temp))
+			break ;
+		if (temp)
+			free(temp);
+		(*i)++;
+	}
+	if (temp)
+		free(temp);
+}
+
 void	count_endmap(t_game *game, int fd)
 {
-	int i;
-	char *temp;
-	
+	int		i;
+	char	*temp;
+
 	i = 0;
 	while (game->mapstart > i)
 	{
@@ -24,18 +39,8 @@ void	count_endmap(t_game *game, int fd)
 		free(temp);
 		i++;
 	}
-	while (1)
-	{
-		temp = get_next_line(fd);
-		if(!ft_find_c('1', temp))
-			break ;
-		if(temp)
-			free(temp);
-		i++;
-	}
-	if (temp)
-		free(temp);
-	while(temp != NULL)
+	count_endmap2(temp, fd, &i);
+	while (temp != NULL)
 	{
 		temp = get_next_line(fd);
 		free(temp);
@@ -71,6 +76,7 @@ void	fill_map(int fd, t_game *game)
 	char	*temp;
 
 	i = 0;
+	temp = NULL;
 	while (i < game->mapstart)
 	{
 		temp = get_next_line(fd);
@@ -78,7 +84,7 @@ void	fill_map(int fd, t_game *game)
 		i++;
 	}
 	i = 0;
-	while(i < game->mapend)
+	while (i < game->mapend)
 	{
 		temp = get_next_line(fd);
 		game->map[i] = ft_strdup(temp);
@@ -86,7 +92,7 @@ void	fill_map(int fd, t_game *game)
 		i++;
 	}
 	game->map[i] = NULL;
-	while(temp != NULL)
+	while (temp != NULL)
 	{
 		temp = get_next_line(fd);
 		free(temp);

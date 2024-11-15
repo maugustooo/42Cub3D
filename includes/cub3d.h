@@ -140,6 +140,7 @@ void	check_rgb(char *color, t_game *game, int type);
 void	check_colors(t_game *game);
 void	check_order(char *file, t_game *game);
 void	map_content_validation(t_game *game);
+void	get_map_width(t_game *game);
 int		sepuku(t_game *game, enum e_error i);
 void	free_map(bool **map);
 int		ft_exit(t_game *game);

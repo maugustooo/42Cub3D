@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 12:16:44 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/15 08:24:24 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/15 12:09:52 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	get_map_width(t_game *game)
 		j = -1;
 		while (game->map[i][++j])
 			count++;
-		if (count > game->widthmap)
-			game->widthmap = count;
+		if ((count - 1) > game->widthmap)
+			game->widthmap = count - 1;
 		count = 0;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 08:50:00 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/15 08:51:41 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/15 12:14:41 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void	map_content_validation(t_game *game)
 		sepuku(game, ERROR_MAP);
 	}
 	check_holes(game, map);
+	check_doors(game, map);
 	map_closed = flood_fill(map, game, game->player.x, game->player.y);
 	if (!map_closed)
 	{

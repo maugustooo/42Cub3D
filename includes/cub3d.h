@@ -152,6 +152,9 @@ int		render(t_game *game);
 void	raycasting(t_game *game);
 void	draw_column(t_game *game, int x);
 
+int		handle_key_release(int keycode, t_game *game);
+int		handle_key_press(int keycode, t_game *game);
+
 void	put_pixel(t_game *game, int x, int y, int color);
 int		get_color(t_game *game, int x, int y, int i);
 

@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:35:54 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/15 08:54:43 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/15 11:12:42 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,50 @@ char	*return_no_extra_spaces(char *tmp)
 	new[j] = '\0';
 	free(tmp);
 	return (new);
+}
+
+void	check_dup_arr(int *arr, t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < 6)
+	{
+		if (arr[i] > 1)
+		{
+			if(i == 7)
+			{
+				if (arr[i] > 4)
+					sepuku(game, ERROR_DUP);
+			}
+			sepuku(game, ERROR_DUP);
+		}
+		i++;
+	}
+}
+
+void	put_textures(t_game *game, char *tmp)
+{
+	if (tmp[0] == 'N' && tmp[1] == 'O')
+		game->textr.north = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
+	else if (tmp[0] == 'S' && tmp[1] == 'O')
+		game->textr.south = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
+	else if (tmp[0] == 'W' && tmp[1] == 'E')
+		game->textr.west = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
+	else if (tmp[0] == 'E' && tmp[1] == 'A')
+		game->textr.east = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
+	else if (tmp[0] == 'F' && tmp[1] != ' ')
+		game->textr.floor = ft_strndup(&tmp[1], ft_strclen(&tmp[1], '\n'));
+	else if (tmp[0] == 'C' && tmp[1] != ' ')
+		game->textr.ceiling = ft_strndup(&tmp[1], ft_strclen(&tmp[1], '\n'));
+	else if (tmp[0] == 'D' && tmp[1] != ' ')
+		game->textr.door = ft_strndup(&tmp[1], ft_strclen(&tmp[1], '\n'));
+	else if (tmp[0] == 'E' && tmp[1] == '1')
+		game->textr.enemy1 = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
+	else if (tmp[0] == 'E' && tmp[1] == '2')
+		game->textr.enemy2 = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
+	else if (tmp[0] == 'E' && tmp[1] == 'D' && tmp[2] == '1')
+		game->textr.enemyd1 = ft_strndup(&tmp[3], ft_strclen(&tmp[3], '\n'));
+	else if (tmp[0] == 'E' && tmp[1] == 'D' && tmp[2] == '2')
+		game->textr.enemyd2 = ft_strndup(&tmp[3], ft_strclen(&tmp[3], '\n'));
 }

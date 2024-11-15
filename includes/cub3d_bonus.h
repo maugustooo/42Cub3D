@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/15 09:01:17 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/15 12:33:24 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,11 @@ typedef struct s_textr
 	char	*west;
 	char	*floor;
 	char	*ceiling;
+	char	*door;
+	char	*enemy1;
+	char	*enemy2;
+	char	*enemyd1;
+	char	*enemyd2;
 }				t_textr;
 
 typedef struct s_player
@@ -107,7 +112,7 @@ typedef struct s_game
 	int		rgb_sky[3];
 	int		rgb_floor[3];
 	t_textr	textr;
-	t_img	img[5];
+	t_img	img[10];
 	t_img	minimap;
 	t_player	player;
 
@@ -145,6 +150,7 @@ void	check_textures(t_game *game);
 void	check_map_content(t_game *game);
 void	check_file(char *file, t_game *game);
 void	check_duplicate_text(t_game *game);
+void	check_duplicate_text2(t_game *game);
 void	read_textures(char *file, t_game *game);
 char	*return_no_extra_spaces(char *tmp);
 void	check_text_content(t_game *game, int *i);
@@ -153,6 +159,9 @@ void	check_colors(t_game *game);
 void	check_order(char *file, t_game *game);
 void	map_content_validation(t_game *game);
 void	get_map_width(t_game *game);
+void	check_dup_arr(int *arr, t_game *game);
+void	put_textures(t_game *game, char *tmp);
+void	check_doors(t_game *game, bool **map);
 int		sepuku(t_game *game, enum e_error i);
 void	free_map(bool **map);
 int		ft_exit(t_game *game);
@@ -167,18 +176,18 @@ void	draw_column(t_game *game, int x);
 void	put_pixel(t_game *game, int x, int y, int color);
 int		get_color(t_game *game, int x, int y, int i);
 
-int	handle_mouse(int x, int y, t_game *game);
-int handle_key_release(int keycode, t_game *game);
-int handle_key_press(int keycode, t_game *game);
+int		handle_mouse(int x, int y, t_game *game);
+int		handle_key_release(int keycode, t_game *game);
+int		handle_key_press(int keycode, t_game *game);
 
 void	rotate(t_game *game, double angle);
-int	move_left(t_game *game, double next_x, double next_y);
-int	move_right(t_game *game, double next_x, double next_y);
-int	move_down(t_game *game, double next_x, double next_y);
-int	move_up(t_game *game, double next_x, double next_y);
+int		move_left(t_game *game, double next_x, double next_y);
+int		move_right(t_game *game, double next_x, double next_y);
+int		move_down(t_game *game, double next_x, double next_y);
+int		move_up(t_game *game, double next_x, double next_y);
 
 void	render_minimap(t_game *game);
 void	render_player_on_minimap(t_game *game);
 void	draw_minimap_square(t_game *game, int x, int y, int color);
-int	handle_mouse(int x, int y, t_game *game);
+int		handle_mouse(int x, int y, t_game *game);
 #endif

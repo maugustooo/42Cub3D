@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:29:59 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/15 08:51:58 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/15 11:20:44 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ void	check_textures(t_game *game)
 	check_file(game->textr.south, game);
 	check_file(game->textr.east, game);
 	check_file(game->textr.west, game);
+	check_file(game->textr.door, game);
+	check_file(game->textr.enemy1, game);
+	check_file(game->textr.enemy2, game);
+	check_file(game->textr.enemyd1, game);
+	check_file(game->textr.enemyd2, game);
 	check_duplicate_text(game);
 }
 
@@ -85,7 +90,7 @@ void	check_map_content(t_game *game)
 		{
 			while (ft_is_wspace(game->map[i][j]))
 				j++;
-			if (!(ft_strchr("10NSEW", game->map[i][j])))
+			if (!(ft_strchr("10NSEWDX", game->map[i][j])))
 				sepuku(game, ERROR_MAP);
 		}
 	}

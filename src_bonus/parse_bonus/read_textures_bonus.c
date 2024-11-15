@@ -6,33 +6,17 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:51:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/15 08:53:14 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/15 11:47:00 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-void	check_dup2(int *arr, t_game *game)
+void	check_dup2(int *arr, int fd, char **temp)
 {
-	int	i;
-
-	i = 0;
-	while (i < 6)
-	{
-		if (arr[i] > 1)
-			sepuku(game, ERROR_DUP);
-		i++;
-	}
-}
-
-void	check_dup(int fd, t_game *game, int *arr)
-{
-	char	*tmp;
-
-	tmp = get_next_line(fd);
-	while (tmp != NULL)
-	{
-		tmp = return_no_extra_spaces(tmp);
+		char	*tmp;
+		
+		tmp = return_no_extra_spaces(*temp);
 		if (tmp[0] == 'N' && tmp[1] == 'O')
 			arr[0]++;
 		else if (tmp[0] == 'S' && tmp[1] == 'O')
@@ -45,11 +29,24 @@ void	check_dup(int fd, t_game *game, int *arr)
 			arr[4]++;
 		else if (tmp[0] == 'C' && tmp[1] == ' ')
 			arr[5]++;
+		else if (tmp[0] == 'D' && tmp[1] == ' ')
+			arr[6]++;
+		else if (tmp[0] == 'E' && (ft_isdigit(tmp[1])
+			|| (tmp[1] == 'D' && ft_isdigit(tmp[2]))))
+			arr[7]++;
 		free(tmp);
-		tmp = get_next_line(fd);
-	}
+		*temp = get_next_line(fd);
+}
+
+void	check_dup(int fd, t_game *game, int *arr)
+{
+	char	*tmp;
+
+	tmp = get_next_line(fd);
+	while (tmp != NULL)
+		check_dup2(arr, fd, &tmp);
 	free(tmp);
-	check_dup2(arr, game);
+	check_dup_arr(arr, game);
 }
 
 void	read_textures3(t_game *game, char **temp, int *i, int fd)
@@ -58,18 +55,7 @@ void	read_textures3(t_game *game, char **temp, int *i, int fd)
 
 	tmp = *temp;
 	tmp = return_no_extra_spaces(tmp);
-	if (tmp[0] == 'N' && tmp[1] == 'O')
-		game->textr.north = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
-	else if (tmp[0] == 'S' && tmp[1] == 'O')
-		game->textr.south = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
-	else if (tmp[0] == 'W' && tmp[1] == 'E')
-		game->textr.west = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
-	else if (tmp[0] == 'E' && tmp[1] == 'A')
-		game->textr.east = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
-	else if (tmp[0] == 'F' && tmp[1] != ' ')
-		game->textr.floor = ft_strndup(&tmp[1], ft_strclen(&tmp[1], '\n'));
-	else if (tmp[0] == 'C' && tmp[1] != ' ')
-		game->textr.ceiling = ft_strndup(&tmp[1], ft_strclen(&tmp[1], '\n'));
+	put_textures(game, tmp);
 	free(tmp);
 	*temp = get_next_line(fd);
 	tmp = *temp;
@@ -101,12 +87,12 @@ void	read_textures(char *file, t_game *game)
 	int		i;
 
 	i = 0;
+	game->mapflag = false;
+	while (i < 8)
+		arr[i++] = 0;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		sepuku(game, ERROR_FILE);
-	game->mapflag = false;
-	while (i < 6)
-		arr[i++] = 0;
 	check_dup(fd, game, arr);
 	close(fd);
 	fd = open(file, O_RDONLY);

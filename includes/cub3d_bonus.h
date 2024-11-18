@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/18 08:57:49 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/18 09:28:18 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct s_textr
 
 typedef struct s_enemy
 {
+	int		id;
 	double	x;
 	double	y;
 	int		health;
@@ -124,6 +125,7 @@ typedef struct s_game
 	t_img		img[10];
 	t_img		minimap;
 	t_player	player;
+	t_enemy		enemy;
 
 	int			wall_end;
 	int			wall_start;
@@ -169,6 +171,7 @@ void	get_map_width(t_game *game);
 void	check_dup_arr(int *arr, t_game *game);
 void	put_textures(t_game *game, char *tmp);
 void	check_doors(t_game *game, bool **map);
+void	init_enemy(t_game *game);
 int		sepuku(t_game *game, enum e_error i);
 void	free_map(bool **map);
 int		ft_exit(t_game *game);

@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_bonus.c                                      :+:      :+:    :+:   */
+/*   init2_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 11:32:53 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/18 09:08:27 by gude-jes         ###   ########.fr       */
+/*   Created: 2024/11/18 09:25:02 by gude-jes          #+#    #+#             */
+/*   Updated: 2024/11/18 09:32:47 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-void	parse(char **argv, t_game *game)
+void	init_enemy(t_game *game)
 {
-	check_order(argv[1], game);
-	read_textures(argv[1], game);
-	check_colors(game);
-	check_textures(game);
-	read_map(argv[1], game);
-	check_map_content(game);
-	get_map_width(game);
-	game->heightmap = game->mapend;
-	map_content_validation(game);
-	init_enemy(game);
+	int i;
+	int j;
+
+	i = -1;
+	while(game->map[++i])
+	{
+		j = -1;
+		while(game->map[i][++j])
+		{
+			if (game->map[i][j] == 'X')
+			{
+				game->enemy.x = j + 0.5;
+				game->enemy.y = i + 0.5;
+			}
+		}
+	}
+	game->enemy.health = 1;
+	game->enemy.state = 0;
 }

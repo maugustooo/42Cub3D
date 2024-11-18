@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/15 12:33:24 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/18 08:57:49 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,14 @@ typedef struct s_textr
 	char	*enemyd2;
 }				t_textr;
 
+typedef struct s_enemy
+{
+	double	x;
+	double	y;
+	int		health;
+	int		state;
+}			t_enemy;
+
 typedef struct s_player
 {
 	double	x;
@@ -89,60 +97,59 @@ typedef struct s_player
 	int		move_right;
 	int		rotate_left;
 	int		rotate_right;
+	int		health;
 }				t_player;
 
 typedef struct s_game
 {
-	char	**map;
-	
-	int		x;
-	int		y;
-	int		tlines;
-	int		mapstart;
-	int		mapend;	
-	int		heightmap;
-	int		widthmap;
-	int		screen_width;
-	int		screen_height;
-	void	*mlx_ptr;
-	void	*window;
-	char 	**rgb;
-	bool	mapflag;
+	char		**map;
 
-	int		rgb_sky[3];
-	int		rgb_floor[3];
-	t_textr	textr;
-	t_img	img[10];
-	t_img	minimap;
+	int			x;
+	int			y;
+	int			tlines;
+	int			mapstart;
+	int			mapend;	
+	int			heightmap;
+	int			widthmap;
+	int			screen_width;
+	int			screen_height;
+	void		*mlx_ptr;
+	void		*window;
+	char		**rgb;
+	bool		mapflag;
+
+	int			rgb_sky[3];
+	int			rgb_floor[3];
+	t_textr		textr;
+	t_img		img[10];
+	t_img		minimap;
 	t_player	player;
 
-	int		wall_end;
-	int		wall_start;
-	double	plane_x;
-	double	plane_y;
-	double  ray_dir_x;
-    double  ray_dir_y;
-    double  delta_dist_x;
-    double  delta_dist_y;
-    double  side_dist_x;
-    double  side_dist_y;
-	int     map_x;
-	int     map_y;
-    int     step_x;
-    int     step_y;
-    int     wall_side;
-    double  walldist;
-    double  cam_x;
+	int			wall_end;
+	int			wall_start;
+	double		plane_x;
+	double		plane_y;
+	double		ray_dir_x;
+	double		ray_dir_y;
+	double		delta_dist_x;
+	double		delta_dist_y;
+	double		side_dist_x;
+	double		side_dist_y;
+	int			map_x;
+	int			map_y;
+	int			step_x;
+	int			step_y;
+	int			wall_side;
+	double		walldist;
+	double		cam_x;
 
 	double		wall_x;
-	int		tex_x;
-	int		tex_y;
+	int			tex_x;
+	int			tex_y;
 	double		tex_pos;
 	double		step;
 }				t_game;
 
-
-t_textr	*init_textr(void);
 void	parse(char **argv, t_game *game);
 void	check_extension(char *file);
 void	read_map(char *file, t_game *game);

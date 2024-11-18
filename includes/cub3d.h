@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/18 08:58:55 by gude-jes          #+#    #+#             */
+/*   Updated: 2024/11/18 09:01:06 by gude-jes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -76,56 +88,54 @@ typedef struct s_player
 
 typedef struct s_game
 {
-	char	**map;
-	
-	int		x;
-	int		y;
-	int		tlines;
-	int		mapstart;
-	int		mapend;	
-	int		heightmap;
-	int		widthmap;
-	int		screen_width;
-	int		screen_height;
-	void	*mlx_ptr;
-	void	*window;
-	char 	**rgb;
-	bool	mapflag;
+	char		**map;
 
-	int		rgb_sky[3];
-	int		rgb_floor[3];
-	t_textr	textr;
-	t_img	img[5];
-	t_img	minimap;
+	int			x;
+	int			y;
+	int			tlines;
+	int			mapstart;
+	int			mapend;	
+	int			heightmap;
+	int			widthmap;
+	int			screen_width;
+	int			screen_height;
+	void		*mlx_ptr;
+	void		*window;
+	char		**rgb;
+	bool		mapflag;
+
+	int			rgb_sky[3];
+	int			rgb_floor[3];
+	t_textr		textr;
+	t_img		img[5];
+	t_img		minimap;
 	t_player	player;
 
-	int		wall_end;
-	int		wall_start;
-	double	plane_x;
-	double	plane_y;
-	double  ray_dir_x;
-    double  ray_dir_y;
-    double  delta_dist_x;
-    double  delta_dist_y;
-    double  side_dist_x;
-    double  side_dist_y;
-	int     map_x;
-	int     map_y;
-    int     step_x;
-    int     step_y;
-    int     wall_side;
-    double  walldist;
-    double  cam_x;
+	int			wall_end;
+	int			wall_start;
+	double		plane_x;
+	double		plane_y;
+	double		ray_dir_x;
+	double		ray_dir_y;
+	double		delta_dist_x;
+	double		delta_dist_y;
+	double		side_dist_x;
+	double		side_dist_y;
+	int			map_x;
+	int			map_y;
+	int			step_x;
+	int			step_y;
+	int			wall_side;
+	double		walldist;
+	double		cam_x;
 
 	double		wall_x;
-	int		tex_x;
-	int		tex_y;
+	int			tex_x;
+	int			tex_y;
 	double		tex_pos;
 	double		step;
 }				t_game;
 
-
-t_textr	*init_textr(void);
 void	parse(char **argv, t_game *game);
 void	check_extension(char *file);
 void	read_map(char *file, t_game *game);

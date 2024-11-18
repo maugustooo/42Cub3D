@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/18 09:28:18 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/18 10:33:24 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@
 # define SOUTH 1
 # define EAST 2
 # define WEST 3
-
+# define DOOR 4
+# define ENEM 5
+# define SCREEN_WIDTH 1920
+# define SCREEN_HEIGHT 945
 typedef enum e_error
 {
 	ERROR_ARGS,
@@ -101,9 +104,42 @@ typedef struct s_player
 	int		health;
 }				t_player;
 
+
+typedef struct s_enemy
+{
+	double	x;
+	double	y;
+	double	distance;
+	int		visible;
+	int		type;
+	double transform_x;
+	double transform_y;
+	int screen_x;
+	int height;
+	int width;
+	int draw_start_y;
+	int draw_end_y;
+	int draw_start_x;
+	int draw_end_x;
+	double z_buffer[SCREEN_WIDTH];
+}				t_enemy;
+
 typedef struct s_game
 {
 	char		**map;
+	
+	int		x;
+	int		y;
+	int		tlines;
+	int		mapstart;
+	int		mapend;	
+	int		heightmap;
+	int		widthmap;
+	int		screen_height;
+	void	*mlx_ptr;
+	void	*window;
+	char 	**rgb;
+	bool	mapflag;
 
 	int			x;
 	int			y;
@@ -150,6 +186,9 @@ typedef struct s_game
 	int			tex_y;
 	double		tex_pos;
 	double		step;
+
+	bool	door;
+	bool	is_enemy;
 }				t_game;
 
 void	parse(char **argv, t_game *game);
@@ -200,4 +239,6 @@ void	render_minimap(t_game *game);
 void	render_player_on_minimap(t_game *game);
 void	draw_minimap_square(t_game *game, int x, int y, int color);
 int		handle_mouse(int x, int y, t_game *game);
+
+void	draw_enemy(t_game *game, t_enemy *enemy);
 #endif

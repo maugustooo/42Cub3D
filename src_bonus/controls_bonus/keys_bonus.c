@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:18:15 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/14 11:04:14 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/15 21:47:54 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,23 @@ int	handle_key_release(int keycode, t_game *game)
 		game->player.rotate_right = 0;
 	return (0);
 }
-	
+
 int	handle_mouse(int x, int y, t_game *game)
 {
-	if(x < game->screen_width / 2)
-	{
+	if(x < SCREEN_WIDTH / 2)
 		rotate(game, -MSPEED);
-	}
-	else if(x > game->screen_width / 2)
-	{
+	else if(x > SCREEN_WIDTH / 2)
 		rotate(game, MSPEED);
+	if (y < SCREEN_HEIGHT / 2)
+	{
+		if (game->player.angle - 5 > -FOV / 2)
+			game->player.angle -= 5;
 	}
-	mlx_mouse_move(game->mlx_ptr, game->window, game->screen_width / 2, y);
+	else if (y > SCREEN_HEIGHT / 2)
+	{
+		if (game->player.angle + 5 < FOV / 2)
+			game->player.angle += 5;
+	}
+	mlx_mouse_move(game->mlx_ptr, game->window, SCREEN_WIDTH / 2, y);
 	return (0);
 }

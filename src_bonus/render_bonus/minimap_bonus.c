@@ -4,7 +4,7 @@ void	put_pixel_minimap(t_game *game, int x, int y, int color)
 {
 	char	*pixel;
 
-	if (x < 0 || x >= game->screen_width || y < 0 || y >= game->screen_height)
+	if (x < 0 || x >= SCREEN_WIDTH || y < 0 || y >= SCREEN_HEIGHT)
 		return ;
 	pixel = (game->minimap.addr + (y * game->minimap.line_len
 				+ x * (game->minimap.bpp / 8)));

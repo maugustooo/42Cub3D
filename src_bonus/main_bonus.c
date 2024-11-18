@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 09:57:01 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/15 08:55:41 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/15 18:28:04 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@ void	mlx_functions(t_game *game)
 	game->mlx_ptr = mlx_init();
 	if (!game->mlx_ptr)
 		sepuku(game, ERROR_MLX);
-	game->screen_width = 1920;
-	game->screen_height = 945;
-	game->window = mlx_new_window(game->mlx_ptr, game->screen_width,
-		game->screen_height, "Cub3D");
+	game->window = mlx_new_window(game->mlx_ptr, SCREEN_WIDTH,
+		SCREEN_HEIGHT, "Cub3D");
 	if (!game->window)
 		sepuku(game, ERROR_MLX);
 	init_img(game);

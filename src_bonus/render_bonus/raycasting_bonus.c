@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:12:27 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/15 19:54:02 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/18 16:42:36 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	wall_stuff(t_game *game)
 	game->is_enemy = false;
 	while (wall == 0)
 	{
+		game->wall = false;
 		if (game->side_dist_x < game->side_dist_y)
 		{
 			game->side_dist_x += game->delta_dist_x;
@@ -34,17 +35,22 @@ void	wall_stuff(t_game *game)
 			game->wall_side = 1;
 		}
 		if (game->map[game->map_y][game->map_x] == '1')
+		{
+			game->wall = true;
 			wall = 1;
+		}
 		if(game->map[game->map_y][game->map_x] == 'D')
 		{
 			wall = 1;
 			game->door = true;
 		}
-		if(game->map[game->map_y][game->map_x] == 'X')
-		{
-			wall = 1;
-			game->is_enemy = true;
-		}
+		// if (game->map[game->map_y][game->map_x] == 'X')
+		// {
+		// 	game->enemy.x = game->map_x + 0.5;
+		// 	game->enemy.y = game->map_y + 0.5;
+		// 	game->wall = false;
+		// 	wall = 1;
+		// }
 	}
 }
 
@@ -106,7 +112,6 @@ void	raycasting(t_game *game)
 		init_raycasting(game, x);
 		get_distance(game);
 		get_step(game);
-		game->is_enemy = false;
 		wall_stuff(game);
 		if (game->wall_side == 0)
 			game->walldist = (game->side_dist_x - game->delta_dist_x);

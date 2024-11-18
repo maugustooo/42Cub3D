@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:13:57 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/15 18:34:11 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/18 16:42:03 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	render(t_game *game)
 	controls(game);
 	render_background(game);
 	raycasting(game);
+	handle_enemy(game);
 	render_minimap(game);
 	mlx_put_image_to_window(game->mlx_ptr, game->window, game->img[6].mlx_img,
 		0, 0);

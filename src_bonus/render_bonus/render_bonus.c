@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:13:57 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/14 11:04:14 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/15 18:34:11 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ void	render_background(t_game *game)
 	int	y;
 
 	x = 0;
-	while (x < game->screen_width)
+	while (x < SCREEN_WIDTH)
 	{
 		y = 0;
-		while (y < game->screen_height)
+		while (y < SCREEN_HEIGHT - 1)
 		{
-			if (y <= (game->screen_height / 2) - 1)
+			if (y <= (SCREEN_HEIGHT / 2) - 1)
 				put_pixel(game, x, y, create_rgb(0, game->rgb_sky[0],
 						game->rgb_sky[1], game->rgb_sky[2]));
 			else
@@ -46,7 +46,7 @@ int	render(t_game *game)
 	render_background(game);
 	raycasting(game);
 	render_minimap(game);
-	mlx_put_image_to_window(game->mlx_ptr, game->window, game->img[4].mlx_img,
+	mlx_put_image_to_window(game->mlx_ptr, game->window, game->img[6].mlx_img,
 		0, 0);
 	mlx_put_image_to_window(game->mlx_ptr, game->window, game->minimap.mlx_img,
 		10, 10);

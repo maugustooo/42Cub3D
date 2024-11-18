@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+         #
+#    By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 09:44:12 by gude-jes          #+#    #+#              #
-#    Updated: 2024/11/15 11:20:19 by gude-jes         ###   ########.fr        #
+#    Updated: 2024/11/15 18:37:42 by maugusto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ GENERAL_BONUS	= main_bonus
 PARSE_BONUS		= parse_bonus map_validation_bonus read_map_bonus read_textures_bonus file_content_bonus map_content_bonus
 UTILS_BONUS		= file_utils_bonus file_utils2_bonus init_bonus sepuku_bonus colors_bonus read_textures_utils_bonus render_utils_bonus map_utils_bonus
 CONTROLS_BONUS	= controls_bonus keys_bonus move_bonus
-RENDER_BONUS 	= render_bonus raycasting_bonus draw_bonus minimap_bonus
+RENDER_BONUS 	= render_bonus raycasting_bonus draw_bonus minimap_bonus enemy_bonus
 
 ARG			= maps/good/game.cub
 
@@ -78,7 +78,7 @@ BONUS_OBJS	= $(BONUS_SRC:%.c=$(OBJ_DIR)/%.o)
 #==============================================================================#
 #                                    RULES                                     #
 #==============================================================================#
-all: deps $(NAME)
+all: deps $(NAME_BONUS)
 
 deps:
 	@$(MAKE) -C $(LIBFT_PATH)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:12:27 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/14 11:04:14 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/15 19:54:02 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	wall_stuff(t_game *game)
 	int	wall;
 
 	wall = 0;
+	game->door = false;
+	game->is_enemy = false;
 	while (wall == 0)
 	{
 		if (game->side_dist_x < game->side_dist_y)
@@ -33,11 +35,17 @@ void	wall_stuff(t_game *game)
 		}
 		if (game->map[game->map_y][game->map_x] == '1')
 			wall = 1;
+		if(game->map[game->map_y][game->map_x] == 'D')
+		{
+			wall = 1;
+			game->door = true;
+		}
+		if(game->map[game->map_y][game->map_x] == 'X')
+		{
+			wall = 1;
+			game->is_enemy = true;
+		}
 	}
-	if (game->wall_side == 0)
-		game->walldist = (game->side_dist_x - game->delta_dist_x);
-	else
-		game->walldist = (game->side_dist_y - game->delta_dist_y);
 }
 
 void	get_step(t_game *game)
@@ -83,7 +91,7 @@ void	init_raycasting(t_game *game, int x)
 {
 	game->map_x = (int)game->player.x;
 	game->map_y = (int)game->player.y;
-	game->cam_x = (2 * x) / (double)game->screen_width - 1;
+	game->cam_x = (2 * x) / (double)SCREEN_WIDTH - 1;
 	game->ray_dir_x = game->player.dir_x + game->plane_x * game->cam_x;
 	game->ray_dir_y = game->player.dir_y + game->plane_y * game->cam_x;
 }
@@ -93,12 +101,17 @@ void	raycasting(t_game *game)
 	int	x;
 
 	x = 0;
-	while (x < game->screen_width)
+	while (x < SCREEN_WIDTH)
 	{
 		init_raycasting(game, x);
 		get_distance(game);
 		get_step(game);
+		game->is_enemy = false;
 		wall_stuff(game);
+		if (game->wall_side == 0)
+			game->walldist = (game->side_dist_x - game->delta_dist_x);
+		else
+			game->walldist = (game->side_dist_y - game->delta_dist_y);
 		draw_column(game, x);
 		x++;
 	}

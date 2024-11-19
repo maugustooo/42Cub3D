@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/18 16:20:32 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/19 11:59:54 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include <limits.h>
 # define SPEED 0.1
 # define ROTSPEED 0.05
-# define MSPEED 0.03
+# define MSPEED 0.025
 # define FOV 90
 # define NORTH 0
 # define SOUTH 1
@@ -103,39 +103,8 @@ typedef struct s_enemy
 	double	y;
 	double	distance;
 	int		visible;
-	int		type;
-	double transform_x;
-	double transform_y;
-	int screen_x;
-	int height;
-	int width;
-	int draw_start_y;
-	int draw_end_y;
-	int draw_start_x;
-	int draw_end_x;
-	double z_buffer[SCREEN_WIDTH];
 	int		health;
 	int		state;
-
-
-
-	int			wall_end;
-	int			wall_start;
-	double		plane_x;
-	double		plane_y;
-	double		ray_dir_x;
-	double		ray_dir_y;
-	double		delta_dist_x;
-	double		delta_dist_y;
-	double		side_dist_x;
-	double		side_dist_y;
-	int			map_x;
-	int			map_y;
-	int			step_x;
-	int			step_y;
-	int			wall_side;
-	double		walldist;
-	double		cam_x;
 }				t_enemy;
 
 typedef struct s_game
@@ -155,14 +124,15 @@ typedef struct s_game
 	void		*window;
 	char		**rgb;
 	bool		mapflag;
-
+	int			enemy_count;
 	int			rgb_sky[3];
 	int			rgb_floor[3];
 	t_textr		textr;
 	t_img		img[10];
 	t_img		minimap;
 	t_player	player;
-	t_enemy		enemy;
+	t_enemy		enemy[64];
+	double z_buffer[SCREEN_WIDTH];
 
 	int			wall_end;
 	int			wall_start;

@@ -55,7 +55,7 @@ void	render_player_on_minimap(t_game *game)
 
 	player_x = (int)game->player.x * 10;
 	player_y = (int)game->player.y * 10;
-	color = 0xFF0000;
+	color = 0x00CC00;
 	draw_minimap_square(game, player_x, player_y, color);
 }
 
@@ -72,7 +72,11 @@ void	render_minimap(t_game *game)
 		{
 			if (game->map[y][x] == '1')
 				draw_minimap_square(game, x * 10, y * 10, 0x000000);
-			else if (game->map[y][x] != '1')
+			else if (game->map[y][x] == 'D')
+				draw_minimap_square(game, x * 10, y * 10, 0xFFCC00);
+			else if (game->map[y][x] == 'X')
+				draw_minimap_square(game, x * 10, y * 10, 0xFF0000);
+			else if (game->map[y][x] != '1' || game->map[y][x] != 'D' || game->map[y][x] != 'X')
 				draw_minimap_square(game, x * 10, y * 10, 0xFFFFFF);
 			y++;
 		}

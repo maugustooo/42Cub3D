@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:12:27 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/18 16:42:36 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/19 11:59:38 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,6 @@ void	wall_stuff(t_game *game)
 		}
 		// if (game->map[game->map_y][game->map_x] == 'X')
 		// {
-		// 	game->enemy.x = game->map_x + 0.5;
-		// 	game->enemy.y = game->map_y + 0.5;
-		// 	game->wall = false;
 		// 	wall = 1;
 		// }
 	}
@@ -117,6 +114,7 @@ void	raycasting(t_game *game)
 			game->walldist = (game->side_dist_x - game->delta_dist_x);
 		else
 			game->walldist = (game->side_dist_y - game->delta_dist_y);
+		game->z_buffer[x] = game->walldist;
 		draw_column(game, x);
 		x++;
 	}

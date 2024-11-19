@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init2_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 09:25:02 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/18 09:32:47 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/19 12:06:16 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ void	init_enemy(t_game *game)
 {
 	int i;
 	int j;
-
+	int count = 0;
 	i = -1;
+	
 	while(game->map[++i])
 	{
 		j = -1;
@@ -25,11 +26,11 @@ void	init_enemy(t_game *game)
 		{
 			if (game->map[i][j] == 'X')
 			{
-				game->enemy.x = j + 0.5;
-				game->enemy.y = i + 0.5;
+				game->enemy[count].x = j + 0.5;
+				game->enemy[count].y = i + 0.5;
+				game->enemy[count].health = 1;
+				game->enemy[count++].state = 0;
 			}
 		}
 	}
-	game->enemy.health = 1;
-	game->enemy.state = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:29:59 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/15 18:45:35 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/19 12:05:18 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,6 @@ void	define_coords(t_game *game)
 				game->player.y = i + 0.5;
 				player_direction(game->map[i][j], game);
 				player_count++;
-			}
-			if (ft_strchr_nn("X", game->map[i][j]))
-			{
-				game->enemy.x = j + 0.5;
-				game->enemy.y = i + 0.5;
 			}
 		}
 	}

@@ -83,4 +83,5 @@ void	render_minimap(t_game *game)
 		x++;
 	}
 	render_player_on_minimap(game);
+	render_fps(game);
 }

@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:16:57 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/19 11:21:00 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/19 12:23:41 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	draw(t_game *game, int x, int texture)
 	int	color;
 	
 	color = get_color(game, game->tex_x, game->tex_y, texture);
+	if (game->wall_side == 1)
+		color = (color >> 1) & 8355711;
 	put_pixel(game, x, game->wall_start, color);
 }
 

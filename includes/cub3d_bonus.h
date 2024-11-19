@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/19 11:59:54 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:54:42 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include <limits.h>
+# include <sys/time.h>
+# include <stdint.h>
 # define SPEED 0.1
 # define ROTSPEED 0.05
 # define MSPEED 0.025
@@ -93,6 +95,7 @@ typedef struct s_player
 	int		rotate_left;
 	int		rotate_right;
 	int		health;
+	int 	scared;
 }				t_player;
 
 
@@ -107,6 +110,13 @@ typedef struct s_enemy
 	int		state;
 }				t_enemy;
 
+typedef struct s_fps
+{
+    struct timeval last_time;
+    int frame_count;
+    double elapsed_time;
+    int fps;
+} t_fps;
 typedef struct s_game
 {
 	char		**map;
@@ -130,8 +140,11 @@ typedef struct s_game
 	t_textr		textr;
 	t_img		img[10];
 	t_img		minimap;
+	t_img		fps_img;
 	t_player	player;
+	t_img		player_face[5];
 	t_enemy		enemy[64];
+	t_fps		fps;
 	double z_buffer[SCREEN_WIDTH];
 
 	int			wall_end;
@@ -161,6 +174,8 @@ typedef struct s_game
 	bool	door;
 	bool	wall;
 	bool	is_enemy;
+	bool	enemy_near;
+	bool	is_clear;
 }				t_game;
 
 void	parse(char **argv, t_game *game);
@@ -207,12 +222,16 @@ int		move_right(t_game *game, double next_x, double next_y);
 int		move_down(t_game *game, double next_x, double next_y);
 int		move_up(t_game *game, double next_x, double next_y);
 
+void	render_fps(t_game *game);
+void	update_fps(t_game *game);
+
 void	render_minimap(t_game *game);
 void	render_player_on_minimap(t_game *game);
 void	draw_minimap_square(t_game *game, int x, int y, int color);
 int		handle_mouse(int x, int y, t_game *game);
 
-// void	handle_enemy(t_game *game, int x);
 void		handle_enemy(t_game *game);
-// void draw_enemy(t_game *game, int x);
+
+
+void put_player_face(t_game *game);
 #endif

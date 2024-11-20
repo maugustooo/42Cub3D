@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:18:40 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/20 10:49:55 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:01:41 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 void set_health(t_game *game)
 {
 	int i = 0;
-	int enemy_count = 2;
-	while (i < enemy_count)
+	while (i < game->enemy_count)
 	{
 		double dx = game->enemy[i].x - game->player.x;
     	double dy = game->enemy[i].y - game->player.y;

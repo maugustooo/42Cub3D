@@ -6,12 +6,33 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:18:15 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/15 21:47:54 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/20 15:51:51 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
+void	open_or_close_door(t_game *game, int map_x, int map_y)
+{
+	int	door_state;
+
+	door_state = game->door_state_map[map_y][map_x];
+	if (door_state == 0)
+		game->door_state_map[map_y][map_x] = 1;
+	else if (door_state == 2)
+		game->door_state_map[map_y][map_x] = 3;
+}
+
+void	interact_with_door(t_game *game)
+{
+	int	map_x;
+	int	map_y;
+
+	map_x = (int)(game->player.x + game->player.dir_x);
+	map_y = (int)(game->player.y + game->player.dir_y);
+	if (game->map[map_y][map_x] == 'D')
+		open_or_close_door(game, map_x, map_y);
+}
 
 int	handle_key_press(int keycode, t_game *game)
 {
@@ -29,6 +50,8 @@ int	handle_key_press(int keycode, t_game *game)
 		game->player.rotate_left = 1;
 	if (keycode == XK_Right)
 		game->player.rotate_right = 1;
+	if (keycode == XK_e)
+		interact_with_door(game);
 	return (0);
 }
 

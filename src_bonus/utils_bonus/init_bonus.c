@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:38:09 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/19 15:48:52 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/20 14:50:51 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,35 @@ void init_minimap(t_game *game)
 		sepuku(game, ERROR_MLX);
 }
 
+void init_door_map(t_game *game)
+{
+    int i;
+    int j;
+
+    i = 0;
+    game->door_state_map = (int **)malloc(game->heightmap * sizeof(int *));
+    game->door_timer_map = (double **)malloc(game->heightmap * sizeof(double *));
+    if (!game->door_state_map || !game->door_timer_map)
+        sepuku(game, ERROR_MALLOC);
+    while (i < game->heightmap)
+    {
+        j = 0;
+        game->door_state_map[i] = (int *)malloc(game->widthmap * sizeof(int));
+        game->door_timer_map[i] = (double *)malloc(game->widthmap * sizeof(double));
+        if (!game->door_state_map[i] || !game->door_timer_map[i])
+            sepuku(game, ERROR_MALLOC);
+        while (j < game->widthmap)
+        {
+            game->door_timer_map[i][j] = 0;
+            if (game->map[i][j] == 'D')
+                game->door_state_map[i][j] = 0;
+            else
+                game->door_state_map[i][j] = 0;
+            j++;
+        }
+        i++;
+    }
+}
 void init_img(t_game *game)
 {
 	int i;
@@ -124,6 +153,7 @@ void init_img(t_game *game)
 		}
 		i++;
 	}
+	init_door_map(game);
 	init_minimap(game);
 	init_status(game);
 }

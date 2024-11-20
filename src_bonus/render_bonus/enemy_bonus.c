@@ -15,8 +15,7 @@ void handle_enemy(t_game *game)
     //  game->enemy.state = 1;
     // }
 	int i = 0;
-	int enemy_count = 2;
-	while (i < enemy_count)
+	while (i < game->enemy_count)
 	{
 		double inv_det = 1.0 / (game->plane_x * game->player.dir_y - game->plane_y * game->player.dir_x);
 		double transform_x = inv_det * (game->player.dir_y * (game->player.x - game->enemy[i].x) - game->player.dir_x * (game->player.y - game->enemy[i].y));

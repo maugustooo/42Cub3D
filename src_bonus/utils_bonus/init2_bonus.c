@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   init2_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 09:25:02 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/19 12:06:16 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/20 09:25:29 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+
+void	init_enemy2(t_game *game)
+{
+	int i;
+
+	i = 0;
+	while(i < game->enemy_count)
+	{
+		game->enemy[i].num_frame = NUM_FRAME;
+		game->enemy[i].frame_width = 64 / game->enemy[i].num_frame;
+		game->enemy[i].frame_height = 64;
+		game->enemy[i].curr_frame = 0;
+		i++;
+	}
+}
 
 void	init_enemy(t_game *game)
 {
@@ -33,4 +48,6 @@ void	init_enemy(t_game *game)
 			}
 		}
 	}
+	game->enemy_count = count;
+	init_enemy2(game);
 }

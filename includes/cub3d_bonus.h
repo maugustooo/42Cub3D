@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/19 15:54:42 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/20 10:19:48 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include <limits.h>
 # include <sys/time.h>
 # include <stdint.h>
+# define M_PI 3.14159265358979323846
 # define SPEED 0.1
 # define ROTSPEED 0.05
 # define MSPEED 0.025
@@ -42,6 +43,8 @@
 # define ENEM 5
 # define SCREEN_WIDTH 1920
 # define SCREEN_HEIGHT 945
+# define NUM_FRAME 7
+# define FRAME_DURATION 0.1
 typedef enum e_error
 {
 	ERROR_ARGS,
@@ -108,7 +111,17 @@ typedef struct s_enemy
 	int		visible;
 	int		health;
 	int		state;
+	int		num_frame;
+	int 	frame_width;
+	int 	frame_height;
+	int		curr_frame;
 }				t_enemy;
+
+typedef struct s_timer
+{
+	double	last_time;
+	double	elapsed_time;
+}				t_timer;
 
 typedef struct s_fps
 {
@@ -145,7 +158,7 @@ typedef struct s_game
 	t_img		player_face[5];
 	t_enemy		enemy[64];
 	t_fps		fps;
-	double z_buffer[SCREEN_WIDTH];
+	double		z_buffer[SCREEN_WIDTH];
 
 	int			wall_end;
 	int			wall_start;
@@ -171,11 +184,14 @@ typedef struct s_game
 	double		tex_pos;
 	double		step;
 
-	bool	door;
-	bool	wall;
-	bool	is_enemy;
-	bool	enemy_near;
-	bool	is_clear;
+	bool		door;
+	bool		wall;
+	bool		is_enemy;
+	bool		enemy_near;
+	bool		is_clear;
+
+	double		bob_time;
+	double		bob_offset;
 }				t_game;
 
 void	parse(char **argv, t_game *game);

@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/20 11:09:58 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/20 12:55:33 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@
 # define ENEM 5
 # define SCREEN_WIDTH 1920
 # define SCREEN_HEIGHT 945
-# define NUM_FRAME 7
+# define NUM_FRAME 8
 # define FRAME_DURATION 0.1
 typedef enum e_error
 {
@@ -189,6 +189,8 @@ typedef struct s_game
 	bool		is_enemy;
 	bool		enemy_near;
 	bool		is_clear;
+
+	t_timer		timer;
 }				t_game;
 
 void	parse(char **argv, t_game *game);
@@ -244,6 +246,9 @@ void	draw_minimap_square(t_game *game, int x, int y, int color);
 int		handle_mouse(int x, int y, t_game *game);
 
 void		handle_enemy(t_game *game);
+void	update_enemy_frame_mov(t_game *game,t_timer *timer, double curr_time);
 
 void put_player_face(t_game *game);
+suseconds_t ft_get_time(void);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 09:25:02 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/20 09:25:29 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/20 12:54:09 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_enemy2(t_game *game)
 	while(i < game->enemy_count)
 	{
 		game->enemy[i].num_frame = NUM_FRAME;
-		game->enemy[i].frame_width = 64 / game->enemy[i].num_frame;
+		game->enemy[i].frame_width = 64;
 		game->enemy[i].frame_height = 64;
 		game->enemy[i].curr_frame = 0;
 		i++;

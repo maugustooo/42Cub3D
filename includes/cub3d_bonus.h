@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/20 10:39:55 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/20 14:02:58 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include <limits.h>
 # include <sys/time.h>
 # include <stdint.h>
+# include <time.h>
 # define M_PI 3.14159265358979323846
 # define SPEED 0.1
 # define ROTSPEED 0.05
@@ -133,7 +134,8 @@ typedef struct s_fps
 typedef struct s_game
 {
 	char		**map;
-
+	int			**door_state_map;
+	double		**door_timer_map;
 	int			x;
 	int			y;
 	int			tlines;
@@ -177,7 +179,7 @@ typedef struct s_game
 	int			wall_side;
 	double		walldist;
 	double		cam_x;
-
+	
 	double		wall_x;
 	int			tex_x;
 	int			tex_y;
@@ -224,6 +226,8 @@ void	init_img(t_game *game);
 int		render(t_game *game);
 void	raycasting(t_game *game);
 void	draw_column(t_game *game, int x);
+void	define_texture(t_game *game, int start, int line_height);
+void	draw(t_game *game, int x, int texture);
 
 void	put_pixel(t_game *game, int x, int y, int color);
 int		get_color(t_game *game, int x, int y, int i);
@@ -251,4 +255,8 @@ void		handle_enemy(t_game *game);
 void	bob_anim(t_game *game);
 
 void put_player_face(t_game *game);
+
+void	draw_door(t_game *game, int x);
+void	update_door_timers(t_game *game, double delta_time);
+double get_delta_time();
 #endif

@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:16:57 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/19 12:23:41 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/20 15:41:13 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void what_draw(t_game *game, int x)
 {
 	if(game->door)
 		draw(game, x, DOOR);
-	else if(game->is_enemy)
-		draw(game, x, ENEM);
 	else
 	{
 		if (game->wall_side == 1 && game->ray_dir_y < 0)
@@ -73,7 +71,6 @@ int	set_column_size(t_game *game, int line_height)
 void	draw_column(t_game *game, int x)
 {
 	int	line_height;
-
 	line_height = 0;
 	line_height = set_column_size(game, line_height);
 	define_texture(game, game->wall_start, line_height);
@@ -81,7 +78,14 @@ void	draw_column(t_game *game, int x)
 	{
 		game->tex_y = (int)game->tex_pos;
 		game->tex_pos += game->step;
-		what_draw(game, x);
+		int door_state = game->door_state_map[game->map_y][game->map_x];
+		if (game->door && (door_state == 1 || door_state == 3))
+		{
+			update_door_timers(game, get_delta_time());
+            draw_door(game, x);
+		}
+		else
+			what_draw(game, x);
 		game->wall_start++;
 	}
 }

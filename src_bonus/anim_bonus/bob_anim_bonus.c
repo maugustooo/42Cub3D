@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 09:40:14 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/20 10:20:57 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/20 10:41:01 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	bob_anim(t_game *game)
 		{
 			adjusted_y = y + y_offset;
 			if(adjusted_y >= 0 && adjusted_y <= SCREEN_HEIGHT)
-				put_pixel(game, x, adjusted_y, get_color(game, x, y, )); //TODO: add the correct image index
+				game->plane_x = adjusted_y;
 		}
 	}
 }

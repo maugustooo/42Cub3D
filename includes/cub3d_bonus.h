@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/20 10:19:48 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/20 10:39:55 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,6 +248,7 @@ int		handle_mouse(int x, int y, t_game *game);
 
 void		handle_enemy(t_game *game);
 
+void	bob_anim(t_game *game);
 
 void put_player_face(t_game *game);
 #endif

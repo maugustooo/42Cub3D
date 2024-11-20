@@ -6,13 +6,13 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 09:37:58 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/20 09:38:10 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/20 10:38:27 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-void	render_enemy_frame_mov(t_game *game, int x, int y)
+void	render_enemy_frame_mov(t_game *game)
 {
 	int frame_x;
 	int frame_y;
@@ -33,7 +33,7 @@ void	update_enemy_frame_mov(t_game *game,t_timer *timer, double curr_time)
 
 	delta_time = curr_time - timer->last_time;
 	timer->elapsed_time += delta_time;
-	i - 0;
+	i = 0;
 	while(i < game->enemy_count)
 	{
 		if(timer->elapsed_time >= FRAME_DURATION)

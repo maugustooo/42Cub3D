@@ -6,7 +6,7 @@
 #    By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 09:44:12 by gude-jes          #+#    #+#              #
-#    Updated: 2024/11/20 10:23:09 by gude-jes         ###   ########.fr        #
+#    Updated: 2024/11/20 10:48:50 by gude-jes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ PARSE_BONUS		= parse_bonus map_validation_bonus read_map_bonus read_textures_bon
 UTILS_BONUS		= file_utils_bonus file_utils2_bonus init_bonus init2_bonus sepuku_bonus colors_bonus read_textures_utils_bonus render_utils_bonus map_utils_bonus
 CONTROLS_BONUS	= controls_bonus keys_bonus move_bonus
 RENDER_BONUS 	= render_bonus raycasting_bonus draw_bonus minimap_bonus enemy_bonus fps_bonus player_face_bonus
-ANIM_BONUS		= bob_anim_bonus enem_frame
+ANIM_BONUS		= enem_frame
 
 ARG			= maps/good/game.cub
 

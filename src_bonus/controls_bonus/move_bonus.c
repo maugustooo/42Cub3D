@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:17:26 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/20 10:21:42 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/20 11:10:13 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,6 @@ int	move_up(t_game *game, double next_x, double next_y)
 		game->player.x += next_x;
 		move = 1;
 	}
-	if(move)
-	{
-		game->bob_time += 0.1;
-		if(game->bob_time > 2 * M_PI)
-			game->bob_time -= 2* M_PI;
-		game->bob_offset = sin(game->bob_time) * 5;
-	}
-	else
-		game->bob_offset *= 0.9;
 	return (move);
 }
 

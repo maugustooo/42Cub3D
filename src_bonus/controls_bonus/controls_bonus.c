@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:18:40 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/20 10:40:38 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/20 10:49:55 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,5 @@ int	controls(t_game *game)
 		rotate(game, -ROTSPEED);
 	if(moved)
 		set_health(game);
-	if(moved)
-		bob_anim(game);
 	return (0);
 }

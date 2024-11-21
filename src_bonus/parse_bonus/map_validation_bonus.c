@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:29:59 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/19 12:05:18 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/21 11:36:02 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ void	check_textures(t_game *game)
 	check_file(game->textr.west, game);
 	check_file(game->textr.door, game);
 	check_file(game->textr.enemy1, game);
-	check_file(game->textr.enemy2, game);
-	check_file(game->textr.enemyd1, game);
-	check_file(game->textr.enemyd2, game);
-	check_duplicate_text(game);
+	// check_file(game->textr.enemy2, game);
+	// check_file(game->textr.enemyd1, game);
+	// check_file(game->textr.enemyd2, game);
+	//check_duplicate_text(game);
 }
 
 void	player_direction(char pos, t_game *game)

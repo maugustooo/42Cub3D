@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:13:57 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/20 12:54:34 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/21 11:31:11 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ int	render(t_game *game)
 	controls(game);
 	render_background(game);
 	raycasting(game);
+	int door_state = game->door_state_map[game->map_y][game->map_x];
+	if (game->door && (door_state == 1 || door_state == 3))
+	{
+		update_door_timers(game, get_delta_time());
+		draw_door(game, 1);
+	}
 	double curr_time = (double)ft_get_time();
 	update_enemy_frame_mov(game, &game->timer, curr_time);
 	game->z_buffer[game->x] = game->walldist;

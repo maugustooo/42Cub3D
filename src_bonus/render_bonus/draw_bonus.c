@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:16:57 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/20 15:41:13 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/21 11:31:02 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,7 @@ void	draw_column(t_game *game, int x)
 	{
 		game->tex_y = (int)game->tex_pos;
 		game->tex_pos += game->step;
-		int door_state = game->door_state_map[game->map_y][game->map_x];
-		if (game->door && (door_state == 1 || door_state == 3))
-		{
-			update_door_timers(game, get_delta_time());
-            draw_door(game, x);
-		}
-		else
-			what_draw(game, x);
+		what_draw(game, x);
 		game->wall_start++;
 	}
 }

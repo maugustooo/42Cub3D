@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:13:57 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/21 11:31:11 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:04:25 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,13 @@ int	render(t_game *game)
 	}
 	double curr_time = (double)ft_get_time();
 	update_enemy_frame_mov(game, &game->timer, curr_time);
+	update_weapon_frame(game, &game->timer, curr_time);
 	game->z_buffer[game->x] = game->walldist;
 	handle_enemy(game);
 	update_fps(game);
 	put_player_face(game);
 	render_minimap(game);
+	render_weapon(game);
 	mlx_put_image_to_window(game->mlx_ptr, game->window, game->img[6].mlx_img,
 		0, 0);
 	mlx_put_image_to_window(game->mlx_ptr, game->window, game->player_face[4].mlx_img,

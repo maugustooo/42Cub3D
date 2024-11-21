@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/21 09:51:16 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/21 12:24:16 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 # include <sys/time.h>
 # include <stdint.h>
 # include <time.h>
+
+# define M_PI 3.14159265358979323846
 # define SPEED 0.1
 # define ROTSPEED 0.05
 # define MSPEED 0.025
@@ -45,6 +47,8 @@
 # define SCREEN_HEIGHT 945
 # define NUM_FRAME 7
 # define FRAME_DURATION 0.1
+# define WEAPON_NUM_FRAME 3
+# define WEAPON_FRAME_DURATION 0.1
 typedef enum e_error
 {
 	ERROR_ARGS,
@@ -101,6 +105,13 @@ typedef struct s_player
 	int 	scared;
 }				t_player;
 
+typedef struct s_weapon
+{
+    int curr_frame;
+    int frame_width;
+    int frame_height;
+    bool is_attacking;
+}				t_weapon;
 
 typedef struct s_enemy
 {
@@ -154,6 +165,8 @@ typedef struct s_game
 	t_textr		textr;
 	t_img		img[10];
 	t_img		minimap;
+	t_weapon	weapon;
+	t_img		weapon_img;
 	t_img		fps_img;
 	t_player	player;
 	t_img		player_face[5];
@@ -257,4 +270,6 @@ void put_player_face(t_game *game);
 void	draw_door(t_game *game, int x);
 void	update_door_timers(t_game *game, double delta_time);
 double get_delta_time();
+void	render_weapon(t_game *game);
+void	update_weapon_frame(t_game *game, t_timer *timer, double curr_time);
 #endif

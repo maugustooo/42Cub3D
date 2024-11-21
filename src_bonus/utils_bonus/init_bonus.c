@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:38:09 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/21 08:26:39 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/21 11:43:42 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void init_status(t_game *game)
 
 char *files(int i, t_game *game)
 {
-	char *strings[10];
+	char *strings[11];
 
 	strings[0] = game->textr.south;
 	strings[1] = game->textr.north;
@@ -65,6 +65,7 @@ char *files(int i, t_game *game)
 	strings[7] = "textures/game/state2.xpm";
 	strings[8] = "textures/game/state3.xpm";
 	strings[9] = "textures/game/state4.xpm";
+	strings[10] = "textures/game/weapon.xpm";
 	return (strings[i]);
 }
 
@@ -135,6 +136,8 @@ void init_img(t_game *game)
 										 SCREEN_WIDTH, SCREEN_HEIGHT);
 	game->player_face[4].mlx_img = mlx_new_image(game->mlx_ptr,
 												 128 + 32, 128 + 32);
+	game->weapon_img.mlx_img = mlx_xpm_file_to_image(game->mlx_ptr,
+												  files(10, game), &game->weapon_img.width, &game->weapon_img.height);
 	i = 0;
 	while (i < 7)
 	{
@@ -153,6 +156,9 @@ void init_img(t_game *game)
 		}
 		i++;
 	}
+	game->weapon_img.addr = mlx_get_data_addr(game->weapon_img.mlx_img,
+											&game->weapon_img.bpp, &game->weapon_img.line_len,
+											&game->weapon_img.endian);
 	init_door_map(game);
 	init_minimap(game);
 	init_status(game);

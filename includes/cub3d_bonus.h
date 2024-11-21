@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/21 12:24:16 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/21 15:32:04 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 # define NUM_FRAME 7
 # define FRAME_DURATION 0.1
 # define WEAPON_NUM_FRAME 3
-# define WEAPON_FRAME_DURATION 0.1
+# define WEAPON_FRAME_DURATION 0.06
 typedef enum e_error
 {
 	ERROR_ARGS,
@@ -103,6 +103,7 @@ typedef struct s_player
 	int		rotate_right;
 	int		health;
 	int 	scared;
+	bool	attack;
 }				t_player;
 
 typedef struct s_weapon
@@ -132,6 +133,8 @@ typedef struct s_timer
 {
 	double	last_time;
 	double	elapsed_time;
+	double	weapon_last_time;
+	double	weapon_elapsed_time;
 }				t_timer;
 
 typedef struct s_fps
@@ -267,9 +270,11 @@ suseconds_t ft_get_time(void);
 
 void put_player_face(t_game *game);
 
+void	draw_static_door(t_game *game, int x, int line_height);
 void	draw_door(t_game *game, int x);
 void	update_door_timers(t_game *game, double delta_time);
-double get_delta_time();
+double	get_delta_time();
 void	render_weapon(t_game *game);
 void	update_weapon_frame(t_game *game, t_timer *timer, double curr_time);
+int		handle_mouse_click(int button, int x, int y, void *param);
 #endif

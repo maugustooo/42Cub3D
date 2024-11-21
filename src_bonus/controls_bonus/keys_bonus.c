@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:18:15 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/20 15:51:51 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/21 14:05:12 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	handle_key_press(int keycode, t_game *game)
 		game->player.rotate_right = 1;
 	if (keycode == XK_e)
 		interact_with_door(game);
+	
 	return (0);
 }
 
@@ -92,4 +93,17 @@ int	handle_mouse(int x, int y, t_game *game)
 	}
 	mlx_mouse_move(game->mlx_ptr, game->window, SCREEN_WIDTH / 2, y);
 	return (0);
+}
+
+int handle_mouse_click(int button, int x, int y, void *param)
+{
+    t_game *game = (t_game *)param;
+
+	(void)x;
+	(void)y;
+    if (button == Button1)
+        game->player.attack = true;
+	else
+		game->player.attack = false;
+    return (0);
 }

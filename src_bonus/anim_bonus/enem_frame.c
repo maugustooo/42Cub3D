@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 09:37:58 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/20 11:42:26 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/21 09:38:11 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	update_enemy_frame_mov(t_game *game,t_timer *timer, double curr_time)
 	int i;
 
 	delta_time = curr_time - timer->last_time;
-	delta_time /= 1000;
+	delta_time /= 3000;
 	timer->elapsed_time += delta_time;
 	i = 0;
 	while(i < game->enemy_count)

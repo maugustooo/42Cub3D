@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/20 16:01:58 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/21 09:51:16 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@
 # include <sys/time.h>
 # include <stdint.h>
 # include <time.h>
-# define M_PI 3.14159265358979323846
 # define SPEED 0.1
 # define ROTSPEED 0.05
 # define MSPEED 0.025
@@ -44,7 +43,7 @@
 # define ENEM 5
 # define SCREEN_WIDTH 1920
 # define SCREEN_HEIGHT 945
-# define NUM_FRAME 8
+# define NUM_FRAME 7
 # define FRAME_DURATION 0.1
 typedef enum e_error
 {
@@ -251,6 +250,7 @@ int		handle_mouse(int x, int y, t_game *game);
 
 void		handle_enemy(t_game *game);
 void	update_enemy_frame_mov(t_game *game,t_timer *timer, double curr_time);
+suseconds_t ft_get_time(void);
 
 void put_player_face(t_game *game);
 

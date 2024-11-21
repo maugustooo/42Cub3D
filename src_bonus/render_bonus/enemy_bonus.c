@@ -2,18 +2,6 @@
 
 void handle_enemy(t_game *game)
 {
-    // if (game->enemy.health <= 0)
-    // {
-    //  game->enemy.state = 0;
-    //  game->map[(int)game->enemy.y][(int)game->enemy.x] = '0';
-    // }
-    // if (game->enemy.state == 0)
-    // {
-    //  game->enemy.x = game->enemy.x + 0.1;
-    //  game->enemy.y = game->enemy.y + 0.1;
-    //  game->enemy.health = 100;
-    //  game->enemy.state = 1;
-    // }
 	int i = 0;
 	while (i < game->enemy_count)
 	{
@@ -47,8 +35,8 @@ void handle_enemy(t_game *game)
 				{
 					int d = (y - vMoveScreen) * 256 - SCREEN_HEIGHT * 128 + (int)sprite_height * 128; //256 and 128 factors to avoid floats
 					int tex_y = ((d * game->enemy[i].frame_height) / (int)sprite_height) / 256;
-					unsigned int color = get_color(game, game->enemy[i].curr_frame * game->enemy[i].frame_width + tex_x, tex_y, ENEM);
-					if (((color & 0xFF000000) != 0xFF000000))
+					unsigned int color = get_color(game, game->enemy[i].curr_frame * game->enemy[i].frame_width + tex_x + 2, tex_y + 2, ENEM);
+					if (color != 0x00FF12)
 						put_pixel(game, x, y, color); 
 				}
 				game->enemy_near = true;

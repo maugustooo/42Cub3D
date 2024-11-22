@@ -59,6 +59,20 @@ void	render_player_on_minimap(t_game *game)
 	draw_minimap_square(game, player_x, player_y, color);
 }
 
+int check_enemy(t_game *game, int x, int y)
+{
+	int i;
+
+	i = 0;
+	while (i < game->enemy_count)
+	{
+		if ((int)game->enemy[i].x == x && (int)game->enemy[i].y == y && game->enemy[i].died)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 void	render_minimap(t_game *game)
 {
 	int x;
@@ -75,7 +89,12 @@ void	render_minimap(t_game *game)
 			else if (game->map[y][x] == 'D')
 				draw_minimap_square(game, x * 10, y * 10, 0xFFCC00);
 			else if (game->map[y][x] == 'X')
-				draw_minimap_square(game, x * 10, y * 10, 0xFF0000);
+			{
+				if(check_enemy(game, x, y))
+					draw_minimap_square(game, x * 10, y * 10, 0xFFFFFF);
+				else
+					draw_minimap_square(game, x * 10, y * 10, 0xFF0000);
+			}
 			else if (game->map[y][x] != '1' || game->map[y][x] != 'D' || game->map[y][x] != 'X')
 				draw_minimap_square(game, x * 10, y * 10, 0xFFFFFF);
 			y++;

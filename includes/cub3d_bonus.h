@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/21 15:32:04 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/22 15:50:32 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 # define SCREEN_HEIGHT 945
 # define NUM_FRAME 7
 # define FRAME_DURATION 0.1
+# define DEATH_FRAME_DURATION  0.2
 # define WEAPON_NUM_FRAME 3
 # define WEAPON_FRAME_DURATION 0.06
 typedef enum e_error
@@ -120,6 +121,9 @@ typedef struct s_enemy
 	double	x;
 	double	y;
 	double	distance;
+	double	curr_time;
+	double	last_time;
+	double	elapsed_time;
 	int		visible;
 	int		health;
 	int		state;
@@ -127,12 +131,17 @@ typedef struct s_enemy
 	int 	frame_width;
 	int 	frame_height;
 	int		curr_frame;
+	int		sprite_line;
+	bool	die;
+	bool	died;
 }				t_enemy;
 
 typedef struct s_timer
 {
 	double	last_time;
 	double	elapsed_time;
+	double	enemy_last_time;
+	double	enemy_elapsed_time;
 	double	weapon_last_time;
 	double	weapon_elapsed_time;
 }				t_timer;
@@ -168,6 +177,7 @@ typedef struct s_game
 	t_textr		textr;
 	t_img		img[10];
 	t_img		minimap;
+	t_img		victory;
 	t_weapon	weapon;
 	t_img		weapon_img;
 	t_img		fps_img;
@@ -265,7 +275,8 @@ void	draw_minimap_square(t_game *game, int x, int y, int color);
 int		handle_mouse(int x, int y, t_game *game);
 
 void		handle_enemy(t_game *game);
-void	update_enemy_frame_mov(t_game *game,t_timer *timer, double curr_time);
+// void	update_enemy_frame_mov(t_game *game,t_timer *timer, double curr_time);
+void	update_enemy_frame(t_game *game,t_timer *timer, double curr_time);
 suseconds_t ft_get_time(void);
 
 void put_player_face(t_game *game);

@@ -104,8 +104,5 @@ void	draw_door(t_game *game, int x)
 	line_height = SCREEN_HEIGHT / game->walldist;
 	door_state = game->door_state_map[game->map_y][game->map_x];
 	if (door_state == 1 || door_state == 3)
-	{
-		printf("door\n");
 		draw_opening_or_closing_door(game, line_height);
-	}
 }

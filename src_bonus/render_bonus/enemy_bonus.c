@@ -26,6 +26,7 @@ void handle_enemy(t_game *game)
 		int end_y = SCREEN_HEIGHT / 2 + (int)sprite_height / 2 + vMoveScreen;
 		if (end_y >= SCREEN_HEIGHT)
 			end_y = SCREEN_HEIGHT - 1;
+		// printf("game->enemy[%d].curr_frame: %d\n",i ,game->enemy[i].curr_frame);
 		for (int x = start_x; x < end_x; x++)
 		{
 			int tex_x = (int)(256 * (x - (-(int)sprite_width / 2 + screen_x)) * 64 / (int)sprite_width) / 256;
@@ -33,9 +34,16 @@ void handle_enemy(t_game *game)
 			{
 				for (int y = start_y; y < end_y; y++)
 				{
-					int d = (y - vMoveScreen) * 256 - SCREEN_HEIGHT * 128 + (int)sprite_height * 128; //256 and 128 factors to avoid floats
+					int d = (y - vMoveScreen) * 256 - SCREEN_HEIGHT * 128 + (int)sprite_height * 128;
 					int tex_y = ((d * game->enemy[i].frame_height) / (int)sprite_height) / 256;
-					unsigned int color = get_color(game, game->enemy[i].curr_frame * game->enemy[i].frame_width + tex_x + 2, tex_y + 2, ENEM);
+					int sprite_line_offset = game->enemy[i].sprite_line * game->enemy[i].frame_height;
+					if(game->enemy[i].die)
+						sprite_line_offset += 22;
+					if(game->enemy[i].die && game->enemy[i].sprite_line == 10)
+						sprite_line_offset -= 2;
+					if(game->enemy[i].died)
+						sprite_line_offset += 22;
+					unsigned int color = get_color(game, game->enemy[i].curr_frame * game->enemy[i].frame_width +  + tex_x + 2, (tex_y + 2) + sprite_line_offset, ENEM);
 					if (color != 0x00FF12)
 						put_pixel(game, x, y, color); 
 				}

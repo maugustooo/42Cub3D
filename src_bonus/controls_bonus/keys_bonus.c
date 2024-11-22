@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:18:15 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/21 14:05:12 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/22 13:53:06 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,13 +97,33 @@ int	handle_mouse(int x, int y, t_game *game)
 
 int handle_mouse_click(int button, int x, int y, void *param)
 {
-    t_game *game = (t_game *)param;
+    t_game	*game = (t_game *)param;
+	double	dx;
+	double	dy;
+	double	distance;
+	int i;
 
+	i = 0;
 	(void)x;
 	(void)y;
     if (button == Button1)
+	{
         game->player.attack = true;
-	else
-		game->player.attack = false;
+		while (i < game->enemy_count)
+		{
+			dx = game->enemy[i].x - game->player.x;
+			dy = game->enemy[i].y - game->player.y;
+			distance = sqrt(dx * dx + dy * dy);
+			if (distance < 1.0)
+			{
+				game->enemy[i].die = true;
+				game->enemy[i].sprite_line = 10; // Iniciar a sequência de morte
+           		game->enemy[i].curr_frame = 4;
+			}
+			game->enemy[i].curr_time = (double)ft_get_time();
+			i++;
+		}
+		
+	}
     return (0);
 }

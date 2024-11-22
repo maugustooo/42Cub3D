@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:38:09 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/21 11:43:42 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/22 14:05:14 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void init_status(t_game *game)
 
 char *files(int i, t_game *game)
 {
-	char *strings[11];
+	char *strings[12];
 
 	strings[0] = game->textr.south;
 	strings[1] = game->textr.north;
@@ -66,6 +66,7 @@ char *files(int i, t_game *game)
 	strings[8] = "textures/game/state3.xpm";
 	strings[9] = "textures/game/state4.xpm";
 	strings[10] = "textures/game/weapon.xpm";
+	strings[11] = "textures/game/therock.xpm";
 	return (strings[i]);
 }
 
@@ -126,31 +127,31 @@ void init_img(t_game *game)
 	while (i < 6)
 	{
 		game->img[i].mlx_img = mlx_xpm_file_to_image(game->mlx_ptr,
-													 files(i, game), &game->img[i].width, &game->img[i].height);
+			files(i, game), &game->img[i].width, &game->img[i].height);
 		if(i < 4)
 			game->player_face[i].mlx_img = mlx_xpm_file_to_image(game->mlx_ptr,
-															  	files(i + 6, game), &game->player_face[i].width, &game->player_face[i].height);
+				files(i + 6, game), &game->player_face[i].width, &game->player_face[i].height);
 		i++;
 	}
 	game->img[6].mlx_img = mlx_new_image(game->mlx_ptr,
-										 SCREEN_WIDTH, SCREEN_HEIGHT);
+		SCREEN_WIDTH, SCREEN_HEIGHT);
 	game->player_face[4].mlx_img = mlx_new_image(game->mlx_ptr,
-												 128 + 32, 128 + 32);
+		128 + 32, 128 + 32);
 	game->weapon_img.mlx_img = mlx_xpm_file_to_image(game->mlx_ptr,
-												  files(10, game), &game->weapon_img.width, &game->weapon_img.height);
+		files(10, game), &game->weapon_img.width, &game->weapon_img.height);
+	game->victory.mlx_img = mlx_xpm_file_to_image(game->mlx_ptr,
+		files(11, game), &game->victory.width, &game->victory.height);
 	i = 0;
 	while (i < 7)
 	{
 		game->img[i].addr = mlx_get_data_addr(game->img[i].mlx_img,
-											  &game->img[i].bpp, &game->img[i].line_len,
-											  &game->img[i].endian);
+			&game->img[i].bpp, &game->img[i].line_len, &game->img[i].endian);
 		if (!game->img[i].addr)
 			sepuku(game, ERROR_MLX);
 		if(i < 5)
 		{
 			game->player_face[i].addr = mlx_get_data_addr(game->player_face[i].mlx_img,
-														&game->player_face[i].bpp, &game->player_face[i].line_len,
-														&game->player_face[i].endian);
+				&game->player_face[i].bpp, &game->player_face[i].line_len, &game->player_face[i].endian);
 			if (!game->player_face[i].addr)
 				sepuku(game, ERROR_MLX);
 		}

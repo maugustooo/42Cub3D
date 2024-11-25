@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/25 09:49:10 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/25 12:32:12 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,10 +109,14 @@ typedef struct s_player
 
 typedef struct s_weapon
 {
-    int curr_frame;
-    int frame_width;
-    int frame_height;
-    bool is_attacking;
+    int		curr_frame;
+    int		frame_width;
+    int		frame_height;
+    bool	is_attacking;
+	double	scale_factor_width;
+	double 	scale_factor_height;
+	int		scaled_width;
+	int		scaled_height;
 }				t_weapon;
 
 typedef struct s_enemy
@@ -134,6 +138,8 @@ typedef struct s_enemy
 	int		sprite_line;
 	bool	die;
 	bool	died;
+	double	dx;
+	double	dy;
 }				t_enemy;
 
 typedef struct s_timer
@@ -148,11 +154,11 @@ typedef struct s_timer
 
 typedef struct s_fps
 {
-    struct timeval last_time;
-    int frame_count;
-    double elapsed_time;
-    int fps;
-} t_fps;
+    struct timeval	last_time;
+    int 			frame_count;
+    double			elapsed_time;
+    int				fps;
+}				t_fps;
 typedef struct s_game
 {
 	char		**map;
@@ -243,6 +249,9 @@ void	init_enemy(t_game *game);
 int		sepuku(t_game *game, enum e_error i);
 void	free_map(bool **map);
 int		ft_exit(t_game *game);
+int		create_rgb(int t, int r, int g, int b);
+void	init_raycasting(t_game *game, int x);
+void	init_weapon(t_game *game);
 char	*files(int i, t_game *game);
 
 int		controls(t_game *game);

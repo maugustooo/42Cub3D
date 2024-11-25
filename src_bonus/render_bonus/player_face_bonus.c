@@ -35,11 +35,34 @@ void clear_player_face(t_game *game)
     }
 }
 
+void put_player_face2(t_game *game)
+{
+	int	x;
+	int	y;
+	int	color;
+
+	x = 1;
+    while (x < 127)
+    {
+        y = 1;
+        while (y < 127)
+        {
+			if(game->enemy_near == true && game->player.health == 0)
+				color = get_color_player(game, x, y, 3);
+			else
+            	color = get_color_player(game, x, y, game->player.health);
+            if (color != 0)
+                put_pixel_player(game, x + 16, y + 16, color);
+            y++;
+        }
+        x++;
+    }
+}
+
 void put_player_face(t_game *game)
 {
     int x;
     int y;
-    int color;
 
     x = 0;
     while (x < 32)
@@ -59,19 +82,5 @@ void put_player_face(t_game *game)
 		clear_player_face(game);
     game->is_clear = false;
 	x = 1;
-    while (x < 127)
-    {
-        y = 1;
-        while (y < 127)
-        {
-			if(game->enemy_near == true && game->player.health == 0)
-				color = get_color_player(game, x, y, 3);
-			else
-            	color = get_color_player(game, x, y, game->player.health);
-            if (color != 0)
-                put_pixel_player(game, x + 16, y + 16, color);
-            y++;
-        }
-        x++;
-    }
+	put_player_face2(game);
 }

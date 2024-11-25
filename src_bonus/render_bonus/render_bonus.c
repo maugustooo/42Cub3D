@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:13:57 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/22 14:06:21 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/25 12:09:15 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-
-int	create_rgb(int t, int r, int g, int b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
-}
 
 void	render_background(t_game *game)
 {
@@ -66,6 +61,18 @@ void check_victory(t_game *game)
 	}
 }
 
+void mlx_put_img(t_game *game)
+{
+	mlx_put_image_to_window(game->mlx_ptr, game->window, game->img[6].mlx_img,
+		0, 0);
+	mlx_put_image_to_window(game->mlx_ptr, game->window, game->player_face[4].mlx_img,
+		SCREEN_WIDTH - 192, SCREEN_HEIGHT - 192);
+	mlx_put_image_to_window(game->mlx_ptr, game->window, game->minimap.mlx_img,
+		10, 10);
+	mlx_put_image_to_window(game->mlx_ptr, game->window, game->fps_img.mlx_img,
+		 game->widthmap * 10 + 12, 12);
+}
+
 int	render(t_game *game)
 {
 	check_victory(game);
@@ -87,13 +94,6 @@ int	render(t_game *game)
 	put_player_face(game);
 	render_minimap(game);
 	render_weapon(game);
-	mlx_put_image_to_window(game->mlx_ptr, game->window, game->img[6].mlx_img,
-		0, 0);
-	mlx_put_image_to_window(game->mlx_ptr, game->window, game->player_face[4].mlx_img,
-		SCREEN_WIDTH - 192, SCREEN_HEIGHT - 192);
-	mlx_put_image_to_window(game->mlx_ptr, game->window, game->minimap.mlx_img,
-		10, 10);
-	mlx_put_image_to_window(game->mlx_ptr, game->window, game->fps_img.mlx_img,
-		 game->widthmap * 10 + 12, 12);
+	mlx_put_img(game);
 	return (0);
 }

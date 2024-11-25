@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:55:00 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/15 08:53:48 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/25 12:08:32 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,9 @@ void	check_rgb(char *color, t_game *game, int type)
 			game->rgb_sky[i] = ft_atoi(rgb[i]);
 	}
 	free_rgb(rgb);
+}
+
+int	create_rgb(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
 }

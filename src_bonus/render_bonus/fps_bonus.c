@@ -39,7 +39,7 @@ void draw_char_to_image(t_game *game, char c, int x, int y, uint32_t color)
     ['P'] = {0x7C, 0x66, 0x66, 0x7C, 0x60, 0x60, 0x60, 0x00},
     ['S'] = {0x3C, 0x66, 0x60, 0x3C, 0x06, 0x66, 0x3C, 0x00},
     [':'] = {0x00, 0x18, 0x18, 0x00, 0x18, 0x18, 0x00, 0x00},
-};
+	};
     if (ft_isascii(c) == 0)
         return;
     for (int row = 0; row < 16; row++)
@@ -91,7 +91,7 @@ void	render_fps(t_game *game)
 	x = 5;
 	y = 5;
 	i = 0;
-	snprintf(fps_str, sizeof(fps_str), "FPS: %d", game->fps.fps);
+	snprintf(fps_str, sizeof(fps_str), "FPS: %d", game->fps.fps); //TODO: TROCAR ISTO
 	draw_filled_rectangle(game, x, y, 8 * strlen(fps_str), 8, 0x000000);
 	while (fps_str[i] != '\0')
 	{

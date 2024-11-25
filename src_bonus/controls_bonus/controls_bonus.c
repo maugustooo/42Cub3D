@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:18:40 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/20 16:01:41 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/25 12:23:46 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,21 @@
 
 void set_health(t_game *game)
 {
-	int i = 0;
-	while (i < game->enemy_count)
+	int i;
+
+	i = -1;
+	while (++i < game->enemy_count)
 	{
-		double dx = game->enemy[i].x - game->player.x;
-    	double dy = game->enemy[i].y - game->player.y;
-    	double distance = sqrt(dx * dx + dy * dy);
-		if (distance <= 3.0)
+		game->enemy->dx = game->enemy[i].x - game->player.x;
+    	game->enemy->dy = game->enemy[i].y - game->player.y;
+    	game->enemy->distance = sqrt(game->enemy->dx * game->enemy->dx
+			+ game->enemy->dy * game->enemy->dy);
+		if (game->enemy->distance <= 3.0)
 		{
 			game->player.health = 2;
 			game->is_clear = true;
 		}
-		else if (distance <= 5.0)
+		else if (game->enemy->distance <= 5.0)
 		{
 			game->player.health = 1;
 			game->is_clear = true;
@@ -38,7 +41,6 @@ void set_health(t_game *game)
 				game->is_clear = true;
 			}
 		}
-		i++;
 	}
 }
 
@@ -66,7 +68,8 @@ int	controls(t_game *game)
 		moved = move_up(game, game->player.dir_x * SPEED, game->player.dir_y
 				* SPEED);
 	if (game->player.move_down == 1)
-		moved = move_down(game, game->player.dir_x * SPEED, game->player.dir_y * SPEED);
+		moved = move_down(game, game->player.dir_x * SPEED,
+			game->player.dir_y * SPEED);
 	if (game->player.move_right == 1)
 		moved = move_right(game, game->plane_x * SPEED, game->plane_y * SPEED);
 	if (game->player.move_left == 1)

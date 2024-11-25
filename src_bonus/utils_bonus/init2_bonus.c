@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 09:25:02 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/25 09:48:43 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/25 12:43:10 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	init_enemy2(t_game *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(i < game->enemy_count)
+	while (i < game->enemy_count)
 	{
 		game->enemy[i].frame_width = 66;
 		game->enemy[i].frame_height = 64;
@@ -28,15 +28,16 @@ void	init_enemy2(t_game *game)
 
 void	init_enemy(t_game *game)
 {
-	int i;
-	int j;
-	int count = 0;
+	int	i;
+	int	j;
+	int	count;
+
+	count = 0;
 	i = -1;
-	
-	while(game->map[++i])
+	while (game->map[++i])
 	{
 		j = -1;
-		while(game->map[i][++j])
+		while (game->map[i][++j])
 		{
 			if (game->map[i][j] == 'X')
 			{
@@ -51,9 +52,9 @@ void	init_enemy(t_game *game)
 	init_enemy2(game);
 }
 
-char *files(int i, t_game *game)
+char	*files(int i, t_game *game)
 {
-	char *strings[12];
+	char	*strings[12];
 
 	strings[0] = game->textr.south;
 	strings[1] = game->textr.north;
@@ -68,4 +69,13 @@ char *files(int i, t_game *game)
 	strings[10] = "textures/game/weapon.xpm";
 	strings[11] = "textures/game/therock.xpm";
 	return (strings[i]);
+}
+
+void	init_raycasting(t_game *game, int x)
+{
+	game->map_x = (int)game->player.x;
+	game->map_y = (int)game->player.y;
+	game->cam_x = (2 * x) / (double)SCREEN_WIDTH - 1;
+	game->ray_dir_x = game->player.dir_x + game->plane_x * game->cam_x;
+	game->ray_dir_y = game->player.dir_y + game->plane_y * game->cam_x;
 }

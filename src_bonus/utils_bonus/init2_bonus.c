@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 09:25:02 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/21 09:36:07 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/25 09:48:43 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,23 @@ void	init_enemy(t_game *game)
 	}
 	game->enemy_count = count;
 	init_enemy2(game);
+}
+
+char *files(int i, t_game *game)
+{
+	char *strings[12];
+
+	strings[0] = game->textr.south;
+	strings[1] = game->textr.north;
+	strings[2] = game->textr.east;
+	strings[3] = game->textr.west;
+	strings[4] = game->textr.door;
+	strings[5] = game->textr.enemy1;
+	strings[6] = "textures/game/state1.xpm";
+	strings[7] = "textures/game/state2.xpm";
+	strings[8] = "textures/game/state3.xpm";
+	strings[9] = "textures/game/state4.xpm";
+	strings[10] = "textures/game/weapon.xpm";
+	strings[11] = "textures/game/therock.xpm";
+	return (strings[i]);
 }

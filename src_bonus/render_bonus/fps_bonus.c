@@ -1,4 +1,5 @@
 #include "cub3d_bonus.h"
+
 void	put_pixel_to_image(t_game *game, int x, int y, int color)
 {
 	char	*pixel;

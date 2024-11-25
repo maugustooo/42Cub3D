@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:38:09 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/22 14:05:14 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/25 09:48:48 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,25 +49,6 @@ void init_status(t_game *game)
 	game->player.health = 0;
 	game->player.scared = 0;
 	init_status2(game);
-}
-
-char *files(int i, t_game *game)
-{
-	char *strings[12];
-
-	strings[0] = game->textr.south;
-	strings[1] = game->textr.north;
-	strings[2] = game->textr.east;
-	strings[3] = game->textr.west;
-	strings[4] = game->textr.door;
-	strings[5] = game->textr.enemy1;
-	strings[6] = "textures/game/state1.xpm";
-	strings[7] = "textures/game/state2.xpm";
-	strings[8] = "textures/game/state3.xpm";
-	strings[9] = "textures/game/state4.xpm";
-	strings[10] = "textures/game/weapon.xpm";
-	strings[11] = "textures/game/therock.xpm";
-	return (strings[i]);
 }
 
 void init_minimap(t_game *game)
@@ -119,6 +100,7 @@ void init_door_map(t_game *game)
         i++;
     }
 }
+
 void init_img(t_game *game)
 {
 	int i;

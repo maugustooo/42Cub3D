@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/22 15:50:32 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/25 09:49:10 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,6 +243,7 @@ void	init_enemy(t_game *game);
 int		sepuku(t_game *game, enum e_error i);
 void	free_map(bool **map);
 int		ft_exit(t_game *game);
+char	*files(int i, t_game *game);
 
 int		controls(t_game *game);
 void	init_img(t_game *game);

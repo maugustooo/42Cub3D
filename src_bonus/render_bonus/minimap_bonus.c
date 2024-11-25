@@ -78,11 +78,11 @@ void	render_minimap(t_game *game)
 	int x;
 	int y;
 
-	x = 0;
-	while (x < game->widthmap)
+	x = -1;
+	while (++x < game->widthmap)
 	{
-		y = 0;
-		while (y < game->heightmap)
+		y = -1;
+		while (++y < game->heightmap)
 		{
 			if (game->map[y][x] == '1')
 				draw_minimap_square(game, x * 10, y * 10, 0x000000);
@@ -97,9 +97,7 @@ void	render_minimap(t_game *game)
 			}
 			else if (game->map[y][x] != '1' || game->map[y][x] != 'D' || game->map[y][x] != 'X')
 				draw_minimap_square(game, x * 10, y * 10, 0xFFFFFF);
-			y++;
 		}
-		x++;
 	}
 	render_player_on_minimap(game);
 	render_fps(game);

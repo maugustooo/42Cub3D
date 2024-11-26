@@ -6,12 +6,24 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:18:40 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/14 10:59:00 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:25:36 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup mandatory Mandatory
+ * @{
+ * @file controls.c
+ * @brief Controls of the game
+*/
+
 #include "cub3d.h"
 
+/**
+ * @brief Rotates the player to the right
+ * @param game Struct with all game information
+ * @param angle Angle to rotate
+*/
 void	rotate(t_game *game, double angle)
 {
 	double	old_dir_x;
@@ -27,6 +39,11 @@ void	rotate(t_game *game, double angle)
 	game->plane_y = old_plane_x * sin(angle) + game->plane_y * cos(angle);
 }
 
+/**
+ * @brief Controls the movement of the player
+ * @param game Struct with all game information
+ * @return int Default return
+*/
 int	controls(t_game *game)
 {
 	int	moved;
@@ -47,3 +64,5 @@ int	controls(t_game *game)
 		rotate(game, -ROTSPEED);
 	return (0);
 }
+
+/**@} */

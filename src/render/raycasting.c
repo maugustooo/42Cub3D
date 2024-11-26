@@ -3,15 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:12:27 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/13 01:53:07 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:22:47 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup mandatory Mandatory
+ * @{
+ * @file raycasting.c
+ * @brief Raycasting functions.
+*/
+
 #include "cub3d.h"
 
+/**
+ * @brief Calculation of the wall distance.
+ * @param game Struct with all game information.
+*/
 void	wall_stuff(t_game *game)
 {
 	int	wall;
@@ -40,6 +51,10 @@ void	wall_stuff(t_game *game)
 		game->walldist = (game->side_dist_y - game->delta_dist_y);
 }
 
+/**
+ * @brief Get the step of the ray
+ * @param game Struct with all game information
+*/
 void	get_step(t_game *game)
 {
 	if (game->ray_dir_x < 0)
@@ -67,6 +82,10 @@ void	get_step(t_game *game)
 	}
 }
 
+/**
+ * @brief Get the distance of the ray
+ * @param game Struct with all game information
+*/
 void	get_distance(t_game *game)
 {
 	if (game->ray_dir_x == 0)
@@ -79,6 +98,11 @@ void	get_distance(t_game *game)
 		game->delta_dist_y = fabs(1 / game->ray_dir_y);
 }
 
+/**
+ * @brief Initialize raycasting variables
+ * @param game Struct with all game information
+ * @param x X coordinate of the screen
+*/
 void	init_raycasting(t_game *game, int x)
 {
 	game->map_x = (int)game->player.x;
@@ -88,6 +112,10 @@ void	init_raycasting(t_game *game, int x)
 	game->ray_dir_y = game->player.dir_y + game->plane_y * game->cam_x;
 }
 
+/**
+ * @brief Raycasting function
+ * @param game Struct with all game information
+*/
 void	raycasting(t_game *game)
 {
 	int	x;
@@ -103,3 +131,5 @@ void	raycasting(t_game *game)
 		x++;
 	}
 }
+
+/**@} */

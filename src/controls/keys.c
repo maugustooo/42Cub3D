@@ -3,15 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:18:15 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/13 01:18:28 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:26:47 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup mandatory Mandatory
+ * @{
+ * @file keys.c
+ * @brief Handle key press and release events
+*/
+
 #include "cub3d.h"
 
+/**
+ * @brief Handle key press events
+ * @param keycode Keycode of the key pressed
+ * @param game Struct with game information
+ * @return int Default return value
+*/
 int	handle_key_press(int keycode, t_game *game)
 {
 	if (keycode == XK_Escape)
@@ -31,6 +44,12 @@ int	handle_key_press(int keycode, t_game *game)
 	return (0);
 }
 
+/**
+ * @brief Handle key release events
+ * @param keycode Keycode of the key released
+ * @param game Struct with game information
+ * @return * int Default return value
+*/
 int	handle_key_release(int keycode, t_game *game)
 {
 	if (keycode == XK_Escape)
@@ -49,3 +68,5 @@ int	handle_key_release(int keycode, t_game *game)
 		game->player.rotate_right = 0;
 	return (0);
 }
+
+/**@} */

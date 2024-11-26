@@ -3,15 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   sepuku.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:21:22 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/13 01:20:09 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/26 10:46:47 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup Mandatory Mandatory
+ * @{
+ * @file sepuku.c
+ * @brief 
+*/
+
 #include "cub3d.h"
 
+/**
+ * @brief Error messages
+ * 
+ * @param i Number of the error
+ * @return char* String with the error message
+*/
 char	*error_msg(enum e_error i)
 {
 	char	*strings[9];
@@ -28,6 +41,11 @@ char	*error_msg(enum e_error i)
 	return (strings[i]);
 }
 
+/**
+ * @brief Free the textures
+ * 
+ * @param game Struct with the game information
+*/
 void	free_textures(t_game *game)
 {
 	if (game->textr.north)
@@ -44,6 +62,11 @@ void	free_textures(t_game *game)
 		free(game->textr.ceiling);
 }
 
+/**
+ * @brief Free the game struct
+ * 
+ * @param game Struct with the game information
+*/
 void	freedom(t_game *game)
 {
 	int	i;
@@ -71,6 +94,13 @@ void	freedom(t_game *game)
 	}
 }
 
+/**
+ * @brief Exit the program with an error message
+ * 
+ * @param game Struct with the game information
+ * @param i Error number
+ * @return int Exit the program
+*/
 int	sepuku(t_game *game, enum e_error i)
 {
 	if (game)
@@ -79,8 +109,16 @@ int	sepuku(t_game *game, enum e_error i)
 	exit(EXIT_SUCCESS);
 }
 
+/**
+ * @brief Exit the program
+ * 
+ * @param game Struct with the game information
+ * @return int Exit the program
+*/
 int	ft_exit(t_game *game)
 {
 	freedom(game);
 	exit(EXIT_SUCCESS);
 }
+
+/**@} */

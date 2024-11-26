@@ -6,12 +6,24 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 09:57:01 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/14 10:49:31 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/26 10:33:50 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup mandatory Mandatory
+ * @{
+ * @file main.c
+ * @brief Main file of the project
+*/
+
 #include "cub3d.h"
 
+/**
+ * @brief Graphic rendering function
+ * 
+ * @param game Struct with game information
+*/
 void	mlx_functions(t_game *game)
 {
 	game->mlx_ptr = mlx_init();
@@ -31,6 +43,13 @@ void	mlx_functions(t_game *game)
 	mlx_loop(game->mlx_ptr);
 }
 
+/**
+ * @brief Main function of the project
+ * 
+ * @param argc Number of arguments
+ * @param argv Arguments
+ * @return int Exit status
+*/
 int	main(int argc, char **argv)
 {
 	t_game	game;
@@ -51,3 +70,5 @@ int	main(int argc, char **argv)
 	}
 	return (EXIT_SUCCESS);
 }
+
+/**@} */

@@ -6,12 +6,24 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:22:35 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/14 12:29:31 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/26 10:52:38 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup mandatory Mandatory
+ * @{
+ * @file file_content.c
+ * @brief Check the order of the file and if there is any random content.
+ */
+
 #include "cub3d.h"
 
+/**
+ * @brief Check if the line is a texture.
+ * @param line Line to check.
+ * @return int Return 1 if the line is a texture, 0 otherwise.
+*/
 int	is_texture(char *line)
 {
 	int	i;
@@ -34,6 +46,12 @@ int	is_texture(char *line)
 	return (0);
 }
 
+/**
+ * @brief Check the order of the file.
+ * 
+ * @param fd File descriptor.
+ * @param game Struct with the game information.
+*/
 void	check_order2(int fd, t_game *game)
 {
 	int		map_start;
@@ -61,6 +79,12 @@ void	check_order2(int fd, t_game *game)
 		sepuku(game, ERROR_ORDER);
 }
 
+/**
+ * @brief Continue checking for random content.
+ * 
+ * @param fd File descriptor.
+ * @param tmp Temporary string.
+*/
 void	check_random2(int fd, char *tmp)
 {
 	int	i;
@@ -84,6 +108,11 @@ void	check_random2(int fd, char *tmp)
 	free(tmp);
 }
 
+/**
+ * @brief Check if there is any random content in the file.
+ * @param fd File descriptor.
+ * @param game Struct with the game information.
+*/
 void	check_random(int fd, t_game *game)
 {
 	char	*tmp;
@@ -109,6 +138,12 @@ void	check_random(int fd, t_game *game)
 	free(tmp);
 }
 
+/**
+ * @brief Check the order of the file.
+ * 
+ * @param file File to check.
+ * @param game Struct with the game information.
+*/
 void	check_order(char *file, t_game *game)
 {
 	int		fd;
@@ -124,3 +159,5 @@ void	check_order(char *file, t_game *game)
 	check_random(fd, game);
 	close(fd);
 }
+
+/**@} */

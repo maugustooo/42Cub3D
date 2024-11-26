@@ -6,12 +6,24 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 08:50:00 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/14 12:29:58 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/26 10:58:15 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup mandatory Mandatory
+ * @{
+ * @file map_content.c
+ * @brief Check the map content.
+ */
+
 #include "cub3d.h"
 
+/**
+ * @brief Check if there are holes in the map.
+ * @param game Struct with the game information.
+ * @param map Map to check.
+ */
 void	check_holes(t_game *game, bool **map)
 {
 	int	x;
@@ -36,6 +48,15 @@ void	check_holes(t_game *game, bool **map)
 	}
 }
 
+/**
+ * @brief Flood fill algorithm to check if the map is closed.
+ * @param map Map to check.
+ * @param game Struct with the game information.
+ * @param x X position.
+ * @param y Y position.
+ * @return true If the map is closed.
+ * @return false If the map is not closed.
+*/
 bool	flood_fill(bool **map, t_game *game, int x, int y)
 {
 	bool	map_closed;
@@ -54,6 +75,12 @@ bool	flood_fill(bool **map, t_game *game, int x, int y)
 	return (map_closed);
 }
 
+/**
+ * @brief Continuation of checking map extremities.
+ * @param game Struct with the game information.
+ * @return true If the map is closed.
+ * @return false If the map is not closed.
+*/
 bool	check_map_extremities2(t_game *game)
 {
 	int	y;
@@ -70,6 +97,13 @@ bool	check_map_extremities2(t_game *game)
 	return (true);
 }
 
+/**
+ * @brief Check the map extremities.
+ * 
+ * @param game Struct with the game information.
+ * @return true If the map is closed.
+ * @return false If the map is not closed.
+*/
 bool	check_map_extremities(t_game *game)
 {
 	int	x;
@@ -90,6 +124,10 @@ bool	check_map_extremities(t_game *game)
 	return (check_map_extremities2(game));
 }
 
+/**
+ * @brief Map content validation.
+ * @param game Struct with the game information.
+*/
 void	map_content_validation(t_game *game)
 {
 	bool	**map;
@@ -117,3 +155,5 @@ void	map_content_validation(t_game *game)
 	}
 	free_map(map);
 }
+
+/**@} */

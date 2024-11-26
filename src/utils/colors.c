@@ -6,12 +6,24 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:55:00 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/14 10:51:14 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/26 10:34:56 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup mandatory Mandatory
+ * @{
+ * @file colors.c
+ * @brief 
+*/
+
 #include "cub3d.h"
 
+/**
+ * @brief Free the rgb array
+ * 
+ * @param rgb Array to be freed
+*/
 void	free_rgb(char **rgb)
 {
 	int	i;
@@ -26,6 +38,13 @@ void	free_rgb(char **rgb)
 	free(rgb);
 }
 
+/**
+ * @brief Check if the color is valid
+ * 
+ * @param color color to be checked
+ * @param game Struct with game information
+ * @param type Type of color
+*/
 void	check_rgb(char *color, t_game *game, int type)
 {
 	char	**rgb;
@@ -54,3 +73,5 @@ void	check_rgb(char *color, t_game *game, int type)
 	}
 	free_rgb(rgb);
 }
+
+/**@} */

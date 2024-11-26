@@ -6,12 +6,22 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 12:16:44 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/15 12:09:52 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/26 10:40:30 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup mandatory Mandatory
+ * @file map_utils.c
+ * @brief Utils functions for map parsing and handling.
+*/
+
 #include "cub3d.h"
 
+/**
+ * @brief Free the map allocated memory.
+ * @param map Map to be freed.
+*/
 void	free_map(bool **map)
 {
 	int	i;
@@ -22,6 +32,10 @@ void	free_map(bool **map)
 	free(map);
 }
 
+/**
+ * @brief Get the map width object
+ * @param game Struct with game information.
+*/
 void	get_map_width(t_game *game)
 {
 	int	i;
@@ -40,3 +54,5 @@ void	get_map_width(t_game *game)
 		count = 0;
 	}
 }
+
+/**@} */

@@ -6,12 +6,23 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:29:59 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/14 10:54:08 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:00:16 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup mandatory Mandatory
+ * @{
+ * @file map_validation.c
+ * @brief Map validation functions
+ */
+
 #include "cub3d.h"
 
+/**
+ * @brief Check if the colors are valid
+ * @param game Struct with game information
+*/
 void	check_colors(t_game *game)
 {
 	if (!game->textr.ceiling || !game->textr.floor)
@@ -20,6 +31,10 @@ void	check_colors(t_game *game)
 	check_rgb(game->textr.floor, game, 0);
 }
 
+/**
+ * @brief Check textures
+ * @param game Struct with game information
+*/
 void	check_textures(t_game *game)
 {
 	if (!game->textr.north || !game->textr.south
@@ -32,6 +47,11 @@ void	check_textures(t_game *game)
 	check_duplicate_text(game);
 }
 
+/**
+ * @brief Player direction
+ * @param pos Player direction
+ * @param game Struct with game information
+*/
 void	player_direction(char pos, t_game *game)
 {
 	if (pos == 'N')
@@ -44,6 +64,10 @@ void	player_direction(char pos, t_game *game)
 		game->player.angle = WEST;
 }
 
+/**
+ * @brief Define player coordinates and direction
+ * @param game Struct with game information
+*/
 void	define_coords(t_game *game)
 {
 	int	i;
@@ -72,6 +96,10 @@ void	define_coords(t_game *game)
 		sepuku(game, ERROR_MAP);
 }
 
+/**
+ * @brief Check if the map content is valid
+ * @param game Struct containing game elements
+*/
 void	check_map_content(t_game *game)
 {
 	int	i;
@@ -91,3 +119,5 @@ void	check_map_content(t_game *game)
 	}
 	define_coords(game);
 }
+
+/**@} */

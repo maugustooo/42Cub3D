@@ -3,20 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:13:57 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/13 01:16:51 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:20:57 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup mandatory Mandatory
+ * @{
+ * @file render.c
+ * @brief Renders the game.
+*/
+
 #include "cub3d.h"
 
+/**
+ * @brief Create a rgb object
+ * @param t transparency
+ * @param r red
+ * @param g green
+ * @param b blue
+ * @return int Created rgb object
+*/
 int	create_rgb(int t, int r, int g, int b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
+/**
+ * @brief Renders the background of the game.
+ * @param game Struct that contains the game elements.
+*/
 void	render_background(t_game *game)
 {
 	int	x;
@@ -40,6 +59,11 @@ void	render_background(t_game *game)
 	}
 }
 
+/**
+ * @brief Renders the game.
+ * @param game Struct that contains the game elements.
+ * @return int Defaut return for mlx_loop.
+*/
 int	render(t_game *game)
 {
 	controls(game);
@@ -49,3 +73,5 @@ int	render(t_game *game)
 		0, 0);
 	return (0);
 }
+
+/**@} */

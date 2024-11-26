@@ -6,12 +6,24 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:38:09 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/14 10:53:35 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/26 10:39:39 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup mandatory Mandatory
+ * @{
+ * @file init.c
+ * @brief Initializes the mlx images and the player status
+*/
+
 #include "cub3d.h"
 
+/**
+ * @brief Completes the player status
+ * 
+ * @param game Struct with all game information
+*/
 void	init_status2(t_game *game)
 {
 	if (game->player.angle == EAST)
@@ -30,6 +42,11 @@ void	init_status2(t_game *game)
 	}
 }
 
+/**
+ * @brief Initializes the player status
+ * 
+ * @param game Struct with all game information
+*/
 void	init_status(t_game *game)
 {
 	if (game->player.angle == NORTH)
@@ -49,6 +66,13 @@ void	init_status(t_game *game)
 	init_status2(game);
 }
 
+/**
+ * @brief Function to return the file path
+ * 
+ * @param i Index of the file
+ * @param game Struct with all game information
+ * @return char* The file path
+*/
 char	*files(int i, t_game *game)
 {
 	char	*strings[4];
@@ -60,6 +84,11 @@ char	*files(int i, t_game *game)
 	return (strings[i]);
 }
 
+/**
+ * @brief Initializes the mlx images
+ * 
+ * @param game Struct with all game information
+*/
 void	init_img(t_game *game)
 {
 	int	i;
@@ -85,3 +114,5 @@ void	init_img(t_game *game)
 	}
 	init_status(game);
 }
+
+/**@} */

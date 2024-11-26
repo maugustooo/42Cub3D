@@ -3,15 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:16:57 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/13 02:01:09 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:24:07 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup mandatory Mandatory
+ * @{
+ * @file draw.c
+ * @brief Draw the walls on the screen.
+*/
+
 #include "cub3d.h"
 
+/**
+ * @brief Draw the wall on the screen.
+ * @param game Struct containing game elements.
+ * @param x X coordinate of the wall.
+ * @param texture Texture of the wall.
+*/
 void	draw(t_game *game, int x, int texture)
 {
 	int	color;
@@ -20,6 +33,12 @@ void	draw(t_game *game, int x, int texture)
 	put_pixel(game, x, game->wall_start, color);
 }
 
+/**
+ * @brief Define the texture of the wall.
+ * @param game Struct containing game elements.
+ * @param start Start of the wall.
+ * @param line_height Height of the wall.
+*/
 void	define_texture(t_game *game, int start, int line_height)
 {
 	if (game->wall_side == 0)
@@ -37,6 +56,12 @@ void	define_texture(t_game *game, int start, int line_height)
 			+ line_height / 2) * game->step;
 }
 
+/**
+ * @brief Set the column size.
+ * @param game Struct containing game elements.
+ * @param line_height Line height of the wall.
+ * @return int Height of the wall.
+*/
 int	set_column_size(t_game *game, int line_height)
 {
 	line_height = game->screen_height / game->walldist;
@@ -49,6 +74,11 @@ int	set_column_size(t_game *game, int line_height)
 	return (line_height);
 }
 
+/**
+ * @brief Draw the walls on the screen.
+ * @param game Struct containing game elements.
+ * @param x X coordinate of the wall.
+*/
 void	draw_column(t_game *game, int x)
 {
 	int	line_height;
@@ -71,3 +101,5 @@ void	draw_column(t_game *game, int x)
 		game->wall_start++;
 	}
 }
+
+/**@} */

@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:21:22 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/26 09:17:51 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/26 12:44:07 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,19 @@ void	free_textures(t_game *game)
 		free(game->textr.floor);
 	if (game->textr.ceiling)
 		free(game->textr.ceiling);
+	if (game->textr.enemy1)
+		free(game->textr.enemy1);
+	if (game->textr.enemy2)
+		free(game->textr.enemy2);
+	if (game->textr.enemyd1)
+		free(game->textr.enemyd1);
+	if (game->textr.enemyd2)
+		free(game->textr.enemyd2);
+	if (game->textr.door)
+		free(game->textr.door);
+	// int i = 0;
+	// while(i < 4)
+	// 	free(game->player_face[i++].mlx_img);
 }
 
 void	freedom(t_game *game)

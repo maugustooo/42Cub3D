@@ -1,15 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minimap_bonus.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/26 09:14:47 by gude-jes          #+#    #+#             */
+/*   Updated: 2024/11/26 09:14:47 by gude-jes         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d_bonus.h"
-
-void	put_pixel_minimap(t_game *game, int x, int y, int color)
-{
-	char	*pixel;
-
-	if (x < 0 || x >= SCREEN_WIDTH || y < 0 || y >= SCREEN_HEIGHT)
-		return ;
-	pixel = (game->minimap.addr + (y * game->minimap.line_len
-				+ x * (game->minimap.bpp / 8)));
-	*(int *)pixel = color;
-}
 
 void	draw_minimap_square(t_game *game, int x, int y, int color)
 {

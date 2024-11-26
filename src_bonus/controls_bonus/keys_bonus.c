@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:18:15 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/22 13:53:06 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/26 09:25:57 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	handle_key_press(int keycode, t_game *game)
 		game->player.rotate_right = 1;
 	if (keycode == XK_e)
 		interact_with_door(game);
-	
 	return (0);
 }
 
@@ -77,9 +76,9 @@ int	handle_key_release(int keycode, t_game *game)
 
 int	handle_mouse(int x, int y, t_game *game)
 {
-	if(x < SCREEN_WIDTH / 2)
+	if (x < SCREEN_WIDTH / 2)
 		rotate(game, -MSPEED);
-	else if(x > SCREEN_WIDTH / 2)
+	else if (x > SCREEN_WIDTH / 2)
 		rotate(game, MSPEED);
 	if (y < SCREEN_HEIGHT / 2)
 	{
@@ -97,18 +96,19 @@ int	handle_mouse(int x, int y, t_game *game)
 
 int handle_mouse_click(int button, int x, int y, void *param)
 {
-    t_game	*game = (t_game *)param;
+	t_game	*game;
 	double	dx;
 	double	dy;
 	double	distance;
-	int i;
+	int		i;
 
 	i = 0;
+	game = (t_game *)param;
 	(void)x;
 	(void)y;
-    if (button == Button1)
+	if (button == Button1)
 	{
-        game->player.attack = true;
+		game->player.attack = true;
 		while (i < game->enemy_count)
 		{
 			dx = game->enemy[i].x - game->player.x;
@@ -118,12 +118,12 @@ int handle_mouse_click(int button, int x, int y, void *param)
 			{
 				game->enemy[i].die = true;
 				game->enemy[i].sprite_line = 10; // Iniciar a sequência de morte
-           		game->enemy[i].curr_frame = 4;
+				game->enemy[i].curr_frame = 4;
 			}
 			game->enemy[i].curr_time = (double)ft_get_time();
 			i++;
 		}
 		
 	}
-    return (0);
+	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 09:44:12 by gude-jes          #+#    #+#              #
-#    Updated: 2024/11/21 11:30:54 by gude-jes         ###   ########.fr        #
+#    Updated: 2024/11/26 09:16:35 by gude-jes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ CONTROLS_BONUS	= controls_bonus keys_bonus move_bonus
 RENDER_BONUS 	= render_bonus raycasting_bonus draw_bonus minimap_bonus enemy_bonus fps_bonus player_face_bonus door_bonus
 ANIM_BONUS		= enem_frame weapon_bonus
 
-ARG			= maps/good/game.cub
+ARG			= maps/good/game_bonus.cub
 
 #==============================================================================#
 #                                    PATHS                                     #
@@ -123,7 +123,7 @@ fclean: clean clean_bonus
 re: fclean all
 
 valgrind:
-	valgrind --leak-check=full -s --show-leak-kinds=all ./$(NAME) $(ARG)
+	valgrind --leak-check=full -s --show-leak-kinds=all ./$(NAME_BONUS) $(ARG)
 
 download:
 	@wget https://cdn.intra.42.fr/document/document/25858/minilibx-linux.tgz

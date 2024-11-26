@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:21:22 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/15 08:55:09 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/26 09:17:51 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	freedom(t_game *game)
 	}
 	free_textures(game);
 	i = 0;
-	while (i < 5)
+	while (i < 11)
 	{
 		if (game && game->img[i].mlx_img)
 			mlx_destroy_image(game->mlx_ptr, game->img[i].mlx_img);

@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:51:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/15 11:47:00 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/26 09:45:16 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,28 @@
 
 void	check_dup2(int *arr, int fd, char **temp)
 {
-		char	*tmp;
-		
-		tmp = return_no_extra_spaces(*temp);
-		if (tmp[0] == 'N' && tmp[1] == 'O')
-			arr[0]++;
-		else if (tmp[0] == 'S' && tmp[1] == 'O')
-			arr[1]++;
-		else if (tmp[0] == 'W' && tmp[1] == 'E')
-			arr[2]++;
-		else if (tmp[0] == 'E' && tmp[1] == 'A')
-			arr[3]++;
-		else if (tmp[0] == 'F' && tmp[1] == ' ')
-			arr[4]++;
-		else if (tmp[0] == 'C' && tmp[1] == ' ')
-			arr[5]++;
-		else if (tmp[0] == 'D' && tmp[1] == ' ')
-			arr[6]++;
-		else if (tmp[0] == 'E' && (ft_isdigit(tmp[1])
+	char	*tmp;
+
+	tmp = return_no_extra_spaces(*temp);
+	if (tmp[0] == 'N' && tmp[1] == 'O')
+		arr[0]++;
+	else if (tmp[0] == 'S' && tmp[1] == 'O')
+		arr[1]++;
+	else if (tmp[0] == 'W' && tmp[1] == 'E')
+		arr[2]++;
+	else if (tmp[0] == 'E' && tmp[1] == 'A')
+		arr[3]++;
+	else if (tmp[0] == 'F' && tmp[1] == ' ')
+		arr[4]++;
+	else if (tmp[0] == 'C' && tmp[1] == ' ')
+		arr[5]++;
+	else if (tmp[0] == 'D' && tmp[1] == ' ')
+		arr[6]++;
+	else if (tmp[0] == 'E' && (ft_isdigit(tmp[1])
 			|| (tmp[1] == 'D' && ft_isdigit(tmp[2]))))
-			arr[7]++;
-		free(tmp);
-		*temp = get_next_line(fd);
+		arr[7]++;
+	free(tmp);
+	*temp = get_next_line(fd);
 }
 
 void	check_dup(int fd, t_game *game, int *arr)

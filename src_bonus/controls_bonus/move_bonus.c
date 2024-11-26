@@ -3,28 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   move_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:17:26 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/20 16:01:45 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/26 09:23:21 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-void wait_half_second(void)
+void	wait_half_second(void)
 {
-    struct timeval start;
-    struct timeval current;
-    long elapsed_time;
+	struct timeval	start;
+	struct timeval	current;
+	long			elapsed_time;
 
-    gettimeofday(&start, NULL);
-    elapsed_time = 0;
-    while (elapsed_time < 50)
-    {
-        gettimeofday(&current, NULL);
-        elapsed_time = (current.tv_sec - start.tv_sec) * 1000000 + (current.tv_usec - start.tv_usec);
-    }
+	gettimeofday(&start, NULL);
+	elapsed_time = 0;
+	while (elapsed_time < 50)
+	{
+		gettimeofday(&current, NULL);
+		elapsed_time = (current.tv_sec - start.tv_sec)
+			* 1000000 + (current.tv_usec - start.tv_usec);
+	}
 }
 
 int	move_up(t_game *game, double next_x, double next_y)

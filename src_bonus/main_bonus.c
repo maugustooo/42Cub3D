@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 09:57:01 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/21 13:17:11 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/26 09:23:01 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	mlx_functions(t_game *game)
 	if (!game->mlx_ptr)
 		sepuku(game, ERROR_MLX);
 	game->window = mlx_new_window(game->mlx_ptr, SCREEN_WIDTH,
-		SCREEN_HEIGHT, "Cub3D");
+			SCREEN_HEIGHT, "Cub3D");
 	if (!game->window)
 		sepuku(game, ERROR_MLX);
 	init_img(game);
@@ -27,7 +27,8 @@ void	mlx_functions(t_game *game)
 	mlx_hook(game->window, KeyRelease, KeyRelease, &handle_key_release, game);
 	mlx_mouse_hide(game->mlx_ptr, game->window);
 	mlx_hook(game->window, MotionNotify, PointerMotionMask, handle_mouse, game);
-	mlx_hook(game->window, ButtonPress, ButtonPressMask, handle_mouse_click, game);
+	mlx_hook(game->window, ButtonPress, ButtonPressMask,
+		handle_mouse_click, game);
 	mlx_hook(game->window, 17, 0, sepuku, game);
 	mlx_loop(game->mlx_ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/25 12:32:12 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/26 09:14:35 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,6 +252,7 @@ int		ft_exit(t_game *game);
 int		create_rgb(int t, int r, int g, int b);
 void	init_raycasting(t_game *game, int x);
 void	init_weapon(t_game *game);
+void	put_pixel_minimap(t_game *game, int x, int y, int color);
 char	*files(int i, t_game *game);
 
 int		controls(t_game *game);

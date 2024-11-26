@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:35:54 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/15 11:12:42 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/26 09:34:31 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	check_dup_arr(int *arr, t_game *game)
 	{
 		if (arr[i] > 1)
 		{
-			if(i == 7)
+			if (i == 7)
 			{
 				if (arr[i] > 4)
 					sepuku(game, ERROR_DUP);

@@ -6,11 +6,33 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:18:40 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/25 12:23:46 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/26 09:20:54 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+
+void	set_health2(t_game *game)
+{
+	if (game->enemy->distance <= 3.0)
+	{
+		game->player.health = 2;
+		game->is_clear = true;
+	}
+	else if (game->enemy->distance <= 5.0)
+	{
+		game->player.health = 1;
+		game->is_clear = true;
+	}
+	else
+	{
+		if (game->player.health > 0)
+		{
+			game->player.health -= 1;
+			game->is_clear = true;
+		}
+	}
+}
 
 void set_health(t_game *game)
 {
@@ -23,24 +45,7 @@ void set_health(t_game *game)
     	game->enemy->dy = game->enemy[i].y - game->player.y;
     	game->enemy->distance = sqrt(game->enemy->dx * game->enemy->dx
 			+ game->enemy->dy * game->enemy->dy);
-		if (game->enemy->distance <= 3.0)
-		{
-			game->player.health = 2;
-			game->is_clear = true;
-		}
-		else if (game->enemy->distance <= 5.0)
-		{
-			game->player.health = 1;
-			game->is_clear = true;
-		}
-		else
-		{
-			if (game->player.health > 0)
-			{
-				game->player.health -= 1;
-				game->is_clear = true;
-			}
-		}
+		set_health2(game);
 	}
 }
 

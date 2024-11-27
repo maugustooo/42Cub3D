@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:32:53 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/18 09:08:27 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/27 11:07:52 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ void	parse(char **argv, t_game *game)
 	game->heightmap = game->mapend;
 	map_content_validation(game);
 	init_enemy(game);
+	init_door(game);
 }

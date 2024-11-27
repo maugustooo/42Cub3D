@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/27 10:59:07 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:29:26 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,6 +227,7 @@ typedef struct s_game
 	double		tex_pos;
 	double		step;
 
+	bool		door_flag;
 	bool		is_door;
 	bool		wall;
 	bool		is_enemy;
@@ -256,6 +257,7 @@ void	check_dup_arr(int *arr, t_game *game);
 void	put_textures(t_game *game, char *tmp);
 void	check_doors(t_game *game, bool **map);
 void	init_enemy(t_game *game);
+void	init_door(t_game *game);
 int		sepuku(t_game *game, enum e_error i);
 void	free_map(bool **map);
 int		ft_exit(t_game *game);
@@ -305,7 +307,7 @@ suseconds_t ft_get_time(void);
 void put_player_face(t_game *game);
 
 void	draw_static_door(t_game *game, int x, int line_height);
-void	draw_door(t_game *game);
+void	draw_door(t_game *game, int x);
 void	update_door_timers(t_game *game, double delta_time);
 double	get_delta_time();
 void	render_weapon(t_game *game);

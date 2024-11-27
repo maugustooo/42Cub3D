@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:13:57 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/27 09:20:22 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:29:44 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	render(t_game *game)
 	render_background(game);
 	raycasting(game);
 	door_state = game->door_state_map[game->map_y][game->map_x];
-	if (game->door && (door_state == 1 || door_state == 3))
+	if (game->door_flag && (door_state == 1 || door_state == 3))
 	{
 		update_door_timers(game, get_delta_time());
 		draw_door(game, 1);

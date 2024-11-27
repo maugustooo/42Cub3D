@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:16:57 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/27 09:13:16 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:24:25 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	draw(t_game *game, int x, int texture)
 
 void	what_draw(t_game *game, int x)
 {
-	if (game->door)
+	if (game->door_flag)
 		draw(game, x, DOOR);
 	else
 	{

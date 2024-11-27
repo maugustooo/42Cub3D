@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:18:40 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/26 09:20:54 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/27 08:27:40 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,17 @@ void	set_health2(t_game *game)
 	}
 }
 
-void set_health(t_game *game)
+void	set_health(t_game *game)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < game->enemy_count)
 	{
 		game->enemy->dx = game->enemy[i].x - game->player.x;
-    	game->enemy->dy = game->enemy[i].y - game->player.y;
-    	game->enemy->distance = sqrt(game->enemy->dx * game->enemy->dx
-			+ game->enemy->dy * game->enemy->dy);
+		game->enemy->dy = game->enemy[i].y - game->player.y;
+		game->enemy->distance = sqrt(game->enemy->dx * game->enemy->dx
+				+ game->enemy->dy * game->enemy->dy);
 		set_health2(game);
 	}
 }
@@ -74,7 +74,7 @@ int	controls(t_game *game)
 				* SPEED);
 	if (game->player.move_down == 1)
 		moved = move_down(game, game->player.dir_x * SPEED,
-			game->player.dir_y * SPEED);
+				game->player.dir_y * SPEED);
 	if (game->player.move_right == 1)
 		moved = move_right(game, game->plane_x * SPEED, game->plane_y * SPEED);
 	if (game->player.move_left == 1)
@@ -83,7 +83,7 @@ int	controls(t_game *game)
 		rotate(game, ROTSPEED);
 	if (game->player.rotate_left == 1)
 		rotate(game, -ROTSPEED);
-	if(moved)
+	if (moved)
 		set_health(game);
 	return (0);
 }

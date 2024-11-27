@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:12:27 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/25 12:13:50 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/27 09:08:44 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	wall_stuff2(t_game *game, int *wall)
 		game->wall = true;
 		*wall = 1;
 	}
-	if(game->map[game->map_y][game->map_x] == 'D')
+	if (game->map[game->map_y][game->map_x] == 'D')
 	{
 		*wall = 1;
 		game->door = true;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:16:57 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/21 11:31:02 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/27 09:13:16 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 void	draw(t_game *game, int x, int texture)
 {
 	int	color;
-	
+
 	color = get_color(game, game->tex_x, game->tex_y, texture);
 	if (game->wall_side == 1)
 		color = (color >> 1) & 8355711;
 	put_pixel(game, x, game->wall_start, color);
 }
 
-void what_draw(t_game *game, int x)
+void	what_draw(t_game *game, int x)
 {
-	if(game->door)
+	if (game->door)
 		draw(game, x, DOOR);
 	else
 	{
@@ -41,16 +41,16 @@ void what_draw(t_game *game, int x)
 
 void	define_texture(t_game *game, int start, int line_height)
 {
-		if (game->wall_side == 0)
-			game->wall_x = game->player.y + game->walldist * game->ray_dir_y;
-		else
-			game->wall_x = game->player.x + game->walldist * game->ray_dir_x;
-		game->wall_x -= floor(game->wall_x);
-		game->tex_x = game->wall_x * 64;
-		if (game->wall_side == 0 && game->ray_dir_x > 0)
-			game->tex_x = 64 - game->tex_x - 1;
-		if (game->wall_side == 1 && game->ray_dir_y < 0)
-			game->tex_x = 64 - game->tex_x - 1;
+	if (game->wall_side == 0)
+		game->wall_x = game->player.y + game->walldist * game->ray_dir_y;
+	else
+		game->wall_x = game->player.x + game->walldist * game->ray_dir_x;
+	game->wall_x -= floor(game->wall_x);
+	game->tex_x = game->wall_x * 64;
+	if (game->wall_side == 0 && game->ray_dir_x > 0)
+		game->tex_x = 64 - game->tex_x - 1;
+	if (game->wall_side == 1 && game->ray_dir_y < 0)
+		game->tex_x = 64 - game->tex_x - 1;
 	game->step = 1.0 * 64 / line_height;
 	game->tex_pos = (start - SCREEN_HEIGHT / 2
 			+ line_height / 2) * game->step;
@@ -71,6 +71,7 @@ int	set_column_size(t_game *game, int line_height)
 void	draw_column(t_game *game, int x)
 {
 	int	line_height;
+
 	line_height = 0;
 	line_height = set_column_size(game, line_height);
 	define_texture(game, game->wall_start, line_height);

@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:17:26 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/26 09:23:21 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/27 08:43:12 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,17 @@ int	move_up(t_game *game, double next_x, double next_y)
 
 	move = 0;
 	if (game->map[(int)(game->player.y + next_y)][(int)game->player.x] != '1' &&
-		(game->map[(int)(game->player.y + next_y)][(int)game->player.x] != 'D' ||
-		game->door_state_map[(int)(game->player.y + next_y)][(int)game->player.x] == 2)) 
+		(game->map[(int)(game->player.y + next_y)][(int)game->player.x] != 'D'
+		|| game->door_state_map[(int)(game->player.y + next_y)]
+			[(int)game->player.x] == 2))
 	{
 		game->player.y += next_y;
 		move = 1;
 	}
-	if (game->map[(int)game->player.y][(int)(game->player.x + next_x)] != '1' && 
-		(game->map[(int)game->player.y][(int)(game->player.x + next_x)] != 'D' ||
-		game->door_state_map[(int)game->player.y][(int)(game->player.x + next_x)] == 2))
+	if (game->map[(int)game->player.y][(int)(game->player.x + next_x)] != '1' &&
+		(game->map[(int)game->player.y][(int)(game->player.x + next_x)] != 'D'
+		|| game->door_state_map[(int)game->player.y]
+		[(int)(game->player.x + next_x)] == 2))
 	{
 		game->player.x += next_x;
 		move = 1;
@@ -56,15 +58,17 @@ int	move_down(t_game *game, double next_x, double next_y)
 
 	move = 0;
 	if (game->map[(int)(game->player.y - next_y)][(int)game->player.x] != '1' &&
-		(game->map[(int)(game->player.y - next_y)][(int)game->player.x] != 'D' ||
-		game->door_state_map[(int)(game->player.y - next_y)][(int)game->player.x] == 2)) 
+		(game->map[(int)(game->player.y - next_y)][(int)game->player.x] != 'D'
+		|| game->door_state_map[(int)(game->player.y - next_y)]
+		[(int)game->player.x] == 2))
 	{
 		game->player.y -= next_y;
 		move = 1;
 	}
-	if (game->map[(int)game->player.y][(int)(game->player.x - next_x)] != '1' && 
-		(game->map[(int)game->player.y][(int)(game->player.x - next_x)] != 'D' ||
-		game->door_state_map[(int)game->player.y][(int)(game->player.x - next_x)] == 2))
+	if (game->map[(int)game->player.y][(int)(game->player.x - next_x)] != '1' &&
+		(game->map[(int)game->player.y][(int)(game->player.x - next_x)] != 'D'
+		|| game->door_state_map[(int)game->player.y]
+		[(int)(game->player.x - next_x)] == 2))
 	{
 		game->player.x -= next_x;
 		move = 1;
@@ -78,15 +82,17 @@ int	move_right(t_game *game, double next_x, double next_y)
 
 	move = 0;
 	if (game->map[(int)(game->player.y + next_y)][(int)game->player.x] != '1' &&
-		(game->map[(int)(game->player.y + next_y)][(int)game->player.x] != 'D' ||
-		game->door_state_map[(int)(game->player.y + next_y)][(int)game->player.x] == 2)) 
+		(game->map[(int)(game->player.y + next_y)][(int)game->player.x] != 'D'
+		|| game->door_state_map[(int)(game->player.y + next_y)]
+		[(int)game->player.x] == 2))
 	{
 		game->player.y += next_y;
 		move = 1;
 	}
-	if (game->map[(int)game->player.y][(int)(game->player.x + next_x)] != '1' && 
-		(game->map[(int)game->player.y][(int)(game->player.x + next_x)] != 'D' ||
-		game->door_state_map[(int)game->player.y][(int)(game->player.x + next_x)] == 2))
+	if (game->map[(int)game->player.y][(int)(game->player.x + next_x)] != '1' &&
+		(game->map[(int)game->player.y][(int)(game->player.x + next_x)] != 'D'
+		|| game->door_state_map[(int)game->player.y]
+		[(int)(game->player.x + next_x)] == 2))
 	{
 		game->player.x += next_x;
 		move = 1;
@@ -100,15 +106,17 @@ int	move_left(t_game *game, double next_x, double next_y)
 
 	move = 0;
 	if (game->map[(int)(game->player.y - next_y)][(int)game->player.x] != '1' &&
-		(game->map[(int)(game->player.y - next_y)][(int)game->player.x] != 'D' ||
-		game->door_state_map[(int)(game->player.y - next_y)][(int)game->player.x] == 2)) 
+		(game->map[(int)(game->player.y - next_y)][(int)game->player.x] != 'D'
+		|| game->door_state_map[(int)(game->player.y - next_y)]
+		[(int)game->player.x] == 2))
 	{
 		game->player.y -= next_y;
 		move = 1;
 	}
-	if (game->map[(int)game->player.y][(int)(game->player.x - next_x)] != '1' && 
-	(game->map[(int)game->player.y][(int)(game->player.x - next_x)] != 'D' ||
-	game->door_state_map[(int)game->player.y][(int)(game->player.x - next_x)] == 2))
+	if (game->map[(int)game->player.y][(int)(game->player.x - next_x)] != '1' &&
+		(game->map[(int)game->player.y][(int)(game->player.x - next_x)] != 'D'
+		|| game->door_state_map[(int)game->player.y]
+		[(int)(game->player.x - next_x)] == 2))
 	{
 		game->player.x -= next_x;
 		move = 1;

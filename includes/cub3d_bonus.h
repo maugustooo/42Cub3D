@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/27 11:08:03 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:37:02 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,6 +227,7 @@ typedef struct s_game
 	double		tex_pos;
 	double		step;
 
+	bool		door_flag;
 	bool		is_door;
 	bool		wall;
 	bool		is_enemy;
@@ -306,7 +307,7 @@ suseconds_t ft_get_time(void);
 void put_player_face(t_game *game);
 
 void	draw_static_door(t_game *game, int x, int line_height);
-void	draw_door(t_game *game);
+void	draw_door(t_game *game, int x);
 void	update_door_timers(t_game *game, double delta_time);
 double	get_delta_time();
 void	render_weapon(t_game *game);

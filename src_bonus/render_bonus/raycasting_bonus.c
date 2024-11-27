@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:12:27 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/27 10:58:31 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:37:09 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,11 @@ void	wall_stuff2(t_game *game, int *wall)
 		game->wall = true;
 		*wall = 1;
 	}
-	// if (game->map[game->map_y][game->map_x] == 'D')
-	// {
-	// 	*wall = 1;
-	// 	// game->door = true;
-	// 	// if (game->door_progress < 1)
-	// 	// {
-	// 	// 	float offset = game->door_progress * 0.5;
-	// 	// 	if (game->wall_side == 0)
-	// 	// 		game->side_dist_x += offset * game->delta_dist_x;
-	// 	// 	else
-	// 	// 		game->side_dist_y += offset * game->delta_dist_y;
-	// 	// 	if (game->wall_side == 0)
-	// 	// 		game->walldist = (game->side_dist_x - game->delta_dist_x) + 0.5;
-	// 	// 	else
-	// 	// 		game->walldist = (game->side_dist_y - game->delta_dist_y) + 0.5;
-	// 	// }
-    // }
+	if (game->map[game->map_y][game->map_x] == 'D')
+	{
+		*wall = 1;
+		game->door_flag = true;
+	}
 }
 
 void	wall_stuff(t_game *game)
@@ -56,7 +44,7 @@ void	wall_stuff(t_game *game)
 	int	wall;
 
 	wall = 0;
-	// game->door = false;
+	game->door_flag = false;
 	game->is_enemy = false;
 	while (wall == 0)
 		wall_stuff2(game, &wall);

@@ -3,14 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   init2_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 09:25:02 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/25 12:43:10 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:49:27 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+
+void	init_door(t_game *game)
+{
+	int	i;
+	int	j;
+	int	count;
+
+	count = 0;
+	i = -1;
+	while (game->map[++i])
+	{
+		j = -1;
+		while (game->map[i][++j])
+		{
+			if (game->map[i][j] == 'D')
+			{
+				game->door[count].x = j + 0.5;
+				game->door[count++].y = i + 0.5;
+			}
+		}
+	}
+	game->door_count = count;
+}
 
 void	init_enemy2(t_game *game)
 {

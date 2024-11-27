@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/27 09:10:35 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:59:07 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,14 @@ typedef struct s_weapon
 	int		scaled_height;
 }				t_weapon;
 
+typedef struct s_door
+{
+	int		x;
+	int		y;
+	int		progress;
+	double	timer;
+}				t_door;
+
 typedef struct s_enemy
 {
 	int		id;
@@ -178,6 +186,7 @@ typedef struct s_game
 	char		**rgb;
 	bool		mapflag;
 	int			enemy_count;
+	int			door_count;
 	int			rgb_sky[3];
 	int			rgb_floor[3];
 	t_textr		textr;
@@ -190,6 +199,7 @@ typedef struct s_game
 	t_player	player;
 	t_img		player_face[5];
 	t_enemy		enemy[64];
+	t_door		door[64];
 	t_fps		fps;
 	double		z_buffer[SCREEN_WIDTH];
 
@@ -217,7 +227,7 @@ typedef struct s_game
 	double		tex_pos;
 	double		step;
 
-	bool		door;
+	bool		is_door;
 	bool		wall;
 	bool		is_enemy;
 	bool		enemy_near;
@@ -295,7 +305,7 @@ suseconds_t ft_get_time(void);
 void put_player_face(t_game *game);
 
 void	draw_static_door(t_game *game, int x, int line_height);
-void	draw_door(t_game *game, int x);
+void	draw_door(t_game *game);
 void	update_door_timers(t_game *game, double delta_time);
 double	get_delta_time();
 void	render_weapon(t_game *game);

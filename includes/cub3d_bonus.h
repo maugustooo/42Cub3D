@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/27 12:37:02 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/27 16:03:05 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@
 # define NUM_FRAME 7
 # define FRAME_DURATION 0.1
 # define DEATH_FRAME_DURATION  0.2
+# define ATTACK_FRAME_DURATION  0.3
 # define WEAPON_NUM_FRAME 3
 # define WEAPON_FRAME_DURATION 0.06
 typedef enum e_error
@@ -146,6 +147,10 @@ typedef struct s_enemy
 	int		sprite_line;
 	bool	die;
 	bool	died;
+	bool 	attacking;
+	bool	swords;
+	int		attacks;
+	int		flag;
 	double	dx;
 	double	dy;
 }				t_enemy;
@@ -193,6 +198,7 @@ typedef struct s_game
 	t_img		img[10];
 	t_img		minimap;
 	t_img		victory;
+	t_img		loss;
 	t_weapon	weapon;
 	t_img		weapon_img;
 	t_img		fps_img;
@@ -235,6 +241,7 @@ typedef struct s_game
 	bool		is_clear;
 
 	t_timer		timer;
+	time_t		start_time;
 }				t_game;
 
 void	parse(char **argv, t_game *game);
@@ -266,7 +273,6 @@ void	init_raycasting(t_game *game, int x);
 void	init_weapon(t_game *game);
 void	put_pixel_minimap(t_game *game, int x, int y, int color);
 void	interact_with_door(t_game *game);
-int		check_enemy(t_game *game, int x, int y);
 char	*files(int i, t_game *game);
 
 int		controls(t_game *game);

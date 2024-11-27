@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:38:09 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/26 09:43:34 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:30:56 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	init_status2(t_game *game)
 {
+	game->player.health = 4;
 	if (game->player.angle == EAST)
 	{
 		game->player.dir_x = 1;
@@ -122,6 +123,8 @@ void	init_img(t_game *game)
 			files(10, game), &game->weapon_img.width, &game->weapon_img.height);
 	game->victory.mlx_img = mlx_xpm_file_to_image(game->mlx_ptr,
 			files(11, game), &game->victory.width, &game->victory.height);
+	game->loss.mlx_img = mlx_xpm_file_to_image(game->mlx_ptr,
+			files(12, game), &game->loss.width, &game->loss.height);
 	i = 0;
 	while (i < 7)
 	{

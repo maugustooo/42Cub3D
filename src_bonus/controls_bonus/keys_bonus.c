@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:18:15 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/27 08:48:18 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:41:07 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	handle_mouse_click2(t_game *game)
 		dx = game->enemy[i].x - game->player.x;
 		dy = game->enemy[i].y - game->player.y;
 		distance = sqrt(dx * dx + dy * dy);
-		if (distance < 1.0)
+		if (distance < 1.0 && game->enemy[i].died == false)
 		{
 			game->enemy[i].die = true;
 			game->enemy[i].sprite_line = 10;

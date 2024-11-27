@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 09:14:47 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/27 09:12:38 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:40:08 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,20 +62,24 @@ void	render_player_on_minimap(t_game *game)
 
 void	render_minimap2(t_game *game, int x, int y)
 {
+	int i;
+
+	i = 0;
 	if (game->map[y][x] == '1')
 		draw_minimap_square(game, x * 10, y * 10, 0x000000);
 	else if (game->map[y][x] == 'D')
 		draw_minimap_square(game, x * 10, y * 10, 0xFFCC00);
-	else if (game->map[y][x] == 'X')
-	{
-		if (check_enemy(game, x, y))
-			draw_minimap_square(game, x * 10, y * 10, 0xFFFFFF);
-		else
-			draw_minimap_square(game, x * 10, y * 10, 0xFF0000);
-	}
 	else if (game->map[y][x] != '1' || game->map[y][x] != 'D'
 		|| game->map[y][x] != 'X')
 		draw_minimap_square(game, x * 10, y * 10, 0xFFFFFF);
+	while (i < game->enemy_count)
+	{
+		if (game->enemy[i].died)
+			draw_minimap_square(game, game->enemy[i].x * 10, game->enemy[i].y * 10, 0xFFFFFF);
+		else
+			draw_minimap_square(game, game->enemy[i].x * 10, game->enemy[i].y * 10, 0xFF0000);
+		i++;	
+	}
 }
 
 void	render_minimap(t_game *game)

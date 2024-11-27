@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_face_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 09:13:44 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/27 09:14:40 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:10:31 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ void	put_player_face2(t_game *game)
 		y = 1;
 		while (y < 127)
 		{
-			if (game->enemy_near == true && game->player.health == 0)
+			if (game->enemy_near == true && game->player.health == 4)
 				color = get_color_player(game, x, y, 3);
-			else
-				color = get_color_player(game, x, y, game->player.health);
+			else if(game->player.health > 0)
+				color = get_color_player(game, x, y, game->player.health - 1);
 			if (color != 0)
 				put_pixel_player(game, x + 16, y + 16, color);
 			y++;

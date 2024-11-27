@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sepuku_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:21:22 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/26 12:44:07 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/27 09:32:21 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ char	*error_msg(enum e_error i)
 
 void	free_textures(t_game *game)
 {
+	int i;
+
+	i = 0;
 	if (game->textr.north)
 		free(game->textr.north);
 	if (game->textr.west)
@@ -52,9 +55,8 @@ void	free_textures(t_game *game)
 		free(game->textr.enemyd2);
 	if (game->textr.door)
 		free(game->textr.door);
-	// int i = 0;
-	// while(i < 4)
-	// 	free(game->player_face[i++].mlx_img);
+	while(i < 4)
+		mlx_destroy_image(game->mlx_ptr, game->player_face[i++].mlx_img);
 }
 
 void	freedom(t_game *game)

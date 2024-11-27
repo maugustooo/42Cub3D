@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/27 10:59:07 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/27 11:08:03 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -256,6 +256,7 @@ void	check_dup_arr(int *arr, t_game *game);
 void	put_textures(t_game *game, char *tmp);
 void	check_doors(t_game *game, bool **map);
 void	init_enemy(t_game *game);
+void	init_door(t_game *game);
 int		sepuku(t_game *game, enum e_error i);
 void	free_map(bool **map);
 int		ft_exit(t_game *game);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:13:57 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/27 09:20:22 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/27 11:06:55 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,21 +78,15 @@ void	mlx_put_img(t_game *game)
 int	render(t_game *game)
 {
 	double	curr_time;
-	int		door_state;
 
 	check_victory(game);
 	controls(game);
 	render_background(game);
 	raycasting(game);
-	door_state = game->door_state_map[game->map_y][game->map_x];
-	if (game->door && (door_state == 1 || door_state == 3))
-	{
-		update_door_timers(game, get_delta_time());
-		draw_door(game, 1);
-	}
 	curr_time = (double)ft_get_time();
 	update_enemy_frame(game, &game->timer, curr_time);
 	update_weapon_frame(game, &game->timer, curr_time);
+	draw_door(game);
 	game->z_buffer[game->x] = game->walldist;
 	handle_enemy(game);
 	update_fps(game);

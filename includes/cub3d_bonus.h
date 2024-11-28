@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/27 16:03:05 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/28 16:00:27 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,12 @@
 # define SCREEN_WIDTH 1920
 # define SCREEN_HEIGHT 945
 # define NUM_FRAME 7
-# define FRAME_DURATION 0.1
+# define FRAME_DURATION 0.05
 # define DEATH_FRAME_DURATION  0.2
 # define ATTACK_FRAME_DURATION  0.3
 # define WEAPON_NUM_FRAME 3
 # define WEAPON_FRAME_DURATION 0.06
+
 typedef enum e_error
 {
 	ERROR_ARGS,
@@ -128,6 +129,7 @@ typedef struct s_door
 	double	timer;
 }				t_door;
 
+
 typedef struct s_enemy
 {
 	int		id;
@@ -149,6 +151,7 @@ typedef struct s_enemy
 	bool	died;
 	bool 	attacking;
 	bool	swords;
+	bool	moving;
 	int		attacks;
 	int		flag;
 	double	dx;

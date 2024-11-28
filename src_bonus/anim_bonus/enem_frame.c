@@ -6,7 +6,7 @@
 /*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 09:37:58 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/27 16:01:11 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/28 15:59:42 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,23 +68,24 @@ void	update_enemy_frame_attack(t_game *game, t_timer *timer,
 	game->enemy[i].last_time = curr_time;
 }
 
-void	update_enemy_frame_mov(t_game *game, t_timer *timer,
-	double curr_time, int i)
+void update_enemy_frame_mov(t_game *game, t_timer *timer, double curr_time, int i)
 {
-	double	delta_time;
+    double delta_time;
 
-	(void)timer;
-	delta_time = curr_time - game->enemy[i].last_time;
-	delta_time /= 3000;
-	game->enemy[i].swords = false;
-	game->enemy[i].attacking = false;
-	game->enemy[i].elapsed_time += delta_time;
-	if (game->enemy[i].elapsed_time >= FRAME_DURATION)
-		game->enemy[i].curr_frame = (game->enemy[i].curr_frame + 1) % NUM_FRAME;
-	if (game->enemy[i].elapsed_time >= FRAME_DURATION)
-		game->enemy[i].elapsed_time = 0;
+    (void)timer;
+    delta_time = curr_time - game->enemy[i].last_time;
+    delta_time /= 3000;
+    game->enemy[i].swords = false;
+    game->enemy[i].attacking = false;
+    game->enemy[i].elapsed_time += delta_time;
+    if (game->enemy[i].elapsed_time >= FRAME_DURATION)
+    {
+		if (game->enemy[i].moving)
+        	game->enemy[i].curr_frame = (game->enemy[i].curr_frame + 1) % NUM_FRAME;
+        game->enemy[i].elapsed_time = 0;
+    }
 	game->enemy[i].sprite_line = 0;
-	game->enemy[i].last_time = curr_time;
+    game->enemy[i].last_time = curr_time;
 }
 
 void	update_enemy_frame_death2(t_game *game, int i)

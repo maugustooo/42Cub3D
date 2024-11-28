@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 09:57:01 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/27 12:37:03 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/28 11:17:45 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	mlx_functions(t_game *game)
 	mlx_loop_hook(game->mlx_ptr, &render, game);
 	mlx_hook(game->window, KeyPress, KeyPressMask, &handle_key_press, game);
 	mlx_hook(game->window, KeyRelease, KeyRelease, &handle_key_release, game);
-	mlx_mouse_hide(game->mlx_ptr, game->window);
+	//mlx_mouse_hide(game->mlx_ptr, game->window);
 	mlx_hook(game->window, MotionNotify, PointerMotionMask, handle_mouse, game);
 	mlx_hook(game->window, ButtonPress, ButtonPressMask,
 		handle_mouse_click, game);

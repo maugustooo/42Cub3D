@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:35:54 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/26 09:34:31 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/28 11:07:54 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,6 @@ void	put_textures(t_game *game, char *tmp)
 		game->textr.ceiling = ft_strndup(&tmp[1], ft_strclen(&tmp[1], '\n'));
 	else if (tmp[0] == 'D' && tmp[1] != ' ')
 		game->textr.door = ft_strndup(&tmp[1], ft_strclen(&tmp[1], '\n'));
-	else if (tmp[0] == 'E' && tmp[1] == '1')
-		game->textr.enemy1 = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
-	else if (tmp[0] == 'E' && tmp[1] == '2')
-		game->textr.enemy2 = ft_strndup(&tmp[2], ft_strclen(&tmp[2], '\n'));
-	else if (tmp[0] == 'E' && tmp[1] == 'D' && tmp[2] == '1')
-		game->textr.enemyd1 = ft_strndup(&tmp[3], ft_strclen(&tmp[3], '\n'));
-	else if (tmp[0] == 'E' && tmp[1] == 'D' && tmp[2] == '2')
-		game->textr.enemyd2 = ft_strndup(&tmp[3], ft_strclen(&tmp[3], '\n'));
+	else if (tmp[0] == 'X' && tmp[1] != ' ')
+		game->textr.enemy = ft_strndup(&tmp[1], ft_strclen(&tmp[1], '\n'));
 }

@@ -3,11 +3,7 @@ SO textures/game/wall_south.xpm
 WE textures/game/wall_west.xpm
 EA textures/game/wall_east.xpm
 
-E1 textures/game/enemies.xpm
-E2 textures/game/enemy2.xpm
-
-ED1 textures/game/enemy_dead1.xpm
-ED2 textures/game/enemy_dead2.xpm
+X textures/game/enemies.xpm
 
 D textures/game/door.xpm
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sepuku_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:21:22 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/27 09:32:21 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/28 12:18:38 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	free_textures(t_game *game)
 {
 	int i;
 
-	i = 0;
+	i = -1;
 	if (game->textr.north)
 		free(game->textr.north);
 	if (game->textr.west)
@@ -45,18 +45,21 @@ void	free_textures(t_game *game)
 		free(game->textr.floor);
 	if (game->textr.ceiling)
 		free(game->textr.ceiling);
-	if (game->textr.enemy1)
-		free(game->textr.enemy1);
-	if (game->textr.enemy2)
-		free(game->textr.enemy2);
-	if (game->textr.enemyd1)
-		free(game->textr.enemyd1);
-	if (game->textr.enemyd2)
-		free(game->textr.enemyd2);
+	if (game->textr.enemy)
+		free(game->textr.enemy);
 	if (game->textr.door)
 		free(game->textr.door);
-	while(i < 4)
-		mlx_destroy_image(game->mlx_ptr, game->player_face[i++].mlx_img);
+	while(++i <= 4)
+		if(game->player_face[i].mlx_img)
+			mlx_destroy_image(game->mlx_ptr, game->player_face[i].mlx_img);
+	if(game->weapon_img.mlx_img)
+		mlx_destroy_image(game->mlx_ptr, game->weapon_img.mlx_img);
+	if(game->victory.mlx_img)
+		mlx_destroy_image(game->mlx_ptr, game->victory.mlx_img);
+	if(game->loss.mlx_img)
+		mlx_destroy_image(game->mlx_ptr, game->loss.mlx_img);
+	if(game->fps_img.mlx_img)
+		mlx_destroy_image(game->mlx_ptr, game->fps_img.mlx_img);
 }
 
 void	freedom(t_game *game)
@@ -83,6 +86,13 @@ void	freedom(t_game *game)
 		mlx_destroy_window(game->mlx_ptr, game->window);
 		mlx_destroy_display(game->mlx_ptr);
 		free(game->mlx_ptr);
+	}
+	i = 0;
+	if(game && game->door_state_map)
+	{
+		while(i < game->heightmap)
+			free(game->door_state_map[i++]);
+		free(game->door_state_map);
 	}
 }
 

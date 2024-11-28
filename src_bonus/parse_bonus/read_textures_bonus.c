@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:51:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/26 09:45:16 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/28 10:54:19 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ void	check_dup2(int *arr, int fd, char **temp)
 		arr[5]++;
 	else if (tmp[0] == 'D' && tmp[1] == ' ')
 		arr[6]++;
-	else if (tmp[0] == 'E' && (ft_isdigit(tmp[1])
-			|| (tmp[1] == 'D' && ft_isdigit(tmp[2]))))
+	else if (tmp[0] == 'X' && tmp[1] == ' ')
 		arr[7]++;
 	free(tmp);
 	*temp = get_next_line(fd);

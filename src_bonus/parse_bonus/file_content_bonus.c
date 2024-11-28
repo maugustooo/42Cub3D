@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:22:35 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/26 09:44:16 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/28 10:53:33 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ int	is_texture(char *line)
 		return (1);
 	if (line[i] == 'C' && line[i + 1] == ' ')
 		return (1);
-	if (line[i] == 'E' && (ft_isdigit(line[i + 1])
-			|| (line[i + 1] == 'D' && ft_isdigit(line[i + 2]))))
+	if (line[i] == 'X' && line[i + 1] == ' ')
 		return (1);
 	if (line[i] == 'D' && line[i + 1] == ' ')
 		return (1);

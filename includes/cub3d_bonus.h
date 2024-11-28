@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/27 16:03:05 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/28 11:23:54 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,7 @@ typedef struct s_textr
 	char	*floor;
 	char	*ceiling;
 	char	*door;
-	char	*enemy1;
-	char	*enemy2;
-	char	*enemyd1;
-	char	*enemyd2;
+	char	*enemy;
 }				t_textr;
 
 typedef struct s_player
@@ -176,7 +173,6 @@ typedef struct s_game
 {
 	char		**map;
 	int			**door_state_map;
-	double		**door_timer_map;
 	int			x;
 	int			y;
 	int			tlines;
@@ -251,7 +247,6 @@ void	check_textures(t_game *game);
 void	check_map_content(t_game *game);
 void	check_file(char *file, t_game *game);
 void	check_duplicate_text(t_game *game);
-void	check_duplicate_text2(t_game *game);
 void	read_textures(char *file, t_game *game);
 char	*return_no_extra_spaces(char *tmp);
 void	check_text_content(t_game *game, int *i);
@@ -312,9 +307,6 @@ suseconds_t ft_get_time(void);
 
 void put_player_face(t_game *game);
 
-void	draw_static_door(t_game *game, int x, int line_height);
-void	draw_door(t_game *game, int x);
-void	update_door_timers(t_game *game, double delta_time);
 double	get_delta_time();
 void	render_weapon(t_game *game);
 void	update_weapon_frame(t_game *game, t_timer *timer, double curr_time);

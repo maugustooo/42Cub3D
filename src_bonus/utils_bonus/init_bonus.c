@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:38:09 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/27 15:30:56 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/28 11:21:56 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,19 +79,16 @@ void	init_door_map(t_game *game)
 
 	i = -1;
 	game->door_state_map = (int **)malloc(game->heightmap * sizeof(int *));
-	game->door_timer_map = (double **)malloc(game->heightmap * sizeof(double *));
-	if (!game->door_state_map || !game->door_timer_map)
+	if (!game->door_state_map)
 		sepuku(game, ERROR_MALLOC);
 	while (++i < game->heightmap)
 	{
 		j = 0;
 		game->door_state_map[i] = (int *)malloc(game->widthmap * sizeof(int));
-		game->door_timer_map[i] = (double *)malloc(game->widthmap * sizeof(double));
-		if (!game->door_state_map[i] || !game->door_timer_map[i])
+		if (!game->door_state_map[i])
 			sepuku(game, ERROR_MALLOC);
 		while (j < game->widthmap)
 		{
-			game->door_timer_map[i][j] = 0;
 			if (game->map[i][j] == 'D')
 				game->door_state_map[i][j] = 0;
 			else

@@ -23,27 +23,28 @@ void	put_pixel_to_image(t_game *game, int x, int y, int color)
 	*(int *)pixel = color;
 }
 
-void	draw_filled_rectangle(t_game *game, int x, int y, int width, int height, int color)
+void	draw_filled_rectangle(t_game *game, int x, int y,
+		int width)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < height)
+	while (i < 8)
 	{
 		j = 0;
 		while (j < width)
 		{
-			put_pixel_to_image(game, x + j, y + i, color);
+			put_pixel_to_image(game, x + j, y + i, 0x000000);
 			j++;
 		}
 		i++;
 	}
 }
 
-void	draw_char_to_image(t_game *game, char c, int x, int y, uint32_t color)
+void	draw_char_to_image(t_game *game, char c, int x, int y)
 {
-	uint8_t font_bitmap[128][8] = {
+	uint8_t	font_bitmap[128][8] = {
 	['0'] = {0x3C, 0x66, 0x6E, 0x76, 0x66, 0x66, 0x3C, 0x00},
 	['1'] = {0x18, 0x38, 0x18, 0x18, 0x18, 0x18, 0x3C, 0x00},
 	['2'] = {0x3C, 0x66, 0x06, 0x1C, 0x30, 0x60, 0x7E, 0x00},
@@ -59,16 +60,24 @@ void	draw_char_to_image(t_game *game, char c, int x, int y, uint32_t color)
 	['S'] = {0x3C, 0x66, 0x60, 0x3C, 0x06, 0x66, 0x3C, 0x00},
 	[':'] = {0x00, 0x18, 0x18, 0x00, 0x18, 0x18, 0x00, 0x00},
 	};
-	if (ft_isascii(c) == 0)
+	int		row;
+	int		col;
+	uint8_t	row_data;
+
+	if (!ft_isascii(c))
 		return ;
-	for (int row = 0; row < 16; row++)
+	row = 0;
+	while (row < 8)
 	{
-		uint8_t row_data = font_bitmap[(int)c][row];
-		for (int col = 0; col < 16; col++)
+		row_data = font_bitmap[(int)c][row];
+		col = 0;
+		while (col < 8)
 		{
 			if (row_data & (1 << (7 - col)))
-				put_pixel_to_image(game, x + col, y + row, color);
+				put_pixel_to_image(game, x + col, y + row, 0xFFFFFF);
+			col++;
 		}
+		row++;
 	}
 }
 
@@ -102,10 +111,10 @@ void	render_fps(t_game *game)
 	y = 5;
 	i = 0;
 	snprintf(fps_str, sizeof(fps_str), "FPS: %d", game->fps.fps);
-	draw_filled_rectangle(game, x, y, 8 * strlen(fps_str), 8, 0x000000);
+	draw_filled_rectangle(game, x, y, 8 * ft_strlen(fps_str));
 	while (fps_str[i] != '\0')
 	{
-		draw_char_to_image(game, fps_str[i], x + i * 8, y, 0xFFFFFF);
+		draw_char_to_image(game, fps_str[i], x + i * 8, y);
 		i++;
 	}
 }

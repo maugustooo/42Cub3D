@@ -102,18 +102,18 @@ typedef struct s_player
 	int		rotate_left;
 	int		rotate_right;
 	int		health;
-	int 	scared;
+	int		scared;
 	bool	attack;
 }				t_player;
 
 typedef struct s_weapon
 {
-    int		curr_frame;
-    int		frame_width;
-    int		frame_height;
-    bool	is_attacking;
+	int		curr_frame;
+	int		frame_width;
+	int		frame_height;
+	bool	is_attacking;
 	double	scale_factor_width;
-	double 	scale_factor_height;
+	double	scale_factor_height;
 	int		scaled_width;
 	int		scaled_height;
 }				t_weapon;
@@ -125,7 +125,6 @@ typedef struct s_door
 	int		progress;
 	double	timer;
 }				t_door;
-
 
 typedef struct s_enemy
 {
@@ -140,13 +139,13 @@ typedef struct s_enemy
 	int		health;
 	int		state;
 	int		num_frame;
-	int 	frame_width;
-	int 	frame_height;
+	int		frame_width;
+	int		frame_height;
 	int		curr_frame;
 	int		sprite_line;
 	bool	die;
 	bool	died;
-	bool 	attacking;
+	bool	attacking;
 	bool	swords;
 	bool	moving;
 	int		attacks;
@@ -167,11 +166,11 @@ typedef struct s_timer
 
 typedef struct s_fps
 {
-    struct timeval	last_time;
-    int 			frame_count;
-    double			elapsed_time;
-    int				fps;
-}				t_fps;
+	struct timeval	last_time;
+	int				frame_count;
+	double			elapsed_time;
+	int				fps;
+}	t_fps;
 typedef struct s_game
 {
 	char		**map;
@@ -225,7 +224,6 @@ typedef struct s_game
 	int			wall_side;
 	double		walldist;
 	double		cam_x;
-	
 	double		wall_x;
 	int			tex_x;
 	int			tex_y;
@@ -243,75 +241,75 @@ typedef struct s_game
 	time_t		start_time;
 }				t_game;
 
-void	parse(char **argv, t_game *game);
-void	check_extension(char *file);
-void	read_map(char *file, t_game *game);
-void	check_textures(t_game *game);
-void	check_map_content(t_game *game);
-void	check_file(char *file, t_game *game);
-void	check_duplicate_text(t_game *game);
-void	read_textures(char *file, t_game *game);
-char	*return_no_extra_spaces(char *tmp);
-void	check_text_content(t_game *game, int *i);
-void	check_rgb(char *color, t_game *game, int type);
-void	check_colors(t_game *game);
-void	check_order(char *file, t_game *game);
-void	map_content_validation(t_game *game);
-void	get_map_width(t_game *game);
-void	check_dup_arr(int *arr, t_game *game);
-void	put_textures(t_game *game, char *tmp);
-void	check_doors(t_game *game, bool **map);
-void	init_enemy(t_game *game);
-void	init_door(t_game *game);
-int		sepuku(t_game *game, enum e_error i);
-void	free_map(bool **map);
-int		ft_exit(t_game *game);
-int		create_rgb(int t, int r, int g, int b);
-void	init_raycasting(t_game *game, int x);
-void	init_weapon(t_game *game);
-void	put_pixel_minimap(t_game *game, int x, int y, int color);
-void	interact_with_door(t_game *game);
-char	*files(int i, t_game *game);
+void		parse(char **argv, t_game *game);
+void		check_extension(char *file);
+void		read_map(char *file, t_game *game);
+void		check_textures(t_game *game);
+void		check_map_content(t_game *game);
+void		check_file(char *file, t_game *game);
+void		check_duplicate_text(t_game *game);
+void		read_textures(char *file, t_game *game);
+char		*return_no_extra_spaces(char *tmp);
+void		check_text_content(t_game *game, int *i);
+void		check_rgb(char *color, t_game *game, int type);
+void		check_colors(t_game *game);
+void		check_order(char *file, t_game *game);
+void		map_content_validation(t_game *game);
+void		get_map_width(t_game *game);
+void		check_dup_arr(int *arr, t_game *game);
+void		put_textures(t_game *game, char *tmp);
+void		check_doors(t_game *game, bool **map);
+void		init_enemy(t_game *game);
+void		init_door(t_game *game);
+int			sepuku(t_game *game, enum e_error i);
+void		free_map(bool **map);
+int			ft_exit(t_game *game);
+int			create_rgb(int t, int r, int g, int b);
+void		init_raycasting(t_game *game, int x);
+void		init_weapon(t_game *game);
+void		put_pixel_minimap(t_game *game, int x, int y, int color);
+void		interact_with_door(t_game *game);
+char		*files(int i, t_game *game);
 
-int		controls(t_game *game);
-void	init_img(t_game *game);
+int			controls(t_game *game);
+void		init_img(t_game *game);
 
-int		render(t_game *game);
-void	raycasting(t_game *game);
-void	draw_column(t_game *game, int x);
-void	define_texture(t_game *game, int start, int line_height);
-void	draw(t_game *game, int x, int texture);
+int			render(t_game *game);
+void		raycasting(t_game *game);
+void		draw_column(t_game *game, int x);
+void		define_texture(t_game *game, int start, int line_height);
+void		draw(t_game *game, int x, int texture);
 
-void	put_pixel(t_game *game, int x, int y, int color);
-int		get_color(t_game *game, int x, int y, int i);
+void		put_pixel(t_game *game, int x, int y, int color);
+int			get_color(t_game *game, int x, int y, int i);
 
-int		handle_mouse(int x, int y, t_game *game);
-int		handle_key_release(int keycode, t_game *game);
-int		handle_key_press(int keycode, t_game *game);
+int			handle_mouse(int x, int y, t_game *game);
+int			handle_key_release(int keycode, t_game *game);
+int			handle_key_press(int keycode, t_game *game);
 
-void	rotate(t_game *game, double angle);
-int		move_left(t_game *game, double next_x, double next_y);
-int		move_right(t_game *game, double next_x, double next_y);
-int		move_down(t_game *game, double next_x, double next_y);
-int		move_up(t_game *game, double next_x, double next_y);
+void		rotate(t_game *game, double angle);
+int			move_left(t_game *game, double next_x, double next_y);
+int			move_right(t_game *game, double next_x, double next_y);
+int			move_down(t_game *game, double next_x, double next_y);
+int			move_up(t_game *game, double next_x, double next_y);
 
-void	render_fps(t_game *game);
-void	update_fps(t_game *game);
+void		render_fps(t_game *game);
+void		update_fps(t_game *game);
 
-void	render_minimap(t_game *game);
-void	render_player_on_minimap(t_game *game);
-void	draw_minimap_square(t_game *game, int x, int y, int color);
-int		handle_mouse(int x, int y, t_game *game);
+void		render_minimap(t_game *game);
+void		render_player_on_minimap(t_game *game);
+void		draw_minimap_square(t_game *game, int x, int y, int color);
+int			handle_mouse(int x, int y, t_game *game);
 
 void		handle_enemy(t_game *game);
-// void	update_enemy_frame_mov(t_game *game,t_timer *timer, double curr_time);
-void	update_enemy_frame(t_game *game,t_timer *timer, double curr_time);
-suseconds_t ft_get_time(void);
+void		update_enemy_frame(t_game *game, t_timer *timer, double curr_time);
+void		update_enemy_frame_attack(t_game *game, t_timer *timer,
+				double curr_time, int i);
+suseconds_t	ft_get_time(void);
 
-void put_player_face(t_game *game);
+void		put_player_face(t_game *game);
 
-double	get_delta_time();
-void	render_weapon(t_game *game);
-void	update_weapon_frame(t_game *game, t_timer *timer, double curr_time);
-int		handle_mouse_click(int button, int x, int y, void *param);
+void		render_weapon(t_game *game);
+void		update_weapon_frame(t_game *game, t_timer *timer, double curr_time);
+int			handle_mouse_click(int button, int x, int y, void *param);
 #endif

@@ -28,11 +28,13 @@ void	render_background(t_game *game)
 		while (y < SCREEN_HEIGHT - 1)
 		{
 			if (y <= (SCREEN_HEIGHT / 2) - 1)
-				put_pixel(game, x, y, create_rgb(0, (1 - fog) * game->rgb_sky[0] + fog * fog_color,
+				put_pixel(game, x, y, create_rgb(0, (1 - fog) * game->rgb_sky[0]
+						+ fog * fog_color,
 						(1 - fog) * game->rgb_sky[1] + fog * fog_color,
 						(1 - fog) * game->rgb_sky[2] + fog * fog_color));
 			else
-				put_pixel(game, x, y, create_rgb(0, (1 - fog) * game->rgb_floor[0] + fog * fog_color,
+				put_pixel(game, x, y, create_rgb(0, (1 - fog)
+						* game->rgb_floor[0] + fog * fog_color,
 						(1 - fog) * game->rgb_floor[1] + fog * fog_color,
 						(1 - fog) * game->rgb_floor[2] + fog * fog_color));
 			y++;

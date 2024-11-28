@@ -22,11 +22,11 @@ void	draw_minimap_square(t_game *game, int x, int y, int color)
 	{
 		j = 0;
 		if ((color == 0xFF0000 && i >= 5) || (color == 0x00CC00 && i >= 5))
-				break;
+			break ;
 		while (j < 10)
 		{
 			if ((color == 0xFF0000 && j >= 5) || (color == 0x00CC00 && j >= 5))
-				break;
+				break ;
 			put_pixel_minimap(game, x + i, y + j, color);
 			j++;
 		}
@@ -56,7 +56,7 @@ void	render_player_on_minimap(t_game *game)
 {
 	double	player_x;
 	double	player_y;
-	int	color;
+	int		color;
 
 	player_x = (game->player.x - 0.25) * 10;
 	player_y = (game->player.y - 0.25) * 10;
@@ -66,7 +66,7 @@ void	render_player_on_minimap(t_game *game)
 
 void	render_minimap2(t_game *game, int x, int y)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (game->map[y][x] == '1')
@@ -79,10 +79,12 @@ void	render_minimap2(t_game *game, int x, int y)
 	while (i < game->enemy_count)
 	{
 		if (game->enemy[i].died)
-			draw_minimap_square(game, game->enemy[i].x * 10, game->enemy[i].y * 10, 0xFFFFFF);
+			draw_minimap_square(game, game->enemy[i].x * 10,
+				game->enemy[i].y * 10, 0xFFFFFF);
 		else
-			draw_minimap_square(game, game->enemy[i].x * 10, game->enemy[i].y * 10, 0xFF0000);
-		i++;	
+			draw_minimap_square(game, game->enemy[i].x * 10,
+				game->enemy[i].y * 10, 0xFF0000);
+		i++;
 	}
 }
 

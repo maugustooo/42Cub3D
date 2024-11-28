@@ -63,7 +63,7 @@ void	put_player_face2(t_game *game)
 		{
 			if (game->enemy_near == true && game->player.health == 4)
 				color = get_color_player(game, x, y, 3);
-			else if(game->player.health > 0)
+			else if (game->player.health > 0)
 				color = get_color_player(game, x, y, game->player.health - 1);
 			if (color != 0)
 				put_pixel_player(game, x + 16, y + 16, color);

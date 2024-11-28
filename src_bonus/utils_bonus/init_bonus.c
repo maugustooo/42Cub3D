@@ -109,7 +109,8 @@ void	init_img(t_game *game)
 				files(i, game), &game->img[i].width, &game->img[i].height);
 		if (i < 4)
 			game->player_face[i].mlx_img = mlx_xpm_file_to_image(game->mlx_ptr,
-					files(i + 6, game), &game->player_face[i].width, &game->player_face[i].height);
+					files(i + 6, game), &game->player_face[i].width,
+					&game->player_face[i].height);
 		i++;
 	}
 	game->img[6].mlx_img = mlx_new_image(game->mlx_ptr,
@@ -126,13 +127,16 @@ void	init_img(t_game *game)
 	while (i < 7)
 	{
 		game->img[i].addr = mlx_get_data_addr(game->img[i].mlx_img,
-				&game->img[i].bpp, &game->img[i].line_len, &game->img[i].endian);
+				&game->img[i].bpp, &game->img[i].line_len,
+				&game->img[i].endian);
 		if (!game->img[i].addr)
 			sepuku(game, ERROR_MLX);
 		if (i < 5)
 		{
-			game->player_face[i].addr = mlx_get_data_addr(game->player_face[i].mlx_img,
-					&game->player_face[i].bpp, &game->player_face[i].line_len, &game->player_face[i].endian);
+			game->player_face[i].addr
+				= mlx_get_data_addr(game->player_face[i].mlx_img,
+					&game->player_face[i].bpp, &game->player_face[i].line_len,
+					&game->player_face[i].endian);
 			if (!game->player_face[i].addr)
 				sepuku(game, ERROR_MLX);
 		}

@@ -46,5 +46,7 @@ int	controls(t_game *game)
 		rotate(game, ROTSPEED);
 	if (game->player.rotate_left == 1)
 		rotate(game, -ROTSPEED);
+	if (moved)
+		return (0);
 	return (0);
 }

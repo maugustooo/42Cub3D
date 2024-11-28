@@ -14,9 +14,8 @@
 
 void	init_fps(t_fps *fps)
 {
-    gettimeofday(&fps->last_time, NULL);
-    fps->frame_count = 0;
-    fps->elapsed_time = 0.0;
-    fps->fps = 0;
+	gettimeofday(&fps->last_time, NULL);
+	fps->frame_count = 0;
+	fps->elapsed_time = 0.0;
+	fps->fps = 0;
 }
-

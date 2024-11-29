@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/29 12:43:09 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/29 15:02:46 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,22 @@ typedef struct s_weapon
 	int		scaled_width;
 	int		scaled_height;
 }				t_weapon;
+
+typedef struct s_render
+{
+	int vMoveScreen;
+	int screen_x;
+	double sprite_height;
+	double sprite_width;
+	int start_x;
+	int end_x;
+	int start_y;
+	int end_y;
+	int d;
+	int tex_y;
+	int sprite_line_offset;
+	int tex_x;
+}				t_render;
 
 typedef struct s_door
 {
@@ -312,12 +328,18 @@ void		update_fps(t_game *game);
 void		render_minimap(t_game *game);
 void		render_player_on_minimap(t_game *game);
 void		draw_minimap_square(t_game *game, int x, int y, int color);
+void		draw_minimap_square_death(t_game *game, int x, int y, int color);
 int			handle_mouse(int x, int y, t_game *game);
 
 void		handle_enemy(t_game *game);
 void		update_enemy_frame(t_game *game, t_timer *timer, double curr_time);
 void		update_enemy_frame_attack(t_game *game, t_timer *timer,
 				double curr_time, int i);
+void		enemy_math(t_game *game, int i, t_render *render);
+int			should_render_pixel(t_game *game, int i, int x);
+int			calculate_tex_x(t_render *render, int x);
+void		calculate_enemy_tex(t_game *game, t_render *render, int y, int i);
+
 suseconds_t	ft_get_time(void);
 
 void		put_player_face(t_game *game);

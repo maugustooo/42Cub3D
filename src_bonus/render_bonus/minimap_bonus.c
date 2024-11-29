@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 09:14:47 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/29 10:36:15 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/29 14:47:20 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	render_minimap2(t_game *game, int x, int y)
 	while (i < game->enemy_count)
 	{
 		if (game->enemy[i].died)
-			draw_minimap_square(game, game->enemy[i].x * 10,
+			draw_minimap_square_death(game, game->enemy[i].x * 10,
 				game->enemy[i].y * 10, 0xFFFFFF);
 		else
 			draw_minimap_square(game, game->enemy[i].x * 10,

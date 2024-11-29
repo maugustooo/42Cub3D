@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:38:09 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/29 10:46:11 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:58:10 by maugusto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ void	init_status2(t_game *game)
 	{
 		game->player.dir_x = 1;
 		game->player.dir_y = 0;
-		game->plane_x = 0.1;
-		game->plane_y = 0.8;
+		game->plane_x = 0;
+		game->plane_y = 0.66;
 	}
 	if (game->player.angle == WEST)
 	{
 		game->player.dir_x = -1;
 		game->player.dir_y = 0;
-		game->plane_x = 0.1;
-		game->plane_y = -0.8;
+		game->plane_x = 0;
+		game->plane_y = -0.66;
 	}
 }
 
@@ -37,14 +37,14 @@ void	init_status(t_game *game)
 	{
 		game->player.dir_x = 0;
 		game->player.dir_y = -1;
-		game->plane_x = 0.8;
+		game->plane_x = 0.66;
 		game->plane_y = 0;
 	}
 	if (game->player.angle == SOUTH)
 	{
 		game->player.dir_x = 0;
 		game->player.dir_y = 1;
-		game->plane_x = -0.8;
+		game->plane_x = -0.66;
 		game->plane_y = 0;
 	}
 	game->player.health = 0;

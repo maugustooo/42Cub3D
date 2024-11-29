@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/29 11:34:44 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/29 12:43:09 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,8 @@ typedef struct s_enemy
 	int		flag;
 	double	dx;
 	double	dy;
+	double	transform_x;
+	double	transform_y;
 }				t_enemy;
 
 typedef struct s_timer
@@ -280,6 +282,7 @@ char		*error_msg(enum e_error i);
 int			wait_and_exit(void *param);
 void		init_fog(t_game *game);
 void		init_bitmap(t_game *game);
+bool		is_path_clear(t_game *game, int i);
 
 int			controls(t_game *game);
 void		init_img(t_game *game);

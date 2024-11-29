@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/28 16:01:26 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/29 11:34:44 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,6 +192,8 @@ typedef struct s_game
 	int			door_count;
 	int			rgb_sky[3];
 	int			rgb_floor[3];
+	double		fog;
+	int			fog_color;
 	t_textr		textr;
 	t_img		img[10];
 	t_img		minimap;
@@ -205,6 +207,7 @@ typedef struct s_game
 	t_enemy		enemy[64];
 	t_door		door[64];
 	t_fps		fps;
+	uint8_t		bitmap[128][8];
 	double		z_buffer[SCREEN_WIDTH];
 
 	int			wall_end;
@@ -270,6 +273,13 @@ void		init_weapon(t_game *game);
 void		put_pixel_minimap(t_game *game, int x, int y, int color);
 void		interact_with_door(t_game *game);
 char		*files(int i, t_game *game);
+void		init_minimap(t_game *game);
+void		initializations(t_game *game);
+void		xpm_img(t_game *game);
+char		*error_msg(enum e_error i);
+int			wait_and_exit(void *param);
+void		init_fog(t_game *game);
+void		init_bitmap(t_game *game);
 
 int			controls(t_game *game);
 void		init_img(t_game *game);

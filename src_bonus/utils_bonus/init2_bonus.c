@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 09:25:02 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/28 10:58:35 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/29 08:48:11 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,26 +75,6 @@ void	init_enemy(t_game *game)
 	init_enemy2(game);
 }
 
-char	*files(int i, t_game *game)
-{
-	char	*strings[13];
-
-	strings[0] = game->textr.south;
-	strings[1] = game->textr.north;
-	strings[2] = game->textr.east;
-	strings[3] = game->textr.west;
-	strings[4] = game->textr.door;
-	strings[5] = game->textr.enemy;
-	strings[8] = "textures/game/state1.xpm";
-	strings[6] = "textures/game/state3.xpm";
-	strings[7] = "textures/game/state2.xpm";
-	strings[9] = "textures/game/state4.xpm";
-	strings[10] = "textures/game/weapon.xpm";
-	strings[11] = "textures/game/therock.xpm";
-	strings[12] = "textures/game/loss.xpm";
-	return (strings[i]);
-}
-
 void	init_raycasting(t_game *game, int x)
 {
 	game->map_x = (int)game->player.x;
@@ -102,4 +82,24 @@ void	init_raycasting(t_game *game, int x)
 	game->cam_x = (2 * x) / (double)SCREEN_WIDTH - 1;
 	game->ray_dir_x = game->player.dir_x + game->plane_x * game->cam_x;
 	game->ray_dir_y = game->player.dir_y + game->plane_y * game->cam_x;
+}
+
+void	init_minimap(t_game *game)
+{
+	game->minimap.mlx_img = mlx_new_image(game->mlx_ptr,
+			game->widthmap * 10, game->heightmap * 10);
+	if (!game->minimap.mlx_img)
+		sepuku(game, ERROR_MLX);
+	game->minimap.addr = mlx_get_data_addr(game->minimap.mlx_img,
+			&game->minimap.bpp, &game->minimap.line_len, &game->minimap.endian);
+	if (!game->minimap.addr)
+		sepuku(game, ERROR_MLX);
+	game->fps_img.mlx_img = mlx_new_image(game->mlx_ptr,
+			64, 13);
+	if (!game->fps_img.mlx_img)
+		sepuku(game, ERROR_MLX);
+	game->fps_img.addr = mlx_get_data_addr(game->fps_img.mlx_img,
+			&game->fps_img.bpp, &game->fps_img.line_len, &game->fps_img.endian);
+	if (!game->fps_img.addr)
+		sepuku(game, ERROR_MLX);
 }

@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 09:11:18 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/08 09:13:42 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/29 08:25:28 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 #include "libft.h"
 
 /**
- * @brief Returns a pointer to the first occurrence of the character c in the string s.
- * 
+ * @brief Returns a pointer to the first occurrence of the character c 
+ * in the string s.
  * @param s String to search.
  * @param c Character to find.
  * @return char* Character found or NULL if not found.

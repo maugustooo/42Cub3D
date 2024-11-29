@@ -6,51 +6,55 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:13:57 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/28 11:22:51 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/29 10:48:11 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
+void	put_pixel_bg(t_game *game, int x, int y, int type)
+{
+	if (type == 1)
+	{
+		put_pixel(game, x, y,
+			create_rgb(0, (1 - game->fog) * game->rgb_sky[0]
+				+ game->fog * game->fog_color,
+				(1 - game->fog) * game->rgb_sky[1]
+				+ game->fog * game->fog_color,
+				(1 - game->fog) * game->rgb_sky[2]
+				+ game->fog * game->fog_color));
+	}
+	else
+	{
+		put_pixel(game, x, y,
+			create_rgb(0, (1 - game->fog) * game->rgb_floor[0]
+				+ game->fog * game->fog_color,
+				(1 - game->fog) * game->rgb_floor[1]
+				+ game->fog * game->fog_color,
+				(1 - game->fog) * game->rgb_floor[2]
+				+ game->fog * game->fog_color));
+	}
+}
+
 void	render_background(t_game *game)
 {
-	int		x;
-	int		y;
-	double	fog;
-	int		fog_color;
+	int	x;
+	int	y;
 
 	x = 0;
-	fog = 0.25;
-	fog_color = 200;
 	while (x < SCREEN_WIDTH)
 	{
 		y = 0;
 		while (y < SCREEN_HEIGHT - 1)
 		{
 			if (y <= (SCREEN_HEIGHT / 2) - 1)
-				put_pixel(game, x, y, create_rgb(0, (1 - fog) * game->rgb_sky[0]
-						+ fog * fog_color,
-						(1 - fog) * game->rgb_sky[1] + fog * fog_color,
-						(1 - fog) * game->rgb_sky[2] + fog * fog_color));
+				put_pixel_bg(game, x, y, 1);
 			else
-				put_pixel(game, x, y, create_rgb(0, (1 - fog)
-						* game->rgb_floor[0] + fog * fog_color,
-						(1 - fog) * game->rgb_floor[1] + fog * fog_color,
-						(1 - fog) * game->rgb_floor[2] + fog * fog_color));
+				put_pixel_bg(game, x, y, 2);
 			y++;
 		}
 		x++;
 	}
-}
-
-int	wait_and_exit(void *param)
-{
-	t_game	*game;
-
-	game = (t_game *)param;
-	if (difftime(time(NULL), game->start_time) >= 3)
-		ft_exit(game);
-	return (0);
 }
 
 void	check_victory(t_game *game)
@@ -59,27 +63,22 @@ void	check_victory(t_game *game)
 	int	count;
 
 	count = 0;
-	i = 0;
-	while (i < game->enemy_count)
+	i = -1;
+	while (++i < game->enemy_count)
 	{
 		if (game->enemy[i].died == true)
 			count ++;
-		i++;
 	}
-	if (count == game->enemy_count && game->player.health > 0)
+	if ((count == game->enemy_count && game->player.health > 0)
+		|| game->player.health == 0)
 	{
 		mlx_clear_window(game->mlx_ptr, game->window);
-		mlx_put_image_to_window(game->mlx_ptr, game->window,
-			game->victory.mlx_img, 0, 0);
-		game->start_time = time(NULL);
-		mlx_loop_hook(game->mlx_ptr, wait_and_exit, game);
-		mlx_loop(game->mlx_ptr);
-	}
-	else if (game->player.health == 0)
-	{
-		mlx_clear_window(game->mlx_ptr, game->window);
-		mlx_put_image_to_window(game->mlx_ptr, game->window,
-			game->loss.mlx_img, 0, 0);
+		if (count == game->enemy_count && game->player.health > 0)
+			mlx_put_image_to_window(game->mlx_ptr, game->window,
+				game->victory.mlx_img, 0, 0);
+		else if (game->player.health == 0)
+			mlx_put_image_to_window(game->mlx_ptr, game->window,
+				game->loss.mlx_img, 0, 0);
 		game->start_time = time(NULL);
 		mlx_loop_hook(game->mlx_ptr, wait_and_exit, game);
 		mlx_loop(game->mlx_ptr);

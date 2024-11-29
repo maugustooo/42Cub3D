@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 09:14:47 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/28 15:17:33 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/11/29 10:36:15 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ void	render_minimap2(t_game *game, int x, int y)
 	i = 0;
 	if (game->map[y][x] == '1')
 		draw_minimap_square(game, x * 10, y * 10, 0x000000);
-	else if (game->map[y][x] == 'D')
+	else if (game->map[y][x] == 'D' || game->map[y][x] == 'd')
 		draw_minimap_square(game, x * 10, y * 10, 0xFFCC00);
 	else if (game->map[y][x] != '1' || game->map[y][x] != 'D'
-		|| game->map[y][x] != 'X')
+		|| game->map[y][x] != 'X' || game->map[y][x] != 'd')
 		draw_minimap_square(game, x * 10, y * 10, 0xFFFFFF);
 	while (i < game->enemy_count)
 	{

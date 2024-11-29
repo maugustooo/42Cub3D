@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:55:00 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/25 12:08:32 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/29 08:37:44 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,10 @@ void	check_rgb(char *color, t_game *game, int type)
 int	create_rgb(int t, int r, int g, int b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
+}
+
+int	get_color(t_game *game, int x, int y, int i)
+{
+	return (*(int *)(game->img[i].addr
+		+ (y * game->img[i].line_len + x * (game->img[i].bpp / 8))));
 }

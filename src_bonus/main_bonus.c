@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 09:57:01 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/28 11:17:45 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/11/29 08:54:57 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	mlx_functions(t_game *game)
 			SCREEN_HEIGHT, "Cub3D");
 	if (!game->window)
 		sepuku(game, ERROR_MLX);
-	init_img(game);
+	initializations(game);
 	mlx_loop_hook(game->mlx_ptr, &render, game);
 	mlx_hook(game->window, KeyPress, KeyPressMask, &handle_key_press, game);
 	mlx_hook(game->window, KeyRelease, KeyRelease, &handle_key_release, game);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+         #
+#    By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/24 09:44:12 by gude-jes          #+#    #+#              #
-#    Updated: 2024/11/29 14:38:32 by maugusto         ###   ########.fr        #
+#    Updated: 2024/12/02 08:21:42 by gude-jes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,7 @@ BONUS_OBJS	= $(BONUS_SRC:%.c=$(OBJ_DIR)/%.o)
 #==============================================================================#
 #                                    RULES                                     #
 #==============================================================================#
-all: deps $(NAME_BONUS)
+all: deps $(NAME)
 
 deps:
 	@$(MAKE) -C $(LIBFT_PATH)
@@ -123,7 +123,7 @@ fclean: clean clean_bonus
 re: fclean all
 
 valgrind:
-	valgrind --leak-check=full -s --show-leak-kinds=all ./$(NAME_BONUS) $(ARG)
+	valgrind --leak-check=full -s --show-leak-kinds=all ./$(NAME) $(ARG)
 
 download:
 	@wget https://cdn.intra.42.fr/document/document/25858/minilibx-linux.tgz

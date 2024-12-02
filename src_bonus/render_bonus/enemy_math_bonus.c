@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enemy_math_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 14:48:26 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/29 14:54:58 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/12/02 08:18:40 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	calculate_enemy_tex(t_game *game, t_render *render, int y, int i)
 {
-	render->d = (y - render->vMoveScreen) * 256 - SCREEN_HEIGHT * 128
+	render->d = (y - render->vmoveScreen) * 256 - SCREEN_HEIGHT * 128
 		+ (int)render->sprite_height * 128;
 	render->tex_y = ((render->d * game->enemy[i].frame_height)
 			/ (int)render->sprite_height) / 256;
@@ -64,7 +64,7 @@ void	calculate_tranform(t_game *game, int i)
 void	enemy_math(t_game *game, int i, t_render *render)
 {
 	calculate_tranform(game, i);
-	render->vMoveScreen = (int)(-200 / game->enemy[i].transform_y);
+	render->vmoveScreen = (int)(-200 / game->enemy[i].transform_y);
 	render->screen_x = (int)((SCREEN_WIDTH / 2) * (1
 				+ game->enemy[i].transform_x / game->enemy[i].transform_y));
 	render->sprite_height = fabs((SCREEN_HEIGHT / game->enemy[i].transform_y));
@@ -78,11 +78,11 @@ void	enemy_math(t_game *game, int i, t_render *render)
 	if (render->end_x >= SCREEN_WIDTH)
 		render->end_x = SCREEN_WIDTH - 1;
 	render->start_y = -(int)render->sprite_height / 2 + SCREEN_HEIGHT
-		/ 2 + render->vMoveScreen;
+		/ 2 + render->vmoveScreen;
 	if (render->start_y < 0)
 		render->start_y = 0;
 	render->end_y = SCREEN_HEIGHT / 2 + (int)render->sprite_height
-		/ 2 + render->vMoveScreen;
+		/ 2 + render->vmoveScreen;
 	if (render->end_y >= SCREEN_HEIGHT)
 		render->end_y = SCREEN_HEIGHT - 1;
 }

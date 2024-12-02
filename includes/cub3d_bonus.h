@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/29 15:02:46 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/12/02 08:18:25 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,18 +120,18 @@ typedef struct s_weapon
 
 typedef struct s_render
 {
-	int vMoveScreen;
-	int screen_x;
-	double sprite_height;
-	double sprite_width;
-	int start_x;
-	int end_x;
-	int start_y;
-	int end_y;
-	int d;
-	int tex_y;
-	int sprite_line_offset;
-	int tex_x;
+	int		vmoveScreen;
+	int		screen_x;
+	double	sprite_height;
+	double	sprite_width;
+	int		start_x;
+	int		end_x;
+	int		start_y;
+	int		end_y;
+	int		d;
+	int		tex_y;
+	int		sprite_line_offset;
+	int		tex_x;
 }				t_render;
 
 typedef struct s_door

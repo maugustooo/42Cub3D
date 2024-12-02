@@ -6,7 +6,7 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:31:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/12/02 08:18:25 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/12/02 10:24:46 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ typedef struct s_weapon
 
 typedef struct s_render
 {
-	int		vmoveScreen;
+	int		vmovescreen;
 	int		screen_x;
 	double	sprite_height;
 	double	sprite_width;

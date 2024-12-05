@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 09:57:01 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/29 15:04:40 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/12/05 10:37:38 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	mlx_functions(t_game *game)
 	mlx_hook(game->window, MotionNotify, PointerMotionMask, handle_mouse, game);
 	mlx_hook(game->window, ButtonPress, ButtonPressMask,
 		handle_mouse_click, game);
-	mlx_hook(game->window, 17, 0, sepuku, game);
+	mlx_hook(game->window, 17, 0, ft_exit, game);
 	mlx_loop(game->mlx_ptr);
 }
 

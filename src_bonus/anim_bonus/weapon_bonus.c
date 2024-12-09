@@ -6,18 +6,40 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 11:21:23 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/25 12:40:36 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/12/05 11:45:19 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup bonus Bonus
+ * @{
+ * @file weapon_bonus.c
+ * @brief Weapon functions
+*/
+
 #include "cub3d_bonus.h"
 
+/**
+ * @brief Get the color weapon object
+ * 
+ * @param game Pointer to the game structure
+ * @param x X coordinate
+ * @param y Y coordinate
+ * @return int Return the color of the weapon object
+*/
 int	get_color_weapon(t_game *game, int x, int y)
 {
 	return (*(int *)(game->weapon_img.addr
 		+ (y * game->weapon_img.line_len + x * (game->weapon_img.bpp / 8))));
 }
 
+/**
+ * @brief Update the weapon frame
+ * 
+ * @param game Pointer to the game structure
+ * @param timer Timer structure
+ * @param curr_time Current time
+*/
 void	update_weapon_frame(t_game *game, t_timer *timer, double curr_time)
 {
 	double		delta_time;
@@ -47,6 +69,14 @@ void	update_weapon_frame(t_game *game, t_timer *timer, double curr_time)
 	timer->weapon_last_time = curr_time;
 }
 
+/**
+ * @brief Continue initializing the weapon
+ * 
+ * @param game Pointer to the game structure
+ * @param x X coordinate
+ * @param y Y coordinate
+ * @param frame_x Frame X coordinate
+*/
 void	render_weapon2(t_game *game, int x, int y, int frame_x)
 {
 	int	color;
@@ -63,6 +93,11 @@ void	render_weapon2(t_game *game, int x, int y, int frame_x)
 		put_pixel(game, x, y, color);
 }
 
+/**
+ * @brief Renders the weapon on the screen
+ * 
+ * @param game Pointer to the game structure
+*/
 void	render_weapon(t_game *game)
 {
 	int	frame_x;
@@ -83,3 +118,5 @@ void	render_weapon(t_game *game)
 		y++;
 	}
 }
+
+/**@} */

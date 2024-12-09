@@ -6,12 +6,24 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:51:55 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/28 10:54:19 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/12/05 11:18:51 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup bonus Bonus
+ * @{
+ * @file read_textures.c
+ * @brief Functions to read the textures from the file.
+ */
+
 #include "cub3d_bonus.h"
 
+/**
+ * @brief Continuation of check for duplicate textures.
+ * @param arr Array to store the number of textures.
+ * @param game Struct to store the game data.
+*/
 void	check_dup2(int *arr, int fd, char **temp)
 {
 	char	*tmp;
@@ -37,6 +49,12 @@ void	check_dup2(int *arr, int fd, char **temp)
 	*temp = get_next_line(fd);
 }
 
+/**
+ * @brief Check for duplicate textures.
+ * @param fd File Descriptor.
+ * @param game Struct to store the game data.
+ * @param arr Array to store the number of textures.
+*/
 void	check_dup(int fd, t_game *game, int *arr)
 {
 	char	*tmp;
@@ -48,6 +66,13 @@ void	check_dup(int fd, t_game *game, int *arr)
 	check_dup_arr(arr, game);
 }
 
+/**
+ * @brief Continuation of texture reading.
+ * @param game Struct to store the game data.
+ * @param temp Temporary string.
+ * @param i Index.
+ * @param fd File descriptor.
+*/
 void	read_textures3(t_game *game, char **temp, int *i, int fd)
 {
 	char	*tmp;
@@ -62,6 +87,11 @@ void	read_textures3(t_game *game, char **temp, int *i, int fd)
 	check_text_content(game, i);
 }
 
+/**
+ * @brief Continuation of texture reading.
+ * @param fd File descriptor.
+ * @param game Struct to store the game data.
+*/
 void	read_textures2(int fd, t_game *game)
 {
 	int		i;
@@ -79,6 +109,11 @@ void	read_textures2(int fd, t_game *game)
 	free(tmp);
 }
 
+/**
+ * @brief Read the textures from the file.
+ * @param file File to read the textures from.
+ * @param game Struct to store the game data.
+*/
 void	read_textures(char *file, t_game *game)
 {
 	int		fd;
@@ -100,3 +135,5 @@ void	read_textures(char *file, t_game *game)
 	read_textures2(fd, game);
 	close(fd);
 }
+
+/**@} */

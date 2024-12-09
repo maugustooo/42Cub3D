@@ -3,15 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:38:09 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/29 13:58:10 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/12/05 12:05:17 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup bonus Bonus
+ * @{
+ * @file init_bonus.c
+ * @brief Initialize the game status.
+*/
+
 #include "cub3d_bonus.h"
 
+/**
+ * @brief Continue initialization of the game status.
+ * 
+ * @param game Pointer to the game structure.
+*/
 void	init_status2(t_game *game)
 {
 	game->player.health = 4;
@@ -31,6 +43,11 @@ void	init_status2(t_game *game)
 	}
 }
 
+/**
+ * @brief Initialize the game status.
+ * 
+ * @param game Pointer to the game structure.
+*/
 void	init_status(t_game *game)
 {
 	if (game->player.angle == NORTH)
@@ -52,6 +69,11 @@ void	init_status(t_game *game)
 	init_status2(game);
 }
 
+/**
+ * @brief Initialize the door map.
+ * 
+ * @param game Pointer to the game structure.
+*/
 void	init_door_map(t_game *game)
 {
 	int	i;
@@ -78,6 +100,11 @@ void	init_door_map(t_game *game)
 	}
 }
 
+/**
+ * @brief Initialize the images.
+ * 
+ * @param game Pointer to the game structure.
+*/
 void	init_img(t_game *game)
 {
 	int	i;
@@ -107,6 +134,11 @@ void	init_img(t_game *game)
 			&game->weapon_img.endian);
 }
 
+/**
+ * @brief Initialize the game status.
+ * 
+ * @param game Pointer to the game structure.
+*/
 void	initializations(t_game *game)
 {
 	init_img(game);
@@ -116,3 +148,5 @@ void	initializations(t_game *game)
 	init_fog(game);
 	init_bitmap(game);
 }
+
+/**@} */

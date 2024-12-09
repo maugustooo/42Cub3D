@@ -6,12 +6,24 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 10:39:29 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/29 10:48:44 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/12/05 12:01:11 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup bonus Bonus
+ * @{
+ * @file init_bitmap_bonus.c
+ * @brief Initializes the bitmap for the fps counter
+*/
+
 #include "cub3d_bonus.h"
 
+/**
+ * @brief Continue initialization of the bitmap for the fps counter
+ * 
+ * @param game Pointer to the game structure
+*/
 void	init_bitmap5(t_game *game)
 {
 	game->bitmap['S'][0] = 0x3C;
@@ -32,6 +44,11 @@ void	init_bitmap5(t_game *game)
 	game->bitmap[':'][7] = 0x00;
 }
 
+/**
+ * @brief Continue initialization of the bitmap for the fps counter
+ * 
+ * @param game Pointer to the game structure
+*/
 void	init_bitmap4(t_game *game)
 {
 	game->bitmap['9'][0] = 0x3C;
@@ -61,6 +78,11 @@ void	init_bitmap4(t_game *game)
 	init_bitmap5(game);
 }
 
+/**
+ * @brief Continue initialization of the bitmap for the fps counter
+ * 
+ * @param game Pointer to the game structure
+*/
 void	init_bitmap3(t_game *game)
 {
 	game->bitmap['6'][0] = 0x3C;
@@ -90,6 +112,11 @@ void	init_bitmap3(t_game *game)
 	init_bitmap4(game);
 }
 
+/**
+ * @brief Continue initialization of the bitmap for the fps counter
+ * 
+ * @param game Pointer to the game structure
+*/
 void	init_bitmap2(t_game *game)
 {
 	game->bitmap['3'][0] = 0x3C;
@@ -119,6 +146,11 @@ void	init_bitmap2(t_game *game)
 	init_bitmap3(game);
 }
 
+/**
+ * @brief Initializes the bitmap for the fps counter
+ * 
+ * @param game Pointer to the game structure
+ */
 void	init_bitmap(t_game *game)
 {
 	game->bitmap['0'][0] = 0x3C;
@@ -147,3 +179,5 @@ void	init_bitmap(t_game *game)
 	game->bitmap['2'][7] = 0x00;
 	init_bitmap2(game);
 }
+
+/**@} */

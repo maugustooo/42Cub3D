@@ -3,15 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   controls_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:18:40 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/27 14:02:37 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/12/05 11:30:16 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup bonus Bonus
+ * @file controls_bonus.c
+ * @brief Functions to control the player movement and rotation 
+*/
+
 #include "cub3d_bonus.h"
 
+/**
+ * @brief Rotate the player
+ * 
+ * @param game Pointer to the game struct
+ * @param angle Angle to rotate
+*/
 void	rotate(t_game *game, double angle)
 {
 	double	old_dir_x;
@@ -27,6 +39,14 @@ void	rotate(t_game *game, double angle)
 	game->plane_y = old_plane_x * sin(angle) + game->plane_y * cos(angle);
 }
 
+/**
+ * @brief Controls functions
+ * 
+ * @param game Pointer to the game struct
+ * @param next_x Next position in the x axis
+ * @param next_y Next position in the y axis
+ * @return int 0 if the player moved, 1 otherwise
+ */
 int	controls(t_game *game)
 {
 	int	moved;
@@ -50,3 +70,5 @@ int	controls(t_game *game)
 		return (0);
 	return (0);
 }
+
+/**@} */

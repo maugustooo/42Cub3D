@@ -6,12 +6,24 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:32:53 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/27 12:37:04 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/12/05 11:21:29 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup bonus Bonus
+ * @{
+ * @file parse.c
+ * @brief Parsing functions
+ */
+
 #include "cub3d_bonus.h"
 
+/**
+ * @brief Parsing the file
+ * @param argv Argument vector
+ * @param game Struct with game information
+*/
 void	parse(char **argv, t_game *game)
 {
 	check_order(argv[1], game);
@@ -26,3 +38,5 @@ void	parse(char **argv, t_game *game)
 	init_enemy(game);
 	init_door(game);
 }
+
+/**@} */

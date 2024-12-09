@@ -6,18 +6,37 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 10:05:24 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/28 10:57:06 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/12/05 11:59:25 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup bonus Bonus
+ * @{
+ * @file file_utils_bonus.c
+ * @brief Checks for file extensions and directories
+*/
+
 #include "cub3d_bonus.h"
 
+/**
+ * @brief Check if the file has the .cub extension
+ * 
+ * @param file The file to check
+ */
 void	check_extension(char *file)
 {
 	if (ft_strncmp(file + ft_strlen(file) - 4, ".cub", 4) != 0)
 		sepuku(NULL, ERROR_FILE);
 }
 
+/**
+ * @brief Check if the file is a directory
+ * 
+ * @param file The file to check
+ * @return true If the file is a directory
+ * @return false If the file is not a directory
+ */
 bool	is_dir(char *file)
 {
 	int		fd;
@@ -34,6 +53,13 @@ bool	is_dir(char *file)
 	return (ret);
 }
 
+/**
+ * @brief Check if the file is a xpm file
+ * 
+ * @param file The file to check
+ * @return true If the file is a xpm file
+ * @return false If the file is not a xpm file
+ */
 bool	is_xpm(char *file)
 {
 	if (ft_strncmp(file + ft_strlen(file) - 4, ".xpm", 4) == 0)
@@ -41,6 +67,11 @@ bool	is_xpm(char *file)
 	return (false);
 }
 
+/**
+ * @brief Check if the textures are duplicated
+ * 
+ * @param game The game structure
+ */
 void	check_duplicate_text(t_game *game)
 {
 	if (game->textr.north == game->textr.south || game->textr.north
@@ -62,6 +93,12 @@ void	check_duplicate_text(t_game *game)
 		sepuku(game, ERROR_TEXTURE);
 }
 
+/**
+ * @brief Check if the file is a valid texture file
+ * 
+ * @param file The file to check
+ * @param game The game structure
+ */
 void	check_file(char *file, t_game *game)
 {
 	int	fd;
@@ -76,3 +113,5 @@ void	check_file(char *file, t_game *game)
 	if (!is_xpm(file))
 		sepuku(game, ERROR_TEXTURE);
 }
+
+/**@} */

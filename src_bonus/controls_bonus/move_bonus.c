@@ -6,12 +6,21 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:17:26 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/27 08:43:12 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/12/05 11:26:23 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup bonus Bonus
+ * @file move_bonus.c
+ * @brief Movement functions
+*/
+
 #include "cub3d_bonus.h"
 
+/**
+ * @brief Wait for half a second
+*/
 void	wait_half_second(void)
 {
 	struct timeval	start;
@@ -28,6 +37,13 @@ void	wait_half_second(void)
 	}
 }
 
+/**
+ * @brief Move the player up
+ * @param game Struct with game information
+ * @param next_x Next x position
+ * @param next_y Next y position
+ * @return int 1 if the player moved, 0 otherwise
+*/
 int	move_up(t_game *game, double next_x, double next_y)
 {
 	int	move;
@@ -52,6 +68,13 @@ int	move_up(t_game *game, double next_x, double next_y)
 	return (move);
 }
 
+/**
+ * @brief Move the player down
+ * @param game Struct with game information
+ * @param next_x Next x position
+ * @param next_y Next y position
+ * @return int 1 if the player moved, 0 otherwise
+*/
 int	move_down(t_game *game, double next_x, double next_y)
 {
 	int	move;
@@ -76,6 +99,13 @@ int	move_down(t_game *game, double next_x, double next_y)
 	return (move);
 }
 
+/**
+ * @brief Move the player to the right
+ * @param game Struct with game information
+ * @param next_x Next x position
+ * @param next_y Next y position
+ * @return int Move 1 if the player moved, 0 otherwise
+*/
 int	move_right(t_game *game, double next_x, double next_y)
 {
 	int	move;
@@ -100,6 +130,13 @@ int	move_right(t_game *game, double next_x, double next_y)
 	return (move);
 }
 
+/**
+ * @brief Move the player to the left
+ * @param game Struct with game information
+ * @param next_x Next x position
+ * @param next_y Next y position
+ * @return int 1 if the player moved, 0 otherwise
+*/
 int	move_left(t_game *game, double next_x, double next_y)
 {
 	int	move;
@@ -123,3 +160,5 @@ int	move_left(t_game *game, double next_x, double next_y)
 	}
 	return (move);
 }
+
+/**@} */

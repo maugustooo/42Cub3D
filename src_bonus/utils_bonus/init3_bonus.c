@@ -6,12 +6,25 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 08:49:57 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/29 10:27:31 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/12/05 12:08:18 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup bonus Bonus
+ * @{
+ * @file init3_bonus.c
+ * @brief Continue the initialization of the game structure.
+ * 
+*/
+
 #include "cub3d_bonus.h"
 
+/**
+ * @brief Initialize the weapon
+ * 
+ * @param game Pointer to the game structure.
+*/
 void	init_weapon(t_game *game)
 {
 	game->weapon.scale_factor_width = 4.0;
@@ -25,6 +38,11 @@ void	init_weapon(t_game *game)
 			* game->weapon.scale_factor_height);
 }
 
+/**
+ * @brief Initialize the fps structure.
+ * 
+ * @param fps Pointer to the fps structure.
+*/
 void	init_fps(t_fps *fps)
 {
 	gettimeofday(&fps->last_time, NULL);
@@ -33,6 +51,11 @@ void	init_fps(t_fps *fps)
 	fps->fps = 0;
 }
 
+/**
+ * @brief Transform xpm file to image.
+ * 
+ * @param game Pointer to the game structure.
+*/
 void	xpm_img(t_game *game)
 {
 	int	i;
@@ -60,8 +83,15 @@ void	xpm_img(t_game *game)
 			files(12, game), &game->loss.width, &game->loss.height);
 }
 
+/**
+ * @brief Initialize the fog variables.
+ * 
+ * @param game Pointer to the game structure.
+*/
 void	init_fog(t_game *game)
 {
 	game->fog = 0.25;
 	game->fog_color = 200;
 }
+
+/**@} */

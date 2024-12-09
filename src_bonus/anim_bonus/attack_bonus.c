@@ -1,17 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enem_frame.c                                       :+:      :+:    :+:   */
+/*   attack_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 09:37:58 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/28 16:04:55 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/12/05 11:47:57 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup bonus Bonus
+ * @{
+ * @file attack_bonus.c
+ * @brief Attack animation functions.
+*/
+
 #include "cub3d_bonus.h"
 
+/**
+ * @brief Reset the enemy to idle state.
+ * 
+ * @param enemy Pointer to the enemy structure.
+*/
 static void	reset_enemy_to_idle(t_enemy *enemy)
 {
 	enemy->sprite_line = 8;
@@ -19,6 +31,11 @@ static void	reset_enemy_to_idle(t_enemy *enemy)
 	enemy->flag = 1;
 }
 
+/**
+ * @brief Handle the enemy attack flags.
+ * 
+ * @param enemy Pointer to the enemy structure.
+*/
 static void	handle_attack_flags(t_enemy *enemy)
 {
 	if (enemy->sprite_line == 9 && enemy->curr_frame == 2)
@@ -32,6 +49,12 @@ static void	handle_attack_flags(t_enemy *enemy)
 	}
 }
 
+/**
+ * @brief Update the enemy attack animation frames.
+ * 
+ * @param enemy Pointer to the enemy structure.
+ * @param game Pointer to the game structure.
+*/
 static void	update_attack_frames(t_enemy *enemy, t_game *game)
 {
 	if (enemy->curr_frame < 6 && enemy->sprite_line < 10)
@@ -51,6 +74,12 @@ static void	update_attack_frames(t_enemy *enemy, t_game *game)
 	}
 }
 
+/**
+ * @brief Continue updating the enemy attack animation frames.
+ * 
+ * @param game Pointer to the game structure.
+ * @param i Index of the enemy.
+*/
 void	update_enemy_frame_attack2(t_game *game, int i)
 {
 	t_enemy	*enemy;
@@ -65,6 +94,14 @@ void	update_enemy_frame_attack2(t_game *game, int i)
 		reset_enemy_to_idle(enemy);
 }
 
+/**
+ * @brief Update the enemy attack animation frames.
+ *
+ * @param game Pointer to the game structure.
+ * @param timer Pointer to the timer structure.
+ * @param curr_time Current time.
+ * @param i Enemy index.
+*/
 void	update_enemy_frame_attack(t_game *game, t_timer *timer,
 	double curr_time, int i)
 {
@@ -83,3 +120,5 @@ void	update_enemy_frame_attack(t_game *game, t_timer *timer,
 	}
 	enemy->last_time = curr_time;
 }
+
+/**@} */

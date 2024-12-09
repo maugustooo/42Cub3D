@@ -3,15 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   enemy_utils_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 11:46:57 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/29 13:47:29 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/12/05 11:56:13 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup bonus Bonus
+ * @file enemy_utils_bonus.c
+ * @brief Auxiliary functions to handle enemies
+*/
+
 #include "cub3d_bonus.h"
 
+/**
+ * @brief Check if the position is valid
+ * 
+ * @param game Pointer to the game structure
+ * @param x X position
+ * @param y Y position
+ * @return true Position is valid
+ * @return false Position is not valid
+ */
 bool	is_valid_position(t_game *game, double x, double y)
 {
 	int	map_x;
@@ -28,6 +43,14 @@ bool	is_valid_position(t_game *game, double x, double y)
 		|| game->map[map_y][map_x] == 'd');
 }
 
+/**
+ * @brief Check if the path is clear
+ * 
+ * @param game Pointer to the game structure
+ * @param i Index of the enemy
+ * @return true Path is clear
+ * @return false Path is not clear
+ */
 bool	is_path_clear(t_game *game, int i)
 {
 	double	step;
@@ -51,3 +74,5 @@ bool	is_path_clear(t_game *game, int i)
 	}
 	return (true);
 }
+
+/**@} */

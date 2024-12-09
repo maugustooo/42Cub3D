@@ -3,15 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   enem_frame.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 09:37:58 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/28 16:04:55 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/12/05 11:46:47 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup bonus Bonus
+ * @{
+ * @file enem_frame.c
+ * @brief Enemy frame update functions.
+ */
+
 #include "cub3d_bonus.h"
 
+/**
+ * @brief Update enemy frame when enemy is moving.
+ *
+ * @param game Pointer to the game structure.
+ * @param timer Pointer to the timer structure.
+ * @param curr_time Current time.
+ * @param i Index of the enemy.
+ */
 void	update_enemy_frame_mov(t_game *game, double curr_time, int i)
 {
 	t_enemy	*enemy;
@@ -32,6 +47,11 @@ void	update_enemy_frame_mov(t_game *game, double curr_time, int i)
 	enemy->last_time = curr_time;
 }
 
+/**
+ * @brief Continuation of update_enemy_frame_death function.
+ * 
+ * @param enemy Pointer to the enemy structure.
+*/
 void	update_enemy_frame_death2(t_enemy *enemy)
 {
 	if (enemy->sprite_line == 10 && enemy->curr_frame < 6)
@@ -54,6 +74,13 @@ void	update_enemy_frame_death2(t_enemy *enemy)
 	}
 }
 
+/**
+ * @brief Update enemy frame when enemy is dying.
+ *
+ * @param game Pointer to the game structure.
+ * @param curr_time Current time.
+ * @param i Index of the enemy.
+ */
 void	update_enemy_frame_death(t_game *game, double curr_time, int i)
 {
 	t_enemy	*enemy;
@@ -71,6 +98,13 @@ void	update_enemy_frame_death(t_game *game, double curr_time, int i)
 	enemy->last_time = curr_time;
 }
 
+/**
+ * @brief Update enemy frame.
+ *
+ * @param game Pointer to the game structure.
+ * @param timer Pointer to the timer structure.
+ * @param curr_time Current time.
+ */
 void	update_enemy_frame(t_game *game, t_timer *timer, double curr_time)
 {
 	int		i;
@@ -90,3 +124,5 @@ void	update_enemy_frame(t_game *game, t_timer *timer, double curr_time)
 		i++;
 	}
 }
+
+/**@} */

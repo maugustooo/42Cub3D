@@ -6,12 +6,23 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 11:55:00 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/29 08:37:44 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/12/05 11:54:47 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup bonus Bonus
+ * @file colors_bonus.c
+ * @brief Check and create colors
+*/
+
 #include "cub3d_bonus.h"
 
+/**
+ * @brief Free the rgb values
+ * 
+ * @param rgb RGB values
+ */
 void	free_rgb(char **rgb)
 {
 	int	i;
@@ -26,6 +37,13 @@ void	free_rgb(char **rgb)
 	free(rgb);
 }
 
+/**
+ * @brief Check the rgb values
+ * 
+ * @param color Color to check
+ * @param game Pointer to the game structure
+ * @param type Type of color
+ */
 void	check_rgb(char *color, t_game *game, int type)
 {
 	char	**rgb;
@@ -55,13 +73,33 @@ void	check_rgb(char *color, t_game *game, int type)
 	free_rgb(rgb);
 }
 
+/**
+ * @brief Create a rgb object
+ * 
+ * @param t Transparency
+ * @param r Red
+ * @param g Green
+ * @param b Blue
+ * @return int Return the color
+ */
 int	create_rgb(int t, int r, int g, int b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
+/**
+ * @brief Get the color of a pixel
+ * 
+ * @param game Pointer to the game structure
+ * @param x X coordinate of the pixel
+ * @param y y coordinate of the pixel
+ * @param i index of the image
+ * @return int return the color of the pixel
+ */
 int	get_color(t_game *game, int x, int y, int i)
 {
 	return (*(int *)(game->img[i].addr
 		+ (y * game->img[i].line_len + x * (game->img[i].bpp / 8))));
 }
+
+/**@} */

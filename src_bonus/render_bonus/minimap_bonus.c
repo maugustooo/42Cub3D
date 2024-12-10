@@ -3,15 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 09:14:47 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/29 14:47:20 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/12/10 10:28:16 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup bonus Bonus
+ * @{
+ * @file minimap_bonus.c
+ * @brief 
+*/
+
 #include "cub3d_bonus.h"
 
+/**
+ * @brief Draw a square to the minimap.
+ * @param game Pointer to the game structure.
+ * @param x X position.
+ * @param y Y position.
+ * @param color Color of the square.
+*/
 void	draw_minimap_square(t_game *game, int x, int y, int color)
 {
 	int	i;
@@ -34,24 +48,10 @@ void	draw_minimap_square(t_game *game, int x, int y, int color)
 	}
 }
 
-void	draw_player_square(t_game *game, int x, int y, int color)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < 5)
-	{
-		j = 0;
-		while (j < 5)
-		{
-			put_pixel_minimap(game, x + i, y + j, color);
-			j++;
-		}
-		i++;
-	}
-}
-
+/**
+ * @brief Render the player on the minimap.
+ * @param game Pointer to the game structure.
+*/
 void	render_player_on_minimap(t_game *game)
 {
 	double	player_x;
@@ -64,6 +64,13 @@ void	render_player_on_minimap(t_game *game)
 	draw_minimap_square(game, player_x, player_y, color);
 }
 
+/**
+ * @brief Continue rendering of minimap.
+ * @param game Pointer to the game structure.
+ * @param x X position.
+ * @param y Y position.
+ * @param color Color of the square.
+*/
 void	render_minimap2(t_game *game, int x, int y)
 {
 	int	i;
@@ -88,6 +95,10 @@ void	render_minimap2(t_game *game, int x, int y)
 	}
 }
 
+/**
+ * @brief Render the minimap.
+ * @param game Pointer to the game structure.
+*/
 void	render_minimap(t_game *game)
 {
 	int	x;
@@ -103,3 +114,5 @@ void	render_minimap(t_game *game)
 	render_player_on_minimap(game);
 	render_fps(game);
 }
+
+/** @} */

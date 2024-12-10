@@ -6,12 +6,26 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 14:48:26 by maugusto          #+#    #+#             */
-/*   Updated: 2024/12/02 10:24:46 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/12/10 10:40:30 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup bonus Bonus
+ * @{
+ * @file enemy_math_bonus.c
+ * @brief Enemy math calculations
+*/
+
 #include "cub3d_bonus.h"
 
+/**
+ * @brief Calculate the textures of the enemy
+ * @param game Pointer to game
+ * @param render Render struct
+ * @param y Y coordinate of the pixel
+ * @param i Index of enemy
+*/
 void	calculate_enemy_tex(t_game *game, t_render *render, int y, int i)
 {
 	render->d = (y - render->vmovescreen) * 256 - SCREEN_HEIGHT * 128
@@ -34,6 +48,12 @@ void	calculate_enemy_tex(t_game *game, t_render *render, int y, int i)
 		render->sprite_line_offset += 20;
 }
 
+/**
+ * @brief Calculate the x coordinate of the texture
+ * @param render Render struct
+ * @param x X coordinate of the pixel
+ * @return X coordinate of the texture
+*/
 int	calculate_tex_x(t_render *render, int x)
 {
 	return ((int)(256 * (x - (-(int)render->sprite_width / 2
@@ -41,12 +61,24 @@ int	calculate_tex_x(t_render *render, int x)
 		/ (int)render->sprite_width) / 256);
 }
 
+/**
+ * @brief Check if the pixel should be rendered
+ * @param game Pointer to game
+ * @param i Index of enemy
+ * @param x X coordinate of the pixel
+ * @return 1 if the pixel should be rendered, 0 otherwise
+*/
 int	should_render_pixel(t_game *game, int i, int x)
 {
 	return (-game->enemy[i].transform_y > 0 && x > 0 && x < SCREEN_WIDTH
 		&& - game->enemy[i].transform_y < game->z_buffer[x]);
 }
 
+/**
+ * @brief Calculate the transformation of the enemy
+ * @param game Pointer to game
+ * @param i Index of enemy
+*/
 void	calculate_tranform(t_game *game, int i)
 {
 	double	inv_det;
@@ -61,6 +93,12 @@ void	calculate_tranform(t_game *game, int i)
 			* (game->player.y - game->enemy[i].y));
 }
 
+/**
+ * @brief Enemy math calculations
+ * @param game Pointer to game
+ * @param i Index of enemy
+ * @param render Render struct
+*/
 void	enemy_math(t_game *game, int i, t_render *render)
 {
 	calculate_tranform(game, i);
@@ -86,3 +124,5 @@ void	enemy_math(t_game *game, int i, t_render *render)
 	if (render->end_y >= SCREEN_HEIGHT)
 		render->end_y = SCREEN_HEIGHT - 1;
 }
+
+/**@} */

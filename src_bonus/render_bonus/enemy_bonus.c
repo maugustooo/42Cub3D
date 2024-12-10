@@ -3,15 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   enemy_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 14:55:18 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/29 15:04:15 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/12/10 10:37:57 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup bonus Bonus
+ * @{
+ * @file enemy_bonus.c
+ * @brief Enemy functions
+*/
+
 #include "cub3d_bonus.h"
 
+/**
+ * @brief Continue checking if the enemy can move
+ * @param game Pointer to the game structure
+ * @param i Index of the enemy
+*/
 void	check_enemy1_5(t_game *game, int i)
 {
 	double	direction_x;
@@ -37,6 +49,11 @@ void	check_enemy1_5(t_game *game, int i)
 	}
 }
 
+/**
+ * @brief Check if the enemy can move
+ * @param game Pointer to the game structure
+ * @param i Index of the enemy
+ */
 void	check_enemy(t_game *game, int i)
 {
 	if (!game->enemy[i].died && !game->enemy[i].attacking)
@@ -51,6 +68,10 @@ void	check_enemy(t_game *game, int i)
 	}
 }
 
+/**
+ * @brief Sort enemies by distance to player
+ * @param game Pointer to the game structure
+ */
 void	sort_enemies_by_distance(t_game *game)
 {
 	int		i;
@@ -80,6 +101,12 @@ void	sort_enemies_by_distance(t_game *game)
 	}
 }
 
+/**
+ * @brief Render the enemy
+ * @param game Pointer to the game structure
+ * @param i Index of the enemy
+ * @param render Pointer to the render structure
+ */
 void	render_enemy(t_game *game, int i, t_render *render)
 {
 	int				x;
@@ -109,6 +136,10 @@ void	render_enemy(t_game *game, int i, t_render *render)
 	}
 }
 
+/**
+ * @brief Handle the enemy logic
+ * @param game Pointer to the game structure
+ */
 void	handle_enemy(t_game *game)
 {
 	int			i;
@@ -124,3 +155,5 @@ void	handle_enemy(t_game *game)
 		i++;
 	}
 }
+
+/**@} */

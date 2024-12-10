@@ -6,12 +6,27 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 08:59:05 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/29 10:46:50 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/12/10 10:23:15 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup bonus Bonus
+ * @{
+ * @file fps_bonus.c
+ * @brief Handle the FPS counter.
+ */
+
 #include "cub3d_bonus.h"
 
+/**
+ * @brief Put a pixel to the image.
+ * 
+ * @param game Pointer to the game structure.
+ * @param x X position.
+ * @param y Y position.
+ * @param color Color of the pixel.
+*/
 void	put_pixel_to_image(t_game *game, int x, int y, int color)
 {
 	char	*pixel;
@@ -23,6 +38,14 @@ void	put_pixel_to_image(t_game *game, int x, int y, int color)
 	*(int *)pixel = color;
 }
 
+/**
+ * @brief Draw a filled rectangle to the image.
+ * 
+ * @param game Pointer to the game structure.
+ * @param x X position.
+ * @param y Y position.
+ * @param width Width of the rectangle.
+*/
 void	draw_filled_rectangle(t_game *game, int x, int y,
 		int width)
 {
@@ -42,6 +65,13 @@ void	draw_filled_rectangle(t_game *game, int x, int y,
 	}
 }
 
+/**
+ * @brief Draw a character to the image.
+ * @param game Pointer to the game structure.
+ * @param c Character to draw.
+ * @param x X position.
+ * @param y Y position.
+*/
 void	draw_char_to_image(t_game *game, char c, int x, int y)
 {
 	int		row;
@@ -65,6 +95,10 @@ void	draw_char_to_image(t_game *game, char c, int x, int y)
 	}
 }
 
+/**
+ * @brief Update the FPS counter.
+ * @param game Pointer to the game structure.
+*/
 void	update_fps(t_game *game)
 {
 	struct timeval	current_time;
@@ -84,6 +118,10 @@ void	update_fps(t_game *game)
 	}
 }
 
+/**
+ * @brief Render the FPS counter.
+ * @param game Pointer to the game structure.
+*/
 void	render_fps(t_game *game)
 {
 	char	fps_str[10];
@@ -102,3 +140,5 @@ void	render_fps(t_game *game)
 		i++;
 	}
 }
+
+/**@} */

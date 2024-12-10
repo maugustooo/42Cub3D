@@ -3,15 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:13:57 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/29 14:55:10 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/12/10 10:29:46 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgrop bonus Bonus
+ * @{
+ * @file render_bonus.c
+ * @brief Functions to render the game.
+ */
+
 #include "cub3d_bonus.h"
 
+/**
+ * @brief Put pixel in the screen for background
+ * @param game Pointer to structure t_game
+ * @param x X coordinate
+ * @param y Y coordinate
+ * @param color Color in hex
+*/
 void	put_pixel_bg(t_game *game, int x, int y, int type)
 {
 	if (type == 1)
@@ -36,6 +50,10 @@ void	put_pixel_bg(t_game *game, int x, int y, int type)
 	}
 }
 
+/**
+ * @brief Render background
+ * @param game Pointer to structure t_game
+*/
 void	render_background(t_game *game)
 {
 	int	x;
@@ -57,6 +75,10 @@ void	render_background(t_game *game)
 	}
 }
 
+/**
+ * @brief Check if player won or lost
+ * @param game Pointer to structure t_game
+*/
 void	check_victory(t_game *game)
 {
 	int	i;
@@ -85,6 +107,10 @@ void	check_victory(t_game *game)
 	}
 }
 
+/**
+ * @brief Put images to window 
+ * @param game Pointer to structure t_game
+*/
 void	mlx_put_img(t_game *game)
 {
 	mlx_put_image_to_window(game->mlx_ptr, game->window, game->img[6].mlx_img,
@@ -97,6 +123,12 @@ void	mlx_put_img(t_game *game)
 		game->widthmap * 10 + 12, 12);
 }
 
+/**
+ * @brief Render main function
+ * 
+ * @param game Pointer to structure t_game
+ * @return int Normal return
+*/
 int	render(t_game *game)
 {
 	double	curr_time;
@@ -117,3 +149,5 @@ int	render(t_game *game)
 	mlx_put_img(game);
 	return (0);
 }
+
+/**@} */

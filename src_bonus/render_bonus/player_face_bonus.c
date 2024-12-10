@@ -3,15 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   player_face_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maugusto <maugusto@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 09:13:44 by gude-jes          #+#    #+#             */
-/*   Updated: 2024/11/27 15:10:31 by maugusto         ###   ########.fr       */
+/*   Updated: 2024/12/10 10:30:42 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup bonus Bonus
+ * @{
+ * @file player_face_bonus.c
+ * @brief 
+ * 
+ * 
+*/
+
 #include "cub3d_bonus.h"
 
+/**
+ * @brief Get the color of the player face
+ * @param game Pointer to structure of the game
+ * @param x X coordinate
+ * @param y Y coordinate
+ * @param i Index of the player face
+ * @return int Color of the pixel
+ */
 int	get_color_player(t_game *game, int x, int y, int i)
 {
 	return (*(int *)(game->player_face[i].addr
@@ -19,6 +36,13 @@ int	get_color_player(t_game *game, int x, int y, int i)
 			* (game->player_face[i].bpp / 8))));
 }
 
+/**
+ * @brief Put a pixel on the player face
+ * @param game Pointer to structure of the game
+ * @param x X coordinate
+ * @param y Y coordinate
+ * @param color Color of the pixel
+ */
 void	put_pixel_player(t_game *game, int x, int y, int color)
 {
 	char	*pixel;
@@ -31,6 +55,10 @@ void	put_pixel_player(t_game *game, int x, int y, int color)
 	*(int *)pixel = color;
 }
 
+/**
+ * @brief Clear the player face on the screen
+ * @param game 
+*/
 void	clear_player_face(t_game *game)
 {
 	int	x;
@@ -49,6 +77,10 @@ void	clear_player_face(t_game *game)
 	}
 }
 
+/**
+ * @brief Continue to put the player face on the screen
+ * @param game 
+*/
 void	put_player_face2(t_game *game)
 {
 	int	x;
@@ -73,6 +105,10 @@ void	put_player_face2(t_game *game)
 	}
 }
 
+/**
+ * @brief Put the player face on the screen
+ * @param game Pointer to structure of the game
+ */
 void	put_player_face(t_game *game)
 {
 	int	x;
@@ -98,3 +134,5 @@ void	put_player_face(t_game *game)
 	x = 1;
 	put_player_face2(game);
 }
+
+/**} */

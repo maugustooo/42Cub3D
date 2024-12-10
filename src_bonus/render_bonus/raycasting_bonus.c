@@ -6,12 +6,24 @@
 /*   By: gude-jes <gude-jes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 01:12:27 by maugusto          #+#    #+#             */
-/*   Updated: 2024/11/27 12:37:09 by gude-jes         ###   ########.fr       */
+/*   Updated: 2024/12/10 10:38:05 by gude-jes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @defgroup bonus Bonus
+ * @{
+ * @file raycasting_bonus.c
+ * @brief Raycasting functions
+*/
+
 #include "cub3d_bonus.h"
 
+/**
+ * @brief Continue the raycasting process
+ * @param game Pointer to structure t_game
+ * @param wall Wall hit flag
+*/
 void	wall_stuff2(t_game *game, int *wall)
 {
 	game->wall = false;
@@ -39,6 +51,10 @@ void	wall_stuff2(t_game *game, int *wall)
 	}
 }
 
+/**
+ * @brief Check if the ray hit a wall
+ * @param game Pointer to structure t_game
+ */
 void	wall_stuff(t_game *game)
 {
 	int	wall;
@@ -50,6 +66,10 @@ void	wall_stuff(t_game *game)
 		wall_stuff2(game, &wall);
 }
 
+/**
+ * @brief Get the step object
+ * @param game Pointer to structure t_game
+*/
 void	get_step(t_game *game)
 {
 	if (game->ray_dir_x < 0)
@@ -77,6 +97,10 @@ void	get_step(t_game *game)
 	}
 }
 
+/**
+ * @brief Get distance to wall
+ * @param game Pointer to structure t_game
+ */
 void	get_distance(t_game *game)
 {
 	if (game->ray_dir_x == 0)
@@ -89,6 +113,10 @@ void	get_distance(t_game *game)
 		game->delta_dist_y = fabs(1 / game->ray_dir_y);
 }
 
+/**
+ * @brief Raycasting function
+ * @param game Pointer to structure t_game
+ */
 void	raycasting(t_game *game)
 {
 	int	x;
@@ -109,3 +137,5 @@ void	raycasting(t_game *game)
 		x++;
 	}
 }
+
+/**@} */

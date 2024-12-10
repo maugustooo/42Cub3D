@@ -13,10 +13,6 @@
 
 ### Dependencies
 To compile and run cub3D, you need the following dependencies:
-
-- **Make**: To compile the project.
-- **MinilibX**: The graphics library used.
-- **gcc**: The compiler.
 - **required packages** (install via terminal):
     ```bash
     sudo apt-get install gcc make libxext-dev libx11-dev libbsd-dev libxrandr-dev libxi-dev libxinerama-dev
@@ -32,6 +28,7 @@ To compile and run cub3D, you need the following dependencies:
 2. Compile the project:
     ```bash
     make
+    - **Make download**: To download the mlx library.
     ```
 
 3. To clean object files:

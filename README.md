@@ -27,8 +27,8 @@ To compile and run cub3D, you need the following dependencies:
 
 2. Compile the project:
     ```bash
+    make download
     make
-    - **Make download**: To download the mlx library.
     ```
 
 3. To clean object files:

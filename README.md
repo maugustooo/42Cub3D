@@ -18,41 +18,18 @@ To compile and run cub3D, you need the following dependencies:
     sudo apt-get install gcc make libxext-dev libx11-dev libbsd-dev libxrandr-dev libxi-dev libxinerama-dev
     ```
 
-### How to Compile
+### How to Run
 1. Clone this repository:
     ```bash
     git clone https://github.com/YourUsername/42-cub3D.git
     cd 42-cub3D
-    ```
-
-2. Compile the project:
-    ```bash
     make download
     make
+    ./cub3D_bonus maps/good/map1.cub
     ```
-
-3. To clean object files:
-    ```bash
-    make clean
-    ```
-
-4. To clean everything, including the binary:
-    ```bash
-    make fclean
-    ```
-
 ---
 
 ## How to Play
-
-1. Run the game with the command:
-    ```bash
-    ./cub3D [map.cub]
-    ```
-    Replace `[map.cub]` with a valid map configuration file.
-
-2. Use the following keys to control the player:
-
     | Key         | Action              |
     |-------------|---------------------|
     | `W`         | Move forward        |

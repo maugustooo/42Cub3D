@@ -8,6 +8,7 @@
 <div align="center">
 	<h1>Demonstrating video</a></h1>
 </div>
+
 ![Gameplay Demo](https://github.com/user-attachments/assets/6c0a9dda-04c4-4b79-89df-dab8e27967e3)
 
 

@@ -1,12 +1,15 @@
 <div align="center">
 	<h1>42-cub3D</h1>
 </div>
-
-![Gameplay Demo](https://github.com/user-attachments/assets/6c0a9dda-04c4-4b79-89df-dab8e27967e3)
-
 ### About
 **42-cub3D** is a project developed as part of the 42 Network curriculum. It recreates a simple 3D game using raycasting, inspired by the classic *Wolfenstein 3D*. This project focuses on building a basic graphics engine in C, following the strict [Norminette](https://github.com/42School/norminette) coding style.
 
+![Gameplay Demo](https://github.com/user-attachments/assets/6c0a9dda-04c4-4b79-89df-dab8e27967e3)
+
+
+<div align="center">
+	<h1><a href="https://dot99.github.io/42-cub3D/">Subject</a></h1>
+</div>
 ---
 
 ## How to Play
@@ -47,6 +50,3 @@ To compile and run cub3D, you need the following dependencies:
 	<h1><a href="https://dot99.github.io/42-cub3D/">Documentation</a></h1>
 </div>
 
-<div align="center">
-	<h1><a href="https://dot99.github.io/42-cub3D/">Subject</a></h1>
-</div>

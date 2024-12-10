@@ -35,8 +35,8 @@ To compile and run cub3D, you need the following dependencies:
     |-------------|---------------------|
     | `W`         | Move forward        |
     | `S`         | Move backward       |
-    | `A`         | Strafe left         |
-    | `D`         | Strafe right        |
+    | `A`         | Move left           |
+    | `D`         | Move right          |
     | `← / →`     | Rotate camera       |
     | `ESC`       | Exit the game       |
 

@@ -19,7 +19,7 @@ To compile and run cub3D, you need the following dependencies:
     ```
 
 ### How to Run
-1. Clone this repository:
+1. Clone this repository, compile and execute:
     ```bash
     git clone https://github.com/YourUsername/42-cub3D.git
     cd 42-cub3D

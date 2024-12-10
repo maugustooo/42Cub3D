@@ -30,14 +30,16 @@ To compile and run cub3D, you need the following dependencies:
 
 ## Controls
 1. Use the following keys to control the player:
-    | Key         | Action              |
-    |-------------|---------------------|
-    | `W`         | Move forward        |
-    | `S`         | Move backward       |
-    | `A`         | Move left           |
-    | `D`         | Move right          |
-    | `← / →`     | Rotate camera       |
-    | `ESC`       | Exit the game       |
+    | Key             | Action              |
+    |-----------------|---------------------|
+    | `W`             | Move forward        |
+    | `S`             | Move backward       |
+    | `A`             | Move left           |
+    | `D`             | Move right          |
+    | `← / →`         | Rotate camera       |
+    | Mouse move      | Rotate camera       |
+    | Mouse left click| Rotate camera       |
+    | `ESC`           | Exit the game       |
 
 ---
 

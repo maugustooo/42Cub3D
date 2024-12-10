@@ -44,13 +44,7 @@ To compile and run cub3D, you need the following dependencies:
 <div align="center">
 	<h1><a href="https://dot99.github.io/42-cub3D/">Documentation</a></h1>
 </div>
----
-
-## Subject Documentation
-You can access the project subject [here](https://dot99.github.io/42-cub3D/).
-
----
 
 <div align="center">
-	<h3>Developed as part of the <a href="https://www.42.fr/">42 Network</a> curriculum.</h3>
+	<h1><a href="https://dot99.github.io/42-cub3D/">Subject</a></h1>
 </div>

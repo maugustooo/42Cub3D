@@ -30,6 +30,7 @@ To compile and run cub3D, you need the following dependencies:
 ---
 
 ## How to Play
+1. Use the following keys to control the player:
     | Key         | Action              |
     |-------------|---------------------|
     | `W`         | Move forward        |
